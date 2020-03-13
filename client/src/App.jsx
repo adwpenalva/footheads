@@ -2,12 +2,15 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.scss';
 import Profile from './views/Profile';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Home from './views/home';
 import Leagues from './views/leagues';
-import NavBar from './Components/Navbar';
 import Login from './views/Login';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import signup from './views/Signup';
+import Club from './views/Club';
+
+import NavBar from './Components/Navbar';
 
 function App() {
   return (
@@ -20,6 +23,7 @@ function App() {
           <Route path="/login" component={Login} exact />
           <Route path="/sign-up" component={signup} exact />
           <Route path="/profile" component={Profile} exact />
+          <Route path="/league/club" component={Club} exact />
         </Switch>
       </BrowserRouter>
       <footer>

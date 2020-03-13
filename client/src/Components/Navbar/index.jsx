@@ -7,13 +7,10 @@ class NavBar extends Component {
     return (
       <div>
         <Navbar bg="success" expand="lg">
-          <Navbar.Brand href="#home">FootHeads</Navbar.Brand>
+          <Navbar.Brand href="/">FootHeads</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/" className="navItem">
-                Home
-              </Nav.Link>
               <Nav.Link href="/login">Login</Nav.Link>
               <Nav.Link href="/sign-up">Sign Up</Nav.Link>
               <NavDropdown title="Info" id="basic-nav-dropdown">
