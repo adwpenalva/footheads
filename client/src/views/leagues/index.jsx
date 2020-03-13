@@ -31,9 +31,13 @@ export default class Leagues extends Component {
       <div>
         <h1>League Selection</h1>
         <ul>
-          {leagues.map(league => (
-            <li key={league.idLeague}>{league.strLeague}</li>
-          ))}
+          {leagues
+            .filter(league => {
+              return league.strSport === 'Soccer';
+            })
+            .map(league => (
+              <li key={league.idLeague}>{league.strLeague}</li>
+            ))}
         </ul>
         {/* <ul>
           <li>
