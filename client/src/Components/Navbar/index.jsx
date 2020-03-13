@@ -11,17 +11,17 @@ class NavBar extends Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="#home" className="navItem">
+              <Nav.Link href="/" className="navItem">
                 Home
               </Nav.Link>
               <Nav.Link href="#link">Login</Nav.Link>
               <Nav.Link href="#link">Sign Up</Nav.Link>
               <NavDropdown title="Info" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Leagues</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Fixtures</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Contact</NavDropdown.Item>
+                <NavDropdown.Item href="/leagues">Leagues</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Fixtures</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.3">Contact</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form inline>
