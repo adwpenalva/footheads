@@ -14,12 +14,12 @@ class NavBar extends Component {
               <Nav.Link href="/" className="navItem">
                 Home
               </Nav.Link>
-              <Nav.Link href="#link">Login</Nav.Link>
-              <Nav.Link href="#link">Sign Up</Nav.Link>
+              <Nav.Link href="/login">Login</Nav.Link>
+              <Nav.Link href="/sign-up">Sign Up</Nav.Link>
               <NavDropdown title="Info" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/leagues">Leagues</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.2">Fixtures</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">Todays Fixtures</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.3">Contact</NavDropdown.Item>
               </NavDropdown>
