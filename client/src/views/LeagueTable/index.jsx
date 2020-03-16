@@ -46,7 +46,7 @@ export default class LeagueTable extends Component {
                 <tr key={val.teamid}>
                   <td>{this.state.leagueTable.indexOf(val) + 1}</td>
                   <td>
-                    <Link to={`/club/${val.idteam}`}>{val.name}</Link>
+                    <Link to={`/club/id/${val.teamid}`}>{val.name}</Link>
                   </td>
                   <td>{val.played}</td>
                   <td>{val.win}</td>

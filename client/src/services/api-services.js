@@ -25,6 +25,17 @@ export const getTableLeague = async id => {
   }
 };
 
+export const getTeamInfo = async id => {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${id}`
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
 //always data
 
 //this service will be getting information about the Club information
