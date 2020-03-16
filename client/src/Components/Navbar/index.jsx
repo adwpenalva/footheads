@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
-import { Button, Navbar, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
+
+import { Button, Navbar, Nav, NavDropdown, Form } from 'react-bootstrap';
 import './style.scss';
 
 class NavBar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      search: ''
+    };
+    this.updateSearch = this.updateSearch.bind(this);
+  }
+
+  updateSearch(event) {
+    console.log(event.target.value);
+    this.setState({ search: event.target.value.substr(0, 20) });
+  }
+
   render() {
     return (
       <div>
@@ -21,10 +35,11 @@ class NavBar extends Component {
                 <NavDropdown.Item href="#action/3.3">Contact</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            {/* <Form inline> */}
+            {/* <FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
+            {/* <input type="text" value={this.state.search} onChange={this.updateSearch} />
               <Button variant="outline-light">Search</Button>
-            </Form>
+            </Form> */}
           </Navbar.Collapse>
         </Navbar>
       </div>

@@ -8,7 +8,7 @@ import Home from './views/home';
 import Leagues from './views/leagues';
 import Login from './views/Login';
 import signup from './views/Signup';
-import Club from './views/Club';
+import ClubInfo from './views/Club';
 import ProfileEditView from './views/EditProfile';
 import LeagueTable from './views/LeagueTable';
 
@@ -26,7 +26,7 @@ function App() {
           <Route path="/sign-up" component={signup} exact />
           <Route path="/profile" component={Profile} exact />
           <Route path="/league/id/:id" component={LeagueTable} />
-          <Route path="/club/:id" component={Club} />
+          <Route path="/club/id/:id" component={ClubInfo} />
           <Route path="/profile/edit" component={ProfileEditView} exact />
         </Switch>
       </BrowserRouter>
