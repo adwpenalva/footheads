@@ -33,7 +33,7 @@ export default class ClubInfo extends Component {
                 <img src={val.strTeamBanner} alt={val.strTeam} />
                 <h1>{val.strTeam}</h1>
                 <p> {val.strAlternate} </p>
-                <p> {val.intFormedYear} </p>
+                <p> Formed in {val.intFormedYear} </p>
                 <p>
                   {val.strLeague}, {val.strCountry}
                 </p>
