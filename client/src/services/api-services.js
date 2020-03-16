@@ -14,14 +14,28 @@ export const getAllLeagues = async () => {
 };
 
 //this service will be getting information about the teams in league
-//www.thesportsdb.com/api/v1/json/1/search_all_teams.php
 
 // export const getAllLeagueTeams = async () => {
 //   try {
-//     const response = await axios.get('https://www.thesportsdb.com/api/v1/json/1/all_leagues.php');
+//     const response = await axios.get('https://www.thesportsdb.com/api/v1/json/1/all_teams.php');
 //     const allLeagueTeams = response.data.leagues;
 //     return allLeagueTeams;
 //   } catch (error) {
 //     throw error;
 //   }
 // };
+
+//always data
+
+//this service will be getting information about the Club information
+
+export const getAllLeagueInfo = async id => {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=${id}`
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
