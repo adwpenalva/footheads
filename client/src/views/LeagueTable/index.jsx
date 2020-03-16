@@ -29,7 +29,7 @@ export default class LeagueTable extends Component {
         <h1>Table</h1>
         <table>
           <tr>
-            <th>Position</th>
+            <th>Pos</th>
             <th>Name</th>
             <th>GP</th>
             <th>W</th>
