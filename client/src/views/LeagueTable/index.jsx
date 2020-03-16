@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { getTableLeague } from './../../services/api-services';
 import { Link } from 'react-router-dom';
 
+import './style.scss';
+
 export default class LeagueTable extends Component {
   constructor(props) {
     super(props);
@@ -29,8 +31,8 @@ export default class LeagueTable extends Component {
         <h1>Table</h1>
         <table>
           <tr>
-            <th>Position</th>
-            <th>Name</th>
+            <th>Pos</th>
+            <th>Team</th>
             <th>GP</th>
             <th>W</th>
             <th>D</th>

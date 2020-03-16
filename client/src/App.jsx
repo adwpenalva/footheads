@@ -40,7 +40,7 @@ function App() {
       <footer>
         <span>© January 2020 IronHackers </span>
         <div>
-          <p>Web Development by António Penalva, Dan Burton and Filipe Nunes</p>
+          <p>Developed by António Penalva, Dan Burton & Filipe Nunes</p>
         </div>
       </footer>
     </div>

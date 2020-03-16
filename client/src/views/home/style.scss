@@ -1,4 +1,16 @@
-span {
-  display: flex;
-  flex-direction: column;
+.Home {
+  background-image: url('https://s3.ap-south-1.amazonaws.com/hsdreams1/pins/2019/04/big/599e46f81be9091e4158620d8805aa3e.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  color: #f4f4f4;
+  .Home__text {
+    text-align: left;
+    display: flex;
+    margin: 40% 3%;
+    width: 70%;
+    p {
+      margin-top: 3em;
+    }
+  }
 }
