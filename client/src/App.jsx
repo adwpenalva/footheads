@@ -26,7 +26,7 @@ function App() {
           <Route path="/sign-up" component={signup} exact />
           <Route path="/profile" component={Profile} exact />
           <Route path="/league/id/:id" component={LeagueTable} />
-          <Route path="/club" component={Club} exact />
+          <Route path="/club/:id" component={Club} />
           <Route path="/profile/edit" component={ProfileEditView} exact />
         </Switch>
       </BrowserRouter>

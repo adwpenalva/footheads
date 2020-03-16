@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getTableLeague } from './../../services/api-services';
+import { Link } from 'react-router-dom';
 
 export default class LeagueTable extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class LeagueTable extends Component {
 
     getTableLeague(id)
       .then(information => {
-        console.log(information.data.table);
+        console.log(information);
         this.setState({
           leagueTable: information.data.table
         });
@@ -42,9 +43,11 @@ export default class LeagueTable extends Component {
           {this.state.leagueTable &&
             this.state.leagueTable.map(val => {
               return (
-                <tr>
+                <tr key={val.teamid}>
                   <td>{this.state.leagueTable.indexOf(val) + 1}</td>
-                  <td>{val.name}</td>
+                  <td>
+                    <Link to={`/club/${val.idteam}`}>{val.name}</Link>
+                  </td>
                   <td>{val.played}</td>
                   <td>{val.win}</td>
                   <td>{val.draw}</td>
