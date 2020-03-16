@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { getAllLeagues } from './../../services/api-services.js';
 
@@ -15,7 +16,7 @@ export default class Leagues extends Component {
   async componentDidMount() {
     try {
       const leagues = await getAllLeagues();
-      // console.log(leagues);
+      console.log(leagues);
       this.setState({
         leagues
       });
@@ -36,7 +37,7 @@ export default class Leagues extends Component {
             })
             .map(league => (
               <li key={league.idLeague}>
-                <Link>{league.strLeague}</Link>
+                <Link to={`/league/id/${league.idLeague}`}>{league.strLeague}</Link>
               </li>
             ))}
         </ul>
