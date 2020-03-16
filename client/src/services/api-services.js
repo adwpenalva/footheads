@@ -12,9 +12,30 @@ export const getAllLeagues = async () => {
     throw error;
   }
 };
+//this service will be getting information about the teams in league
 
-//export const getTeamsByLeagueId = async () => {
-// try {
-// const response = await axios.get(`https://www.thesportsdb.com/api/v1/json/1/lookuptable.php')
-// }
-//}
+export const getTableLeague = async id => {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/1/lookuptable.php?l=${id}&s=1920`
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+//always data
+
+//this service will be getting information about the Club information
+
+export const getAllLeagueInfo = async id => {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=${id}`
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

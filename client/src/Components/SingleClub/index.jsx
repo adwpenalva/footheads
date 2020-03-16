@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SingleClub = () => {
   return (
-    <Link to="" className="single__club">
+    <Link to="/club" className="single__club">
       {/* /leagues/club:id */}
       <figure className="single__club__img">
         <img src="" alt="club name" />
