@@ -36,35 +36,11 @@ export default class Leagues extends Component {
               return league.strSport === 'Soccer';
             })
             .map(league => (
-              <li key={league.idLeague}>{league.strLeague}</li>
+              <li key={league.idLeague}>
+                <Link to={`/league/id/${league.idLeague}`}>{league.strLeague}</Link>
+              </li>
             ))}
         </ul>
-        {/* <ul>
-          <li>
-            <Link style={{ color: 'inherit' }}>Premier League</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>La Liga Santander</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Serie A</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Ligue 1</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Liga NOS</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Champions League</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Europa League</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Premier League</Link>
-          </li>
-        </ul> */}
       </div>
     );
   }

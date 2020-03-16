@@ -1,14 +1,35 @@
 import React, { Component } from 'react';
-import SingleClub from '../../Components/SingleClub';
+import { getAllLeagueInfo } from '../../services/api-services';
 
-class Club extends Component {
+export default class LeagueTable extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      league: null
+    };
+  }
+  componentDidMount() {
+    const id = this.props.match.params.id;
+
+    getAllLeagueInfo(id)
+      .then(information => {
+        this.setState({
+          league: information.teams
+        });
+      })
+      .catch(error => console.log(error));
+  }
+
   render() {
     return (
       <div>
-        <SingleClub />
+        <h1>Club</h1>
+        {this.state.league &&
+          this.state.league.map(val => {
+            return <p>{val.idteam}</p>;
+          })}
       </div>
     );
   }
 }
-
-export default Club;
