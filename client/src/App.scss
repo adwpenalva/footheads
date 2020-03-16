@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  font-family: sans-serif;
+  position: relative;
+  height: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 5vh;
+  padding: 30px 50px;
+  background-color: #28a745 !important;
+  font-size: smaller;
+}
+
+footer p {
+  margin: 5vh 0;
+  font-size: 0.8em;
+}
+
+footer span {
+  font-size: 0.9em;
+  font-weight: bold;
+}
