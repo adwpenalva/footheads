@@ -36,7 +36,9 @@ export default class Leagues extends Component {
               return league.strSport === 'Soccer';
             })
             .map(league => (
-              <li key={league.idLeague}>{league.strLeague}</li>
+              <li key={league.idLeague}>
+                <Link>{league.strLeague}</Link>
+              </li>
             ))}
         </ul>
         {/* <ul>
