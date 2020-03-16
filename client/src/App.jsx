@@ -27,6 +27,13 @@ function App() {
           <Route path="/profile" component={Profile} exact />
           <Route path="/league/id/:id" component={LeagueTable} />
           <Route path="/club/id/:id" component={ClubInfo} />
+          <Route
+            path="/facebook"
+            component={() => {
+              window.location.href = 'facebook.com';
+              return null;
+            }}
+          />
           <Route path="/profile/edit" component={ProfileEditView} exact />
         </Switch>
       </BrowserRouter>

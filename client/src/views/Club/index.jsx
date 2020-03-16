@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { getTeamInfo } from '../../services/api-services';
-import { Link } from 'react-router-dom';
 import './style.scss';
 
 export default class ClubInfo extends Component {
@@ -30,30 +29,40 @@ export default class ClubInfo extends Component {
           this.state.club.map(val => {
             return (
               <div>
-                <img src={val.strTeamBanner} alt={val.strTeam} />
+                <img className="teamBanner" src={val.strTeamBanner} alt={val.strTeam} />
                 <h1>{val.strTeam}</h1>
                 <p> {val.strAlternate} </p>
                 <p> {val.intFormedYear} </p>
                 <p>
                   {val.strLeague}, {val.strCountry}
                 </p>
-                <img src={val.strTeamBadge} alt={val.strTeam} />
-                <img src={val.strTeamJersey} alt={val.strTeam} />
+                <img className="teamBadge" src={val.strTeamBadge} alt={val.strTeam} />
+                <img className="teamJersey" src={val.strTeamJersey} alt={val.strTeam} />
                 <p>{val.strDescriptionEN}</p>
                 <p>
                   {val.strStadium} - {val.strStadiumLocation}
                 </p>
                 <p>Capacity: {val.intStadiumCapacity}</p>
-                <img src={val.strStadiumThumb} alt={val.strStadium} />
+                <img className="stadiumImage" src={val.strStadiumThumb} alt={val.strStadium} />
                 <article>
                   <i>{val.strStadiumDescription}</i>
                 </article>
-                <div>
-                  <Link to={val.strWebsite}>Website</Link>
-                  <Link to={val.strFacebook}>Facebook</Link>
-                  <Link to={val.strTwitter}>Twitter</Link>
-                  <Link to={val.strInstagram}>Instagram</Link>
-                  <p></p>
+                <div className="links">
+                  {/*<button onClick={e => this.props.history.push('facebook.com')}>
+                    facebook test
+                  </button>*/}
+                  <a href={`https://${val.strWebsite}`}>
+                    <img className="website" src="/images/www.png" alt="website" />
+                  </a>
+                  <a href={`https://${val.strFacebook}`}>
+                    <img className="website" src="/images/facebook.png" alt="facebook" />
+                  </a>
+                  <a href={`https://${val.strTwitter}`}>
+                    <img className="website" src="/images/twitter.png" alt="twitter" />
+                  </a>
+                  <a href={`https://${val.strInstagram}`}>
+                    <img className="website" src="/images/instagram-sketched.png" alt="instagram" />
+                  </a>
                 </div>
               </div>
             );

@@ -13,7 +13,7 @@ export const getAllLeagues = async () => {
   }
 };
 //this service will be getting information about the teams in league
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const getTableLeague = async id => {
   try {
     const response = await axios.get(
@@ -24,7 +24,7 @@ export const getTableLeague = async id => {
     throw error;
   }
 };
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const getTeamInfo = async id => {
   try {
     const response = await axios.get(
@@ -37,9 +37,57 @@ export const getTeamInfo = async id => {
 };
 
 //always data
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// NEXT 5 FIXTURE BY TEAM ID
+export const getNext5FixturesByTeamId = async id => {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=${id}`
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// LAST 5 FIXTURE BY TEAM ID
+export const getLast5FixturesByTeamId = async id => {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id=${id}`
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//NEXT 15 EVENTS BY LEAGUE ID
+export const getNext15FixturesByTeamId = async id => {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=${id}`
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+//LAST 15 EVENTS BY LEAGUE ID
+export const getLast15FixturesByTeamId = async id => {
+  try {
+    const response = await axios.get(
+      `https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=${id}`
+    );
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
 
 //this service will be getting information about the Club information
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 export const getAllLeagueInfo = async id => {
   try {
     const response = await axios.get(
