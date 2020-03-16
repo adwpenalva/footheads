@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SingleClub = props => {
+const SingleClub = () => {
   return (
     <Link to="" className="single__club">
       {/* /leagues/club:id */}

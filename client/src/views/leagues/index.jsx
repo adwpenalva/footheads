@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import { getAllLeagues } from './../../services/api-services.js';
 
@@ -16,7 +15,7 @@ export default class Leagues extends Component {
   async componentDidMount() {
     try {
       const leagues = await getAllLeagues();
-      console.log(leagues);
+      // console.log(leagues);
       this.setState({
         leagues
       });
@@ -39,32 +38,6 @@ export default class Leagues extends Component {
               <li key={league.idLeague}>{league.strLeague}</li>
             ))}
         </ul>
-        {/* <ul>
-          <li>
-            <Link style={{ color: 'inherit' }}>Premier League</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>La Liga Santander</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Serie A</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Ligue 1</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Liga NOS</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Champions League</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Europa League</Link>
-          </li>
-          <li>
-            <Link style={{ color: 'inherit' }}>Premier League</Link>
-          </li>
-        </ul> */}
       </div>
     );
   }
