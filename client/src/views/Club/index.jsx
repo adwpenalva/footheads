@@ -27,7 +27,7 @@ export default class LeagueTable extends Component {
         <h1>Club</h1>
         {this.state.league &&
           this.state.league.map(val => {
-            return <p>{val.idTeam}</p>;
+            return <p>{val.idteam}</p>;
           })}
       </div>
     );
