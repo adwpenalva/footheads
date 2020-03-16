@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
-import { getAllLeagueInfo } from '../../services/api-services';
+import { getTeamInfo } from '../../services/api-services';
 
-export default class LeagueTable extends Component {
+export default class ClubInfo extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      league: null
+      club: null
     };
   }
   componentDidMount() {
     const id = this.props.match.params.id;
-
-    getAllLeagueInfo(id)
+    console.log(id);
+    getTeamInfo(id)
       .then(information => {
         this.setState({
-          league: information.teams
+          club: information.data.teams
         });
       })
       .catch(error => console.log(error));
@@ -24,10 +24,9 @@ export default class LeagueTable extends Component {
   render() {
     return (
       <div>
-        <h1>Club</h1>
-        {this.state.league &&
-          this.state.league.map(val => {
-            return <p>{val.idteam}</p>;
+        {this.state.club &&
+          this.state.club.map(val => {
+            return <h1>{val.strTeam}</h1>;
           })}
       </div>
     );
