@@ -1,5 +1,19 @@
-ul {
-  color: black;
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+.League {
+  background-image: url('https://4kwallpaper.wiki/wp-content/uploads/2019/09/369279.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  color: #f4f4f4;
+  h1 {
+    margin-top: 5%;
+  }
+  a {
+    color: white;
+    line-height: 1.8em;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
   li {
     list-style: none;
     text-decoration: none;
