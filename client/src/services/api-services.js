@@ -14,10 +14,10 @@ export const getAllLeagues = async () => {
 };
 //this service will be getting information about the teams in league
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-export const getTableLeague = async id => {
+export const getTableLeague = async (id, season) => {
   try {
     const response = await axios.get(
-      `https://www.thesportsdb.com/api/v1/json/1/lookuptable.php?l=${id}&s=1920`
+      `https://www.thesportsdb.com/api/v1/json/1/lookuptable.php?l=${id}&s=${season}`
     );
     return response;
   } catch (error) {

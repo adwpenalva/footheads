@@ -9,13 +9,23 @@ export default class LeagueTable extends Component {
     super(props);
 
     this.state = {
-      leagueTable: null
+      leagueTable: null,
+      season: ''
     };
+    this.fetchTableLeagueInfo = this.fetchTableLeagueInfo.bind(this);
+    this.manageLeagueSeason = this.manageLeagueSeason.bind(this);
   }
   componentDidMount() {
-    const id = this.props.match.params.id;
+    let season;
+    this.props.match.params.id === '4351' ? (season = '2019') : (season = '1920');
+    this.setState({ season });
+    this.fetchTableLeagueInfo();
+  }
 
-    getTableLeague(id)
+  fetchTableLeagueInfo() {
+    const id = this.props.match.params.id;
+    const season = this.state.season;
+    getTableLeague(id, season)
       .then(information => {
         console.log(information);
         this.setState({
@@ -25,14 +35,34 @@ export default class LeagueTable extends Component {
       .catch(error => console.log(error));
   }
 
+  manageLeagueSeason(event) {
+    event.preventDefault();
+    const season = event.target.value;
+    this.setState({ season });
+    this.fetchTableLeagueInfo();
+  }
+
   render() {
+    const brazileanLeague = this.props.match.params.id === '4351';
     return (
       <div>
         <h1>Table</h1>
         <label>Season</label>
-        <select>
-          <option>19/20</option>
-        </select>
+        {(brazileanLeague && (
+          <select name="season" onChange={this.manageLeagueSeason}>
+            <option value="2018">2019</option>
+            <option value="2017">2018</option>
+            <option value="2016">2017</option>
+            <option value="2015">2016</option>
+          </select>
+        )) || (
+          <select name="season" onChange={this.manageLeagueSeason}>
+            <option value="1920">19/20</option>
+            <option value="1819">18/19</option>
+            <option value="1718">17/18</option>
+            <option value="1617">16/17</option>
+          </select>
+        )}
         <table>
           <tr>
             <th>Pos</th>
