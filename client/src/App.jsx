@@ -11,6 +11,7 @@ import Signup from './views/Signup';
 import ClubInfo from './views/Club';
 import ProfileEditView from './views/EditProfile';
 import LeagueTable from './views/LeagueTable';
+import Blog from './views/Blog';
 
 import NavBar from './Components/Navbar';
 
@@ -74,6 +75,7 @@ class App extends Component {
             <Route path="/league/id/:id" component={LeagueTable} />
             <Route path="/club/id/:id" component={ClubInfo} />
             <Route path="/profile/edit" component={ProfileEditView} exact />
+            <Route path="/blog" component={Blog} exact />
           </Switch>
         </BrowserRouter>
         <footer>
