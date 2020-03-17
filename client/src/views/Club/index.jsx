@@ -13,7 +13,7 @@ export default class ClubInfo extends Component {
   }
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log(id);
+    console.log(this.props.match.params);
     getTeamInfo(id)
       .then(information => {
         this.setState({
@@ -54,11 +54,13 @@ export default class ClubInfo extends Component {
                     return (
                       <div>
                         <table>
-                          <tr>
-                            <th>{event.strDate}</th>
-                            <th>{event.strEvent}</th>
-                            <th>{event.strTime}</th>
-                          </tr>
+                          <thead>
+                            <tr>
+                              <th>{event.strDate}</th>
+                              <th>{event.strEvent}</th>
+                              <th>{event.strTime}</th>
+                            </tr>
+                          </thead>
                         </table>
                       </div>
                     );
@@ -80,18 +82,30 @@ export default class ClubInfo extends Component {
                   {/*<button onClick={e => this.props.history.push('facebook.com')}>
                     facebook test
                   </button>*/}
-                  <a href={`https://${val.strWebsite}`}>
-                    <img className="website" src="/images/www.png" alt="website" />
-                  </a>
-                  <a href={`https://${val.strFacebook}`}>
-                    <img className="website" src="/images/facebook.png" alt="facebook" />
-                  </a>
-                  <a href={`https://${val.strTwitter}`}>
-                    <img className="website" src="/images/twitter.png" alt="twitter" />
-                  </a>
-                  <a href={`https://${val.strInstagram}`}>
-                    <img className="website" src="/images/instagram-sketched.png" alt="instagram" />
-                  </a>
+                  {val.strWebsite && (
+                    <a href={`https://${val.strWebsite}`}>
+                      <img className="website" src="/images/www.png" alt="website" />
+                    </a>
+                  )}
+                  {val.strFacebook && (
+                    <a href={`https://${val.strFacebook}`}>
+                      <img className="website" src="/images/facebook.png" alt="facebook" />
+                    </a>
+                  )}
+                  {val.strTwitter && (
+                    <a href={`https://${val.strTwitter}`}>
+                      <img className="website" src="/images/twitter.png" alt="twitter" />
+                    </a>
+                  )}
+                  {val.strInstagram && (
+                    <a href={`https://${val.strInstagram}`}>
+                      <img
+                        className="website"
+                        src="/images/instagram-sketched.png"
+                        alt="instagram"
+                      />
+                    </a>
+                  )}
                 </div>
               </div>
             );
