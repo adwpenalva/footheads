@@ -29,6 +29,10 @@ export default class LeagueTable extends Component {
     return (
       <div>
         <h1>Table</h1>
+        <label>Season</label>
+        <select>
+          <option>19/20</option>
+        </select>
         <table>
           <tr>
             <th>Pos</th>

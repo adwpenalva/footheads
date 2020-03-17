@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getTeamInfo } from '../../services/api-services';
+import { getTeamInfo, getNext5FixturesByTeamId } from '../../services/api-services';
 import './style.scss';
 
 export default class ClubInfo extends Component {
@@ -7,7 +7,8 @@ export default class ClubInfo extends Component {
     super(props);
 
     this.state = {
-      club: null
+      club: null,
+      fixtures: null
     };
   }
   componentDidMount() {
@@ -20,6 +21,11 @@ export default class ClubInfo extends Component {
         });
       })
       .catch(error => console.log(error));
+    getNext5FixturesByTeamId(id).then(fixture => {
+      this.setState({
+        fixtures: fixture.data.events
+      });
+    });
   }
 
   render() {
@@ -36,8 +42,25 @@ export default class ClubInfo extends Component {
                 <p>
                   {val.strLeague}, {val.strCountry}
                 </p>
-                <img className="teamBadge" src={val.strTeamBadge} alt={val.strTeam} />
-                <img className="teamJersey" src={val.strTeamJersey} alt={val.strTeam} />
+                <div className="badgeandjersey">
+                  <img className="teamBadge" src={val.strTeamBadge} alt={val.strTeam} />
+                  <img className="teamJersey" src={val.strTeamJersey} alt={val.strTeam} />
+                </div>
+                <h1>Next Fixtures</h1>
+                {this.state.fixtures &&
+                  this.state.fixtures.map(event => {
+                    return (
+                      <div>
+                        <table>
+                          <tr>
+                            <th>{event.strDate}</th>
+                            <th>{event.strEvent}</th>
+                            <th>{event.strTime}</th>
+                          </tr>
+                        </table>
+                      </div>
+                    );
+                  })}
                 <p>{val.strDescriptionEN}</p>
                 <p>
                   {val.strStadium} - {val.strStadiumLocation}
@@ -47,6 +70,8 @@ export default class ClubInfo extends Component {
                 <article>
                   <i>{val.strStadiumDescription}</i>
                 </article>
+                <br />
+                <h4>Social Media</h4>
                 <div className="links">
                   {/*<button onClick={e => this.props.history.push('facebook.com')}>
                     facebook test

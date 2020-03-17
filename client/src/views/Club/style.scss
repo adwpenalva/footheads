@@ -1,3 +1,7 @@
+h1 {
+  font-weight: bold;
+}
+
 .teamBanner {
   height: 15vh;
   margin-bottom: 3vh;
@@ -10,8 +14,8 @@
 }
 
 .teamJersey {
-  width: 35vh;
-  height: 35vh;
+  width: 30vh;
+  height: 30vh;
   margin: 3vh 0vh;
 }
 
@@ -22,6 +26,10 @@
 
 // Links
 
+h4 {
+  font-weight: bold;
+}
+
 .links {
   display: flex;
   flex-direction: row;
@@ -30,6 +38,11 @@
 }
 
 .website {
-  width: 7vh;
-  height: 7vh;
+  width: 5vh;
+  height: 5vh;
+}
+
+.badgeandjersey {
+  display: flex;
+  flex-direction: row;
 }
