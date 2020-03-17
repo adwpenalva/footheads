@@ -49,7 +49,8 @@ const signOut = () =>
     instance
       .post('/sign-out')
       .then(result => {
-        resolve();
+        console.log('user has signed out');
+        resolve(result);
       })
       .catch(reject);
   });

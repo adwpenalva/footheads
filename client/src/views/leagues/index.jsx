@@ -50,14 +50,16 @@ export default class Leagues extends Component {
     const leagues = this.state.leagues;
     return (
       <div>
-        <h1>League Selection</h1>
-        <ul>
-          {leagues.map(league => (
-            <li key={league.idLeague}>
-              <Link to={`/league/id/${league.idLeague}`}>{league.strLeague}</Link>
-            </li>
-          ))}
-        </ul>
+        <section className="League">
+          <h1>League Selection</h1>
+          <ul>
+            {leagues.map(league => (
+              <li key={league.idLeague}>
+                <Link to={`/league/id/${league.idLeague}`}>{league.strLeague}</Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     );
   }
