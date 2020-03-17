@@ -64,37 +64,41 @@ export default class LeagueTable extends Component {
           </select>
         )}
         <table>
-          <tr>
-            <th>Pos</th>
-            <th>Team</th>
-            <th>GP</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
-            <th>GF</th>
-            <th>GA</th>
-            <th>GD</th>
-            <th>Points</th>
-          </tr>
-          {this.state.leagueTable &&
-            this.state.leagueTable.map(val => {
-              return (
-                <tr key={val.teamid}>
-                  <td>{this.state.leagueTable.indexOf(val) + 1}</td>
-                  <td>
-                    <Link to={`/club/id/${val.teamid}`}>{val.name}</Link>
-                  </td>
-                  <td>{val.played}</td>
-                  <td>{val.win}</td>
-                  <td>{val.draw}</td>
-                  <td>{val.loss}</td>
-                  <td>{val.goalsfor}</td>
-                  <td>{val.goalsagainst}</td>
-                  <td>{val.goalsdifference}</td>
-                  <td>{val.total}</td>
-                </tr>
-              );
-            })}
+          <thead>
+            <tr>
+              <th>Pos</th>
+              <th>Team</th>
+              <th>GP</th>
+              <th>W</th>
+              <th>D</th>
+              <th>L</th>
+              <th>GF</th>
+              <th>GA</th>
+              <th>GD</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.leagueTable &&
+              this.state.leagueTable.map(val => {
+                return (
+                  <tr key={val.teamid}>
+                    <td>{this.state.leagueTable.indexOf(val) + 1}</td>
+                    <td>
+                      <Link to={`/club/id/${val.teamid}`}>{val.name}</Link>
+                    </td>
+                    <td>{val.played}</td>
+                    <td>{val.win}</td>
+                    <td>{val.draw}</td>
+                    <td>{val.loss}</td>
+                    <td>{val.goalsfor}</td>
+                    <td>{val.goalsagainst}</td>
+                    <td>{val.goalsdifference}</td>
+                    <td>{val.total}</td>
+                  </tr>
+                );
+              })}
+          </tbody>
         </table>
       </div>
     );
