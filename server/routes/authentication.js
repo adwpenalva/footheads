@@ -56,6 +56,8 @@ router.get('/user-information', (req, res, next) => {
 });
 
 router.post('/sign-out', (req, res, next) => {
+  console.log('reached signout');
+  req.session.destroy();
   req.logout();
   res.json({});
 });

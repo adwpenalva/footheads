@@ -50,7 +50,7 @@ class App extends Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <NavBar user={this.state.user} />
+          <NavBar user={this.state.user} updateUserInformation={this.updateUserInformation} />
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/leagues" component={Leagues} />
