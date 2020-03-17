@@ -1,27 +1,33 @@
-h1 {
-  font-weight: bold;
-}
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 
+.Club {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #f4f4f4;
+  line-height: 1.5em;
+  .stadiumImage {
+    width: 100%;
+    margin: 4% 1%;
+  }
+}
 .teamBanner {
-  height: 15vh;
   margin-bottom: 3vh;
+  height: 10vh;
 }
 
-.teamBadge {
-  width: 25vh;
-  height: 25vh;
-  margin: 3vh 0vh;
+.badgeandjersey {
+  display: flex;
+  flex-direction: row;
+  margin: 4% 1%;
+  .teamBadge {
+    width: 50%;
+  }
+  .teamJersey {
+    width: 50%;
+  }
 }
 
-.teamJersey {
-  width: 30vh;
-  height: 30vh;
-  margin: 3vh 0vh;
-}
-
-.stadiumImage {
-  height: 35vh;
-  margin: 3vh 0vh;
+article {
+  margin: 0 5%;
 }
 
 // Links
@@ -33,16 +39,10 @@ h4 {
 .links {
   display: flex;
   flex-direction: row;
-  margin-bottom: 3vh;
-  margin-top: 3vh;
+  margin: 4% 1%;
 }
 
 .website {
   width: 5vh;
   height: 5vh;
-}
-
-.badgeandjersey {
-  display: flex;
-  flex-direction: row;
 }

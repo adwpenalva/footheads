@@ -56,10 +56,12 @@ export default class ClubInfo extends Component {
         {this.state.club &&
           this.state.club.map(val => {
             return (
-              <div>
+              <div className="Club">
                 <img className="teamBanner" src={val.strTeamBanner} alt={val.strTeam} />
                 <h1>{val.strTeam}</h1>
-                <p> {val.strAlternate} </p>
+                <p>
+                  <i>{val.strAlternate} </i>
+                </p>
                 <p> Formed in {val.intFormedYear} </p>
                 <p>
                   {val.strLeague}, {val.strCountry}
@@ -98,9 +100,6 @@ export default class ClubInfo extends Component {
                 </p>
                 <p>Capacity: {val.intStadiumCapacity}</p>
                 <img className="stadiumImage" src={val.strStadiumThumb} alt={val.strStadium} />
-                <article>
-                  <i>{val.strStadiumDescription}</i>
-                </article>
                 <br />
                 <h4>Social Media</h4>
                 <div className="links">

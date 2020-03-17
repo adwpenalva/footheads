@@ -6,8 +6,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'james@dean.com',
-      password: '123456789'
+      email: '',
+      password: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
@@ -40,7 +40,7 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleFormSubmission}>
+        <form onSubmit={this.handleFormSubmission} className="form-style">
           <label htmlFor="email">Email</label>
           <input
             id="email"

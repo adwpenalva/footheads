@@ -4,5 +4,36 @@ table {
   font-family: 'Source Sans Pro', sans-serif;
   margin: 2% 1% 4% 1%;
   border: 1px solid #2a2a2a;
-  border-radius: 2rem;
+  background-color: white;
+  color: black;
+  width: 98%;
+  line-height: 1.6em;
+  th {
+    text-decoration: underline;
+  }
+  a {
+    color: inherit;
+  }
+}
+
+.LeagueTable {
+  // background-image: url('https://papers.co/wallpaper/papers.co-nn97-soccer-field-city-night-light-dark-1-wallpaper.jpg');
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  background-color: #e7ffda;
+  height: 100vh;
+  text-align: center;
+  color: 3a3a47;
+  h2 {
+    margin-top: 4%;
+  }
+  label {
+    margin-right: 1em;
+  }
+  select {
+    color: black;
+    border: 1px solid white;
+    border-radius: 1em;
+    padding: 2px;
+  }
 }
