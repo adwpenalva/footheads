@@ -11,15 +11,6 @@ function Homepage() {
           </span>
         </div>
       </section>
-      <section>
-        <h2>Trending Fixtures</h2>
-        <div>
-          <p>team1 vs team2</p>
-          <p>team3 vs team4</p>
-          <p>team 5 vs team6</p>
-          <p>Hello World</p>
-        </div>
-      </section>
     </div>
   );
 }

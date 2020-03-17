@@ -46,60 +46,62 @@ export default class LeagueTable extends Component {
     const brazileanLeague = this.props.match.params.id === '4351';
     return (
       <div>
-        <h1>Table</h1>
-        <label>Season</label>
-        {(brazileanLeague && (
-          <select name="season" onChange={this.manageLeagueSeason}>
-            <option value="2018">2019</option>
-            <option value="2017">2018</option>
-            <option value="2016">2017</option>
-            <option value="2015">2016</option>
-          </select>
-        )) || (
-          <select name="season" onChange={this.manageLeagueSeason}>
-            <option value="1920">19/20</option>
-            <option value="1819">18/19</option>
-            <option value="1718">17/18</option>
-            <option value="1617">16/17</option>
-          </select>
-        )}
-        <table>
-          <thead>
-            <tr>
-              <th>Pos</th>
-              <th>Team</th>
-              <th>GP</th>
-              <th>W</th>
-              <th>D</th>
-              <th>L</th>
-              <th>GF</th>
-              <th>GA</th>
-              <th>GD</th>
-              <th>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.leagueTable &&
-              this.state.leagueTable.map(val => {
-                return (
-                  <tr key={val.teamid}>
-                    <td>{this.state.leagueTable.indexOf(val) + 1}</td>
-                    <td>
-                      <Link to={`/club/id/${val.teamid}`}>{val.name}</Link>
-                    </td>
-                    <td>{val.played}</td>
-                    <td>{val.win}</td>
-                    <td>{val.draw}</td>
-                    <td>{val.loss}</td>
-                    <td>{val.goalsfor}</td>
-                    <td>{val.goalsagainst}</td>
-                    <td>{val.goalsdifference}</td>
-                    <td>{val.total}</td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
+        <section className="LeagueTable">
+          <h2>Table</h2>
+          <label>Select Season</label>
+          {(brazileanLeague && (
+            <select name="season" onChange={this.manageLeagueSeason}>
+              <option value="2018">2019</option>
+              <option value="2017">2018</option>
+              <option value="2016">2017</option>
+              <option value="2015">2016</option>
+            </select>
+          )) || (
+            <select name="season" onChange={this.manageLeagueSeason}>
+              <option value="1920">19/20</option>
+              <option value="1819">18/19</option>
+              <option value="1718">17/18</option>
+              <option value="1617">16/17</option>
+            </select>
+          )}
+          <table>
+            <thead>
+              <tr>
+                <th>Pos</th>
+                <th>Team</th>
+                <th>GP</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+                <th>GF</th>
+                <th>GA</th>
+                <th>GD</th>
+                <th>Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.leagueTable &&
+                this.state.leagueTable.map(val => {
+                  return (
+                    <tr key={val.teamid}>
+                      <td>{this.state.leagueTable.indexOf(val) + 1}</td>
+                      <td>
+                        <Link to={`/club/id/${val.teamid}`}>{val.name}</Link>
+                      </td>
+                      <td>{val.played}</td>
+                      <td>{val.win}</td>
+                      <td>{val.draw}</td>
+                      <td>{val.loss}</td>
+                      <td>{val.goalsfor}</td>
+                      <td>{val.goalsagainst}</td>
+                      <td>{val.goalsdifference}</td>
+                      <td>{val.total}</td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </section>
       </div>
     );
   }

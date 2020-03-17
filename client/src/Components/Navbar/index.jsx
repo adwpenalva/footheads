@@ -62,7 +62,6 @@ class NavBar extends Component {
                   <Nav.Link href="/login">Login</Nav.Link>
                   <Nav.Link href="/sign-up">Sign Up</Nav.Link>
                   <Nav.Link href="/leagues">Leagues</Nav.Link>
-                  <Nav.Link href="/fixtures">Fixtures</Nav.Link>
                   <Nav.Link href="/blog">Blog</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
