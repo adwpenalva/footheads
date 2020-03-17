@@ -18,6 +18,12 @@ const schema = new mongoose.Schema({
   },
   githubToken: {
     type: String
+  },
+  favoritePlayer: {
+    type: String
+  },
+  favoriteTeam: {
+    type: String
   }
 });
 

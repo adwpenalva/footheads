@@ -9,16 +9,18 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
-      favoriteTeam: '',
-      favoritePlayer: ''
+      favoriteTeam: 'San Lorenzo',
+      favoritePlayer: 'Santi Balaguer'
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
   }
 
   handleFormSubmission(event) {
+    console.log('these are the props', this.props);
     event.preventDefault();
     const { name, email, password, favoriteTeam, favoritePlayer } = this.state;
+    console.log(name, email, password, favoritePlayer, favoriteTeam);
     signUp({
       name,
       email,
@@ -28,6 +30,7 @@ class Signup extends Component {
     })
       .then(user => {
         this.props.updateUserInformation(user);
+        console.log('new user in app?', user);
         this.props.history.push('/');
       })
       .catch(error => {
@@ -45,7 +48,7 @@ class Signup extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleFormSubmission}>
           <label htmlFor="name">Name</label>
           <input
             id="name"

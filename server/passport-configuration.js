@@ -30,13 +30,18 @@ passport.use(
     },
     (req, email, password, callback) => {
       const name = req.body.name;
+      const favoriteTeam = req.body.favoriteTeam;
+      const favoritePlayer = req.body.favoritePlayer;
+      console.log(email, password, name, favoritePlayer, favoriteTeam);
       bcryptjs
         .hash(password, 10)
         .then(hash => {
           return User.create({
             name,
             email,
-            passwordHash: hash
+            passwordHash: hash,
+            favoritePlayer,
+            favoriteTeam
           });
         })
         .then(user => {
@@ -83,11 +88,7 @@ passport.use(
       scope: 'user:email'
     },
     (accessToken, refreshToken, profile, callback) => {
-      const {
-        displayName: name,
-        emails,
-        photos: [{ value: photo } = {}] = []
-      } = profile;
+      const { displayName: name, emails, photos: [{ value: photo } = {}] = [] } = profile;
       const primaryEmail = emails.find(email => email.primary).value;
       User.findOne({ email: primaryEmail })
         .then(user => {
