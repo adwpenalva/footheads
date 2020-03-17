@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+
+
 const instance = axios.create({
   baseURL: '/api/authentication'
 });
@@ -51,5 +53,6 @@ const signOut = () =>
       })
       .catch(reject);
   });
+
 
 export { signUp, signIn, signOut, loadUserInformation };

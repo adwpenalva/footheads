@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { getTeamInfo, getNext5FixturesByTeamId } from '../../services/api-services';
+
+import CommentList from './../../Components/commentList';
+import InputComment from './../../Components/InputComment';
+import CommentInput from './../../Components/InputComment';
 import './style.scss';
 
 export default class ClubInfo extends Component {
@@ -8,8 +12,11 @@ export default class ClubInfo extends Component {
 
     this.state = {
       club: null,
-      fixtures: null
+      fixtures: null,
+      comments: []
     };
+    this.handleCommentAddition = this.handleCommentAddition.bind(this);
+    this.handleCommentRemoval = this.handleCommentRemoval.bind(this);
   }
   componentDidMount() {
     const id = this.props.match.params.id;
@@ -21,10 +28,25 @@ export default class ClubInfo extends Component {
         });
       })
       .catch(error => console.log(error));
-    getNext5FixturesByTeamId(id).then(fixture => {
-      this.setState({
-        fixtures: fixture.data.events
-      });
+    getNext5FixturesByTeamId(id)
+      .then(fixture => {
+        this.setState({
+          fixtures: fixture.data.events
+        });
+      })
+      .catch(error => console.log(error));
+  }
+
+  handleCommentAddition(comment) {
+    this.setState(previousState => ({
+      comments: [...previousState.comments, comment]
+    }));
+  }
+
+  handleCommentRemoval(id) {
+    const remainingComments = this.state.comments.filter(comment => comment.id !== id);
+    this.setState({
+      comments: remainingComments
     });
   }
 
@@ -61,6 +83,13 @@ export default class ClubInfo extends Component {
                       </div>
                     );
                   })}
+                <div>
+                  <CommentInput addComment={this.handleCommentAddition} />
+                  <CommentList
+                    comments={this.state.comments}
+                    removeComment={this.handleCommentRemoval}
+                  />
+                </div>
                 <p>{val.strDescriptionEN}</p>
                 <p>
                   {val.strStadium} - {val.strStadiumLocation}
