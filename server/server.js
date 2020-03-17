@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 
-const debug = require('debug')('footheads:server');
+const debug = require('debug')('server:server');
 const app = require('./app');
 const mongoose = require('mongoose');
 

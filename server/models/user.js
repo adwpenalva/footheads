@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   name: {
     type: String,
     trim: true
@@ -11,29 +11,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     lowercase: true,
-    trim: true,
-    unique: true
+    trim: true
   },
   passwordHash: {
     type: String
   },
-  picture: {
-    type: String,
-    default:
-      'https://res.cloudinary.com/footheads/image/upload/v1584358980/avatar/soccer-ball-head_lywxii.jpg'
-  },
-  favTeam: [
-    {
-      type: String
-    }
-  ],
-  favPlayer: {
+  githubToken: {
     type: String
-  },
-  comments: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Comment'
   }
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', schema);

@@ -1,23 +1,54 @@
 'use strict';
 
-const { join } = require('path');
 const { Router } = require('express');
 
 const passport = require('passport');
 
 const router = new Router();
 
-router.get('/sign-up', (req, res, next) => {
-  res.sendFile(join(__dirname, '../views', 'authentication/sign-up.html'));
-});
+router.post(
+  '/sign-up',
+  passport.authenticate('local-sign-up', {
+    successRedirect: '/private',
+    failureRedirect: '/sign-up'
+  })
+);
 
-router.get('/sign-in', (req, res, next) => {
-  res.sendFile(join(__dirname, '../views', 'authentication/sign-in.html'));
-});
+router.post(
+  '/sign-up',
+  passport.authenticate('github', {
+    successRedirect: '/private',
+    failureRedirect: '/sign-up'
+  })
+);
+
+router.post(
+  '/sign-in',
+  passport.authenticate('local-sign-in', {
+    successRedirect: '/private',
+    failureRedirect: '/sign-in'
+  })
+);
+
+router.get(
+  '/github',
+  passport.authenticate('github', {
+    successRedirect: '/private',
+    failureRedirect: '/authentication/sign-in'
+  })
+);
+
+router.get(
+  '/github-callback',
+  passport.authenticate('github', {
+    successRedirect: '/private',
+    failureRedirect: '/authentication/sign-in'
+  })
+);
 
 router.post('/sign-out', (req, res, next) => {
   req.logout();
-  res.redirect('/');
+  res.json({});
 });
 
 module.exports = router;
