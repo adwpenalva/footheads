@@ -6,6 +6,10 @@ import InputComment from './../../Components/InputComment';
 import CommentInput from './../../Components/InputComment';
 import './style.scss';
 
+import { createComment } from './../../services/comment';
+import { listComments } from './../../services/comment';
+import { deleteComment } from './../../services/comment';
+
 export default class ClubInfo extends Component {
   constructor(props) {
     super(props);
@@ -13,13 +17,15 @@ export default class ClubInfo extends Component {
     this.state = {
       club: null,
       fixtures: null,
-      comments: []
+      comments: null
     };
     this.handleCommentAddition = this.handleCommentAddition.bind(this);
     this.handleCommentRemoval = this.handleCommentRemoval.bind(this);
+    this.commentFinder = this.commentFinder.bind(this);
   }
   componentDidMount() {
     const id = this.props.match.params.id;
+    this.commentFinder(this.props.match.params.id);
     console.log(this.props.match.params);
     getTeamInfo(id)
       .then(information => {
@@ -37,20 +43,66 @@ export default class ClubInfo extends Component {
       .catch(error => console.log(error));
   }
 
-  handleCommentAddition(comment) {
-    this.setState(previousState => ({
-      comments: [...previousState.comments, comment]
-    }));
+  async commentFinder(club) {
+    try {
+      const clubComments = await listComments(club);
+      console.log('here are the comments', clubComments);
+      this.setState({
+        comments: clubComments
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  handleCommentRemoval(id) {
-    const remainingComments = this.state.comments.filter(comment => comment.id !== id);
+  async handleCommentAddition(comment) {
+    const newComment = {
+      _id: Math.floor(Math.random() * 10000000),
+      author: this.props.user._id,
+      club: this.state.club[0].idTeam,
+      content: comment.content
+    };
+    console.log('new comment', newComment);
+
+    if (!this.state.comments) {
+      this.setState({
+        comments: [newComment]
+      });
+    } else {
+      this.setState({
+        comments: [newComment, ...this.state.comments]
+      });
+    }
+
+    try {
+      const commentDone = await createComment(
+        this.props.user._id,
+        this.state.club[0].idTeam,
+        comment.content
+      );
+      console.log('comment created', commentDone);
+    } catch (error) {
+      console.log(error);
+      console.log('Error in service.');
+    }
+  }
+
+  async handleCommentRemoval(id) {
+    const remainingComments = this.state.comments.filter(comment => comment._id !== id);
     this.setState({
       comments: remainingComments
     });
+    try {
+      const commentDeleted = await deleteComment(id);
+      console.log('comment deleted', commentDeleted);
+    } catch (error) {
+      console.log(error);
+      console.log('Error in service.');
+    }
   }
 
   render() {
+    console.log('state comments', this.state.comments);
     return (
       <div>
         {this.state.club &&
@@ -88,7 +140,7 @@ export default class ClubInfo extends Component {
                     );
                   })}
                 <div>
-                  <CommentInput addComment={this.handleCommentAddition} />
+                  {this.props.user && <CommentInput addComment={this.handleCommentAddition} />}
                   <CommentList
                     comments={this.state.comments}
                     removeComment={this.handleCommentRemoval}

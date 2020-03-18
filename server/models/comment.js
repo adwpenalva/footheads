@@ -2,6 +2,9 @@
 const mongoose = require('mongoose');
 const commentSchema = new mongoose.Schema(
   {
+    club: {
+      type: Number
+    },
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
