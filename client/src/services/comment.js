@@ -34,3 +34,17 @@ export const listComments = async id => {
     throw error;
   }
 };
+
+export const deleteComment = async id => {
+  console.log(id, 'at the delete service');
+  const comment = {
+    id: id
+  };
+  try {
+    const response = await apiCommentService.post(`/delete-comment`, comment);
+    console.log(response.data, 'here is the deleted comment');
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
