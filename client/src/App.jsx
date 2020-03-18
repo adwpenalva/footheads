@@ -73,7 +73,10 @@ class App extends Component {
             />
             <Route path="/profile" component={Profile} exact />
             <Route path="/league/id/:id" component={LeagueTable} />
-            <Route path="/club/id/:id" component={ClubInfo} />
+            <Route
+              path="/club/id/:id"
+              render={props => <ClubInfo {...props} user={this.state.user} />}
+            />
             <Route path="/profile/edit" component={ProfileEditView} exact />
             <Route path="/blog" component={Blog} exact />
           </Switch>

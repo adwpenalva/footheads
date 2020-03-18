@@ -6,6 +6,9 @@ import InputComment from './../../Components/InputComment';
 import CommentInput from './../../Components/InputComment';
 import './style.scss';
 
+import { createComment } from './../../services/comment';
+import { listComments } from './../../services/comment';
+
 export default class ClubInfo extends Component {
   constructor(props) {
     super(props);
@@ -13,13 +16,15 @@ export default class ClubInfo extends Component {
     this.state = {
       club: null,
       fixtures: null,
-      comments: []
+      comments: null
     };
     this.handleCommentAddition = this.handleCommentAddition.bind(this);
     this.handleCommentRemoval = this.handleCommentRemoval.bind(this);
+    this.commentFinder = this.commentFinder.bind(this);
   }
   componentDidMount() {
     const id = this.props.match.params.id;
+    this.commentFinder(this.props.match.params.id);
     console.log(this.props.match.params);
     getTeamInfo(id)
       .then(information => {
@@ -37,10 +42,30 @@ export default class ClubInfo extends Component {
       .catch(error => console.log(error));
   }
 
-  handleCommentAddition(comment) {
-    this.setState(previousState => ({
-      comments: [...previousState.comments, comment]
-    }));
+  async commentFinder(club) {
+    try {
+      const clubComments = await listComments(club);
+      console.log('here are the comments', clubComments);
+      this.setState({
+        comments: clubComments
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async handleCommentAddition(comment) {
+    try {
+      const commentDone = await createComment(
+        this.props.user._id,
+        this.state.club[0].idTeam,
+        comment.content
+      );
+      console.log('comment created', commentDone);
+    } catch (error) {
+      console.log(error);
+      console.log('Error in service.');
+    }
   }
 
   handleCommentRemoval(id) {
@@ -51,6 +76,7 @@ export default class ClubInfo extends Component {
   }
 
   render() {
+    console.log('state comments', this.state.comments);
     return (
       <div>
         {this.state.club &&
