@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { getTeamInfo, getNext5FixturesByTeamId } from '../../services/api-services';
 
 import CommentList from './../../Components/commentList';
-import InputComment from './../../Components/InputComment';
 import CommentInput from './../../Components/InputComment';
 import './style.scss';
 
@@ -17,7 +16,8 @@ export default class ClubInfo extends Component {
     this.state = {
       club: null,
       fixtures: null,
-      comments: null
+      comments: null,
+      shown: false
     };
     this.handleCommentAddition = this.handleCommentAddition.bind(this);
     this.handleCommentRemoval = this.handleCommentRemoval.bind(this);
@@ -141,12 +141,23 @@ export default class ClubInfo extends Component {
                   })}
                 <div>
                   {this.props.user && <CommentInput addComment={this.handleCommentAddition} />}
-                  <CommentList
-                    comments={this.state.comments}
-                    removeComment={this.handleCommentRemoval}
-                  />
+                  {this.props.user && (
+                    <CommentList
+                      comments={this.state.comments}
+                      removeComment={this.handleCommentRemoval}
+                    />
+                  )}
                 </div>
-                <p>{val.strDescriptionEN}</p>
+                <article>
+                  <p>
+                    {this.state.shown
+                      ? val.strDescriptionEN
+                      : val.strDescriptionEN.substring(0, 250) + '...'}
+                  </p>
+                  <button onClick={() => this.setState({ shown: !this.state.shown })}>
+                    More...
+                  </button>
+                </article>
                 <p>
                   {val.strStadium} - {val.strStadiumLocation}
                 </p>
