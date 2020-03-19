@@ -73,7 +73,11 @@ class App extends Component {
               )}
             />
             <Route path="/league/id/:id" component={LeagueTable} />
-            <Route path="/club/id/:id" />
+            <Route
+              path="/club/id/:id"
+              redirect={'/'}
+              render={props => <ClubInfo {...props} user={this.state.user} />}
+            />
             <Route
               path="/profile/edit"
               exact
