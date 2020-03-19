@@ -56,24 +56,6 @@ export default class ClubInfo extends Component {
   }
 
   async handleCommentAddition(comment) {
-    const newComment = {
-      _id: Math.floor(Math.random() * 10000000),
-      author: this.props.user._id,
-      club: this.state.club[0].idTeam,
-      content: comment.content
-    };
-    console.log('new comment', newComment);
-
-    if (!this.state.comments) {
-      this.setState({
-        comments: [newComment]
-      });
-    } else {
-      this.setState({
-        comments: [newComment, ...this.state.comments]
-      });
-    }
-
     try {
       const commentDone = await createComment(
         this.props.user._id,
@@ -81,6 +63,15 @@ export default class ClubInfo extends Component {
         comment.content
       );
       console.log('comment created', commentDone);
+      if (!this.state.comments) {
+        this.setState({
+          comments: [commentDone.comment]
+        });
+      } else {
+        this.setState({
+          comments: [commentDone.comment, ...this.state.comments]
+        });
+      }
     } catch (error) {
       console.log(error);
       console.log('Error in service.');
@@ -145,6 +136,7 @@ export default class ClubInfo extends Component {
                     <CommentList
                       comments={this.state.comments}
                       removeComment={this.handleCommentRemoval}
+                      user={this.props.user}
                     />
                   )}
                 </div>
@@ -155,7 +147,7 @@ export default class ClubInfo extends Component {
                       : val.strDescriptionEN.substring(0, 250) + '...'}
                   </p>
                   <button onClick={() => this.setState({ shown: !this.state.shown })}>
-                    More...
+                    show more..
                   </button>
                 </article>
                 <p>
