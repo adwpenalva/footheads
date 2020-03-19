@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-
-
 const instance = axios.create({
   baseURL: '/api/authentication'
 });
@@ -55,5 +53,14 @@ const signOut = () =>
       .catch(reject);
   });
 
+const editUserInformation = async data => {
+  const form = new FormData();
+  form.append('name', data.name);
+  form.append('email', data.email);
+  form.append('picture', data.picture);
+  const result = await instance.patch('/user-information', form);
+  const user = result.data.user;
+  return user;
+};
 
-export { signUp, signIn, signOut, loadUserInformation };
+export { signUp, signIn, signOut, loadUserInformation, editUserInformation };

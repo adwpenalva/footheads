@@ -9,9 +9,10 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
-      favoriteTeam: 'San Lorenzo',
-      favoritePlayer: 'Santi Balaguer',
-      bio: ''
+      favoriteTeam: '',
+      favoritePlayer: '',
+      bio: '',
+      picture: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
@@ -78,14 +79,14 @@ class Signup extends Component {
             onChange={this.handleInputChange}
             value={this.state.password}
           />
-          <label htmlFor="bio">Bio</label>
+          <label htmlFor="favoritePlayer">Favorite Player</label>
           <input
-            id="bio"
-            name="bio"
-            type="bio"
-            placeholder="Bio"
+            id="favoritePlayer"
+            name="favoritePlayer"
+            type="text"
+            placeholder="Your favorite player"
             onChange={this.handleInputChange}
-            value={this.state.bio}
+            value={this.state.favoritePlayer}
           />
           <button>Sign up</button>
         </form>
