@@ -9,7 +9,6 @@ import Leagues from './views/leagues';
 import Login from './views/Login';
 import Signup from './views/Signup';
 import ClubInfo from './views/Club';
-import ProfileEditView from './views/EditProfile';
 import LeagueTable from './views/LeagueTable';
 import Blog from './views/Blog';
 import EditProfileView from './views/EditProfile';
@@ -83,7 +82,13 @@ class App extends Component {
               path="/profile/edit"
               exact
               redirect={'/'}
-              render={props => <EditProfileView {...props} user={this.state.user} />}
+              render={props => (
+                <EditProfileView
+                  {...props}
+                  user={this.state.user}
+                  updateUserInformation={this.updateUserInformation}
+                />
+              )}
             />
             <Route
               path="/blog"
@@ -91,7 +96,11 @@ class App extends Component {
               render={props => <Blog {...props} user={this.state.user} />}
             />
             <Route path="/edit-post/:postId" exact render={props => <EditPost {...props} />} />
-            <Route path="/profile" component={Profile} exact />
+            <Route
+              path="/profile"
+              render={props => <Profile user={this.state.user} {...props} />}
+              exact
+            />
           </Switch>
         </BrowserRouter>
         <footer>

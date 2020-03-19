@@ -4,16 +4,29 @@ import { Link } from 'react-router-dom';
 
 class ProfileView extends Component {
   render() {
+    const user = this.props.user;
     return (
       <div>
-        <h1>User's Profile</h1>
-        <Link to="/profile/edit">
-          <button>Edit profile</button>
-        </Link>
-        <img src="" alt="profile image" />
-        <p>Favorite team with banner</p>
-        <p>Next fixture</p>
-        <p>Favorite team latest fixtures with recent form</p>
+        {this.props.user && (
+          <div>
+            <h1>{user.name}'s Profile</h1>
+            <Link to="/profile/edit">
+              <button>Edit profile</button>
+            </Link>
+            <img className="profile-img" src={user.picture} alt="profile image" />
+            <p>
+              <strong>Favorite Player: </strong>
+              {user.favoritePlayer}
+            </p>
+            <p>
+              <strong>User bio:</strong>
+              {user.bio}
+            </p>
+            <p>Favorite team with banner</p>
+            <p>Next fixture</p>
+            <p>Favorite team latest fixtures with recent form</p>
+          </div>
+        )}
       </div>
     );
   }

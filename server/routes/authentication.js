@@ -65,16 +65,18 @@ router.post('/sign-out', (req, res, next) => {
 const uploader = require('./../multer-configure');
 
 router.patch('/user-information', uploader.single('picture'), async (req, res, next) => {
-  const { email, name } = req.body;
+  console.log('în server to update user', req.body);
+  const { email, name, bio, favoritePlayer } = req.body;
   let picture;
   if (req.file) picture = req.file.url;
   try {
-    const user = await User.findByIdAndUpdate(
+    await User.findByIdAndUpdate(
       req.user._id,
-      { name, email, ...(picture ? { picture } : {}) },
+      { name, bio, favoritePlayer, email, ...(picture ? { picture } : {}) },
       { new: true }
-    );
-    res.json({ user });
+    ).then(user => {
+      res.json({ user });
+    });
   } catch (error) {
     next(error);
   }

@@ -32,14 +32,14 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        {this.props.user && (
+        {this.props.user ? (
           <div>
             <Navbar bg="dark" variant="dark" expand="lg">
               <Navbar.Brand href="/">FootHeads</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                  <Nav.Link href="/leagues">{this.props.user.name}'s Profile</Nav.Link>
+                  <Nav.Link href="/profile">{this.props.user.name}'s Profile</Nav.Link>
                   <Nav.Link href="/leagues">Leagues</Nav.Link>
                   <Nav.Link href="/blog">Blog</Nav.Link>
                   <Button variant="dark" onClick={this.handleSignOut}>
@@ -49,9 +49,7 @@ class NavBar extends Component {
               </Navbar.Collapse>
             </Navbar>
           </div>
-        )}
-
-        {!this.props.user && (
+        ) : (
           <div>
             <Navbar bg="dark" variant="dark" expand="lg">
               <Navbar.Brand href="/">FootHeads</Navbar.Brand>
