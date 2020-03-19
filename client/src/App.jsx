@@ -82,11 +82,7 @@ class App extends Component {
             />
             <ProtectedRoute
               path="/profile/edit"
-<<<<<<< HEAD
               authorized={this.state.user}
-              redirect={'/login'}
-              render={props => <EditProfileView {...props} user={this.state.user} />}
-=======
               exact
               redirect={'/'}
               render={props => (
@@ -96,7 +92,6 @@ class App extends Component {
                   updateUserInformation={this.updateUserInformation}
                 />
               )}
->>>>>>> 818292e44dfec63c5d1b94ec24146d6f42197a7f
             />
             {/* <Route
               path="/profile/edit"

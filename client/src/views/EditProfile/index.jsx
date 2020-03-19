@@ -19,8 +19,6 @@ class EditProfileView extends Component {
     console.log('^props here', this.props);
   }
 
-<<<<<<< HEAD
-=======
   componentDidMount() {
     this.setState({
       // ...this.props.user
@@ -33,7 +31,6 @@ class EditProfileView extends Component {
     console.log('ôn mount', this.props);
   }
 
->>>>>>> 818292e44dfec63c5d1b94ec24146d6f42197a7f
   async handleFormSubmission(event) {
     event.preventDefault();
     const { name, email, picture, favoritePlayer, bio } = this.state;
