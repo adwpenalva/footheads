@@ -73,7 +73,7 @@ class App extends Component {
               )}
             />
             <Route path="/league/id/:id" component={LeagueTable} />
-            <Route path="/club/id/:id" component={ClubInfo} />
+            <Route path="/club/id/:id" />
             <Route
               path="/profile/edit"
               exact
