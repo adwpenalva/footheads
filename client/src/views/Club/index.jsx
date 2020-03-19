@@ -24,6 +24,7 @@ export default class ClubInfo extends Component {
     this.commentFinder = this.commentFinder.bind(this);
   }
   componentDidMount() {
+    console.log('help - user should be here', this.props.user);
     const id = this.props.match.params.id;
     this.commentFinder(this.props.match.params.id);
     console.log(this.props.match.params);
