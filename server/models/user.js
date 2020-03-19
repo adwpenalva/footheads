@@ -24,6 +24,15 @@ const schema = new mongoose.Schema({
   },
   favoriteTeam: {
     type: String
+  },
+  picture: {
+    type: String,
+    trim: true,
+    default:
+      'https://res.cloudinary.com/footheads/image/upload/v1584358980/avatar/soccer-ball-head_lywxii.jpg'
+  },
+  bio: {
+    type: String
   }
 });
 

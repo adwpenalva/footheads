@@ -100,7 +100,9 @@ export default class ClubInfo extends Component {
           this.state.club.map(val => {
             return (
               <div className="Club">
-                <img className="teamBanner" src={val.strTeamBanner} alt={val.strTeam} />
+                {val.strTeamBanner && (
+                  <img className="teamBanner" src={val.strTeamBanner} alt={val.strTeam} />
+                )}
                 <h1>{val.strTeam}</h1>
                 <p>
                   <i>{val.strAlternate} </i>
