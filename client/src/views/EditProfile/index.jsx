@@ -9,7 +9,9 @@ class EditProfileView extends Component {
     this.state = {
       name: '',
       email: '',
-      picture: ''
+      picture: '',
+      favoritePlayer: '',
+      bio: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
@@ -17,6 +19,7 @@ class EditProfileView extends Component {
     console.log('^props here', this.props);
   }
 
+<<<<<<< HEAD
   // componentDidMount() {
   //   this.setState({
   //     name: this.props.user.name,
@@ -25,6 +28,17 @@ class EditProfileView extends Component {
   //   });
   //   console.log('ôn mount', this.props);
   // }
+=======
+  componentDidMount() {
+    this.setState({
+      // ...this.props.user
+      name: this.props.user.name,
+      email: this.props.user.email,
+      picture: this.props.user.picture
+    });
+    console.log('ôn mount', this.props);
+  }
+>>>>>>> 1825c5757ffb7b5adc8cc5b3678a84e12a45dc63
 
   async handleFormSubmission(event) {
     event.preventDefault();
@@ -35,7 +49,7 @@ class EditProfileView extends Component {
         email,
         picture
       });
-      this.props.updateUserInformation(user);
+      console.log('^the new user', user);
       this.props.history.push('/');
     } catch (error) {
       console.log(error);
@@ -65,7 +79,11 @@ class EditProfileView extends Component {
         {this.props.user && (
           <div>
             <figure>
-              <img src={this.props.user.picture} alt={this.props.user.name} />
+              <img
+                className="profile-img"
+                src={this.props.user.picture}
+                alt={this.props.user.name}
+              />
             </figure>
             <form onSubmit={this.handleFormSubmission}>
               <label htmlFor="name">Name</label>
@@ -75,7 +93,24 @@ class EditProfileView extends Component {
                 type="text"
                 placeholder="Name"
                 onChange={this.handleInputChange}
-                value={this.props.user.name}
+                value={this.state.name}
+              />
+              <label htmlFor="favoritePlayer">Favorite Player</label>
+              <input
+                id="favoritePlayer"
+                name="favoritePlayer"
+                type="text"
+                placeholder="Your favorite player"
+                onChange={this.handleInputChange}
+                value={this.state.favoritePlayer}
+              />
+              <label htmlFor="bio">Bio</label>
+              <textarea
+                id="bio"
+                name="bio"
+                placeholder="Tell us a little bit about you"
+                onChange={this.handleInputChange}
+                value={this.state.bio}
               />
               <label htmlFor="email">Email</label>
               <input
@@ -84,7 +119,7 @@ class EditProfileView extends Component {
                 type="email"
                 placeholder="Email"
                 onChange={this.handleInputChange}
-                value={this.props.user.email}
+                value={this.state.email}
               />
               <label htmlFor="picture">Profile Picture</label>
               <input
