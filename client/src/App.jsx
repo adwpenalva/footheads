@@ -14,6 +14,8 @@ import LeagueTable from './views/LeagueTable';
 import Blog from './views/Blog';
 import EditProfileView from './views/EditProfile';
 
+import ProtectedRoute from './Components/ProtectedRoute.jsx';
+
 import NavBar from './Components/Navbar';
 
 import { loadUserInformation } from './services/authentication';
@@ -78,12 +80,17 @@ class App extends Component {
               redirect={'/'}
               render={props => <ClubInfo {...props} user={this.state.user} />}
             />
-            <Route
+            <ProtectedRoute
               path="/profile/edit"
-              exact
-              redirect={'/'}
+              authorized={this.state.user}
+              redirect={'/login'}
               render={props => <EditProfileView {...props} user={this.state.user} />}
             />
+            {/* <Route
+              path="/profile/edit"
+              exact
+              render={props => <EditProfileView {...props} user={this.state.user} />}
+            /> */}
             <Route
               path="/blog"
               exact

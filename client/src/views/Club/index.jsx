@@ -135,13 +135,15 @@ export default class ClubInfo extends Component {
                   })}
                 <div>
                   {this.props.user && <CommentInput addComment={this.handleCommentAddition} />}
-                  {this.props.user && (
-                    <CommentList
-                      comments={this.state.comments}
-                      removeComment={this.handleCommentRemoval}
-                      user={this.props.user}
-                    />
-                  )}
+                  <div className="center">
+                    {this.props.user && (
+                      <CommentList
+                        comments={this.state.comments}
+                        removeComment={this.handleCommentRemoval}
+                        user={this.props.user}
+                      />
+                    )}
+                  </div>
                 </div>
                 <article>
                   <p>

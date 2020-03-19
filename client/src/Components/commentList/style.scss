@@ -1,0 +1,27 @@
+.commentBox {
+  border: 0.2px gray solid;
+  border-radius: 2em;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: white;
+  button {
+    width: 20%;
+    color: #308dff;
+  }
+  img {
+    height: 5vh;
+  }
+  p {
+    text-align: justify;
+  }
+}
+.commentSingle {
+  margin: 10px;
+}
+.commentTitle {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}

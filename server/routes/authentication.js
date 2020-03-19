@@ -6,12 +6,15 @@ const passport = require('passport');
 const User = require('./../models/user');
 const router = new Router();
 
+const routeGuard = require('./../middleware/route-guard');
+
 router.get('/user-information', (req, res, next) => {
   res.json({ user: req.user || null });
 });
 
 router.post(
   '/sign-up',
+  // routeGuard(false),
   passport.authenticate('local-sign-up', {
     successRedirect: '/api/authentication/user-information',
     failureRedirect: '/sign-up'
@@ -28,6 +31,7 @@ router.post(
 
 router.post(
   '/sign-in',
+  // routeGuard(false),
   passport.authenticate('local-sign-in', {
     successRedirect: '/api/authentication/user-information',
     failureRedirect: '/sign-in'

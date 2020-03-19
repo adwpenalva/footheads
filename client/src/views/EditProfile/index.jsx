@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss';
 import { editUserInformation } from './../../services/authentication';
+import { Route, Redirect } from 'react-router-dom';
 
 class EditProfileView extends Component {
   constructor(props) {
@@ -18,7 +19,6 @@ class EditProfileView extends Component {
 
   // componentDidMount() {
   //   this.setState({
-  //     // ...this.props.user
   //     name: this.props.user.name,
   //     email: this.props.user.email,
   //     picture: this.props.user.picture

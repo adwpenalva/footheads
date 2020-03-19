@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import './style.scss';
 import { signOut } from '../../services/authentication';
+import { Link } from 'react-router-dom';
 
 class NavBar extends Component {
   constructor() {
@@ -40,6 +41,7 @@ class NavBar extends Component {
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                   <Nav.Link href="/leagues">{this.props.user.name}'s Profile</Nav.Link>
+                  {/* <Link to="/profile/edit">Edit Profile</Link> */}
                   <Nav.Link href="/leagues">Leagues</Nav.Link>
                   <Nav.Link href="/blog">Blog</Nav.Link>
                   <Button variant="dark" onClick={this.handleSignOut}>
