@@ -72,15 +72,22 @@ class App extends Component {
               )}
             />
             <Route path="/league/id/:id" component={LeagueTable} />
-            <Route path="/club/id/:id" component={ClubInfo} />
+            <Route
+              path="/club/id/:id"
+              redirect={'/'}
+              render={props => <ClubInfo {...props} user={this.state.user} />}
+            />
             <Route
               path="/profile/edit"
               exact
               redirect={'/'}
               render={props => <EditProfileView {...props} user={this.state.user} />}
             />
-            <Route path="/blog" component={Blog} exact />
-
+            <Route
+              path="/blog"
+              exact
+              render={props => <Blog {...props} user={this.state.user} />}
+            />
             <Route
               path="/profile"
               render={props => <Profile user={this.state.user} {...props} />}

@@ -30,7 +30,6 @@ export const listComments = async id => {
     console.log(response.data, 'here is the services return NEW');
     return response.data.comments;
   } catch (error) {
-    //  console.log('I didnt add the post in service due to', error)
     throw error;
   }
 };

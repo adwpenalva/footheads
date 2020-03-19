@@ -1,48 +1,78 @@
 import React, { Component } from 'react';
-import { Button, Form, Input, Select, TextArea } from 'semantic-ui-react';
-import './style.scss';
-const options = [
-  { text: 'In-game', value: 'In-game' },
-  { text: 'In the stands', value: 'In the stands' },
-  { text: 'At the pub', value: 'At the pub' },
-  { text: 'At home', value: 'At home' },
-  { text: 'Other', value: 'Other' }
-];
 
-class Blog extends Component {
-  state = {};
+import BlogPostsList from './../../Components/BlogPostsList';
+import BlogPosting from './../../Components/BlogPosting';
 
-  //handleChange = (e, { value }) => this.setState({ value });
+import { createPost } from './../../services/post';
+import { listPosts } from './../../services/post';
+import { deletePost } from './../../services/post';
 
+export class Blog extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      typeOfExperience: null,
+      posts: []
+    };
+    this.handlePostAddition = this.handlePostAddition.bind(this);
+    this.handlePostRemoval = this.handlePostRemoval.bind(this);
+    this.postFinder = this.postFinder.bind(this);
+  }
+
+  componentDidMount() {
+    this.postFinder();
+  }
+
+  async postFinder() {
+    try {
+      const post = await listPosts();
+      console.log('got Post finder', post);
+      this.setState({
+        posts: post
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async handlePostAddition(post) {
+    console.log(this.props);
+    const mockPost = {
+      author: this.props.user._id,
+      typeOfExperience: post.typeOfExperience,
+      content: post.content
+    };
+
+    try {
+      const postDone = await createPost(mockPost);
+      console.log('post created', postDone);
+      this.setState({
+        posts: [postDone.post, ...this.state.posts]
+      });
+    } catch (error) {
+      console.log(error);
+      console.log('Error in creating post.');
+    }
+  }
+
+  async handlePostRemoval(id) {
+    const remainingPosts = this.state.posts.filter(post => post._id !== id);
+    this.setState({
+      posts: remainingPosts
+    });
+    try {
+      const postDeleted = await deletePost(id);
+      console.log('post deleted', postDeleted);
+    } catch (error) {
+      console.log(error);
+      console.log('Error in service.');
+    }
+  }
   render() {
-    //const { value } = this.state;
     return (
       <div>
-        <h1>Blog</h1>
-        <h6>
-          Share an experience that you had during a football game, with various options of places
-          and situations.
-        </h6>
-        <Form>
-          <Form.Group widths="equal">
-            <Form.Field control={Input} label="First name" placeholder="First name" />
-            <Form.Field control={Input} label="Last name" placeholder="Last name" />
-            <Form.Field
-              control={Select}
-              label="Type of experience"
-              options={options}
-              placeholder="Type of experience"
-            />
-          </Form.Group>
-          <Form.Field
-            control={TextArea}
-            label="The experience itself"
-            placeholder="Tell us more about your experience..."
-          />
-          <Form.Field className="button" control={Button}>
-            Submit experience
-          </Form.Field>
-        </Form>
+        <BlogPosting addPost={this.handlePostAddition} />
+        <BlogPostsList posts={this.state.posts} removePost={this.handlePostRemoval} />
       </div>
     );
   }
