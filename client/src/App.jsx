@@ -81,7 +81,13 @@ class App extends Component {
               path="/profile/edit"
               exact
               redirect={'/'}
-              render={props => <EditProfileView {...props} user={this.state.user} />}
+              render={props => (
+                <EditProfileView
+                  {...props}
+                  user={this.state.user}
+                  updateUserInformation={this.updateUserInformation}
+                />
+              )}
             />
             <Route
               path="/blog"

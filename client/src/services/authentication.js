@@ -58,6 +58,8 @@ const editUserInformation = async data => {
   form.append('name', data.name);
   form.append('email', data.email);
   form.append('picture', data.picture);
+  form.append('favoritePlayer', data.favoritePlayer);
+  form.append('bio', data.bio);
   const result = await instance.patch('/user-information', form);
   const user = result.data.user;
   return user;
