@@ -40,12 +40,7 @@ class NavBar extends Component {
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-<<<<<<< HEAD
-                  <Nav.Link href="/leagues">{this.props.user.name}'s Profile</Nav.Link>
-                  {/* <Link to="/profile/edit">Edit Profile</Link> */}
-=======
                   <Nav.Link href="/profile">{this.props.user.name}'s Profile</Nav.Link>
->>>>>>> 1825c5757ffb7b5adc8cc5b3678a84e12a45dc63
                   <Nav.Link href="/leagues">Leagues</Nav.Link>
                   <Nav.Link href="/blog">Blog</Nav.Link>
                   <Button variant="dark" onClick={this.handleSignOut}>

@@ -11,7 +11,7 @@ const commentsList = props => {
             return (
               <div className="commentBox">
                 <div className="commentSingle">
-                  <img src="#" alt="Users image" />
+                  <img src="#" alt="Users " />
                   <div className="commentTitle">
                     <h6>{comment.author.name}</h6>
                     <small>{comment.creationDate.substring(0, 10)}</small>
@@ -25,7 +25,7 @@ const commentsList = props => {
             return (
               <div className="commentBox">
                 <div className="commentSingle">
-                  <img src="#" alt="Users image" />
+                  <img src="#" alt="Users " />
                   <div className="commentTitle">
                     <h6>{comment.author.name}</h6>
                     <small>Time</small>
@@ -39,7 +39,7 @@ const commentsList = props => {
             return (
               <div className="commentBox">
                 <div className="commentSingle">
-                  <img src="#" alt="Users image" />
+                  <img src="#" alt="Users " />
                   <div className="commentTitle">
                     <h6>{comment.author.name}</h6>
                     <small>Time</small>

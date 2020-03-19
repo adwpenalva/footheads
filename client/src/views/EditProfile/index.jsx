@@ -19,27 +19,6 @@ class EditProfileView extends Component {
     console.log('^props here', this.props);
   }
 
-<<<<<<< HEAD
-  // componentDidMount() {
-  //   this.setState({
-  //     name: this.props.user.name,
-  //     email: this.props.user.email,
-  //     picture: this.props.user.picture
-  //   });
-  //   console.log('ôn mount', this.props);
-  // }
-=======
-  componentDidMount() {
-    this.setState({
-      // ...this.props.user
-      name: this.props.user.name,
-      email: this.props.user.email,
-      picture: this.props.user.picture
-    });
-    console.log('ôn mount', this.props);
-  }
->>>>>>> 1825c5757ffb7b5adc8cc5b3678a84e12a45dc63
-
   async handleFormSubmission(event) {
     event.preventDefault();
     const { name, email, picture } = this.state;

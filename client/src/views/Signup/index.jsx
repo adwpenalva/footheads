@@ -50,7 +50,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div className="form-style">
+      <div className="form-style page-container">
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor="name">Name</label>
           <input
