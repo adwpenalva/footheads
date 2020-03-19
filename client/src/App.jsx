@@ -13,6 +13,7 @@ import ProfileEditView from './views/EditProfile';
 import LeagueTable from './views/LeagueTable';
 import Blog from './views/Blog';
 import EditProfileView from './views/EditProfile';
+import EditPost from './views/EditPost';
 
 import NavBar from './Components/Navbar';
 
@@ -89,6 +90,7 @@ class App extends Component {
               exact
               render={props => <Blog {...props} user={this.state.user} />}
             />
+            <Route path="/edit-post/:postId" exact render={props => <EditPost {...props} />} />
             <Route path="/profile" component={Profile} exact />
           </Switch>
         </BrowserRouter>

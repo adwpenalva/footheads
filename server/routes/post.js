@@ -58,4 +58,40 @@ router.post('/delete-post', async (req, res, next) => {
   }
 });
 
+router.post('/find-post', async (req, res, next) => {
+  try {
+    await Post.findById(req.body.id)
+      .then(post => {
+        res.json({ post });
+      })
+      .catch(error => {
+        console.log('Didnt edited', error);
+        next(error);
+      });
+  } catch (error) {
+    console.log('Main error for not finding', error);
+    next(error);
+  }
+});
+
+router.post('/edit-post', async (req, res, next) => {
+  console.log('this is the req body console.log', req.body);
+  try {
+    await Post.findByIdAndUpdate(req.body.id, {
+      content: req.body.content,
+      typeOfExperience: req.body.typeOfExperience
+    })
+      .then(post => {
+        res.json({ post });
+      })
+      .catch(error => {
+        console.log('Couldnt edit in the blog view', error);
+        next(error);
+      });
+  } catch (error) {
+    console.log('Main error for not being able to edit the post on the blog view', error);
+    next(error);
+  }
+});
+
 module.exports = router;

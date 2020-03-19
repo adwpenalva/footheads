@@ -68,11 +68,18 @@ export class Blog extends Component {
       console.log('Error in service.');
     }
   }
+
   render() {
     return (
       <div>
-        <BlogPosting addPost={this.handlePostAddition} />
-        <BlogPostsList posts={this.state.posts} removePost={this.handlePostRemoval} />
+        {this.props.user && <BlogPosting addPost={this.handlePostAddition} />}
+        {this.props.user && (
+          <BlogPostsList
+            posts={this.state.posts}
+            removePost={this.handlePostRemoval}
+            user={this.props.user}
+          />
+        )}
       </div>
     );
   }

@@ -15,6 +15,36 @@ export const createPost = async post => {
   }
 };
 
+export const findPost = async id => {
+  console.log(id, 'at the edit find post service');
+  const post = {
+    id: id
+  };
+  try {
+    const response = await apiPostService.post('/find-post', post);
+    console.log(response.data, 'here is the post we are editing');
+    return response.data.post;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const editPost = async (id, content, typeOfExperience) => {
+  console.log(id, 'at the editing post service');
+  const post = {
+    id: id,
+    content: content,
+    typeOfExperience: typeOfExperience
+  };
+  try {
+    const response = await apiPostService.post('/edit-post', post);
+    console.log(response.data, 'here is the post that we just edited');
+    return response.data.post;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const listPosts = async () => {
   try {
     const response = await apiPostService.get(`/get-posts`);
