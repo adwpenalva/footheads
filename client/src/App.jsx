@@ -78,7 +78,11 @@ class App extends Component {
               render={props => <ClubInfo {...props} user={this.state.user} />}
             />
             <Route path="/profile/edit" component={ProfileEditView} exact />
-            <Route path="/blog" component={Blog} exact />
+            <Route
+              path="/blog"
+              exact
+              render={props => <Blog {...props} user={this.state.user} />}
+            />
           </Switch>
         </BrowserRouter>
         <footer>

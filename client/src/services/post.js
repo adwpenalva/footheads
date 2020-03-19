@@ -1,25 +1,40 @@
 import axios from 'axios';
 
-const authorId = req.user._id;
-
-const createPost = axios.create({
-  author: authorId,
-  typeOfExperience,
-  content
+const apiPostService = axios.create({
+  baseURL: '/api/blog'
 });
 
-const postExperience = data => {
-  new Promise((resolve, reject) => {
-    createPost
-      .post('/blog', data)
-      .then(result => {
-        console.log('result', result);
-        const post = result.data.post;
-        console.log('new post?', post);
-        resolve(post);
-      })
-      .catch(reject);
-  });
+export const createPost = async post => {
+  console.log('at the post posting service', post);
+  try {
+    const response = await apiPostService.post(`/create`, post);
+    return response.data;
+  } catch (error) {
+    console.log('Error in post service', error);
+    throw error;
+  }
 };
 
-export { postExperience };
+export const listPosts = async () => {
+  try {
+    const response = await apiPostService.get(`/get-posts`);
+    console.log(response.data, 'here is the services return NEW');
+    return response.data.posts;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deletePost = async id => {
+  console.log(id, 'at the delete service');
+  const post = {
+    id: id
+  };
+  try {
+    const response = await apiPostService.post(`/delete-post`, post);
+    console.log(response.data, 'here is the deleted post');
+    return response;
+  } catch (error) {
+    throw error;
+  }
+};
