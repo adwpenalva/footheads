@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { getTeamInfo, getNext5FixturesByTeamId } from '../../services/api-services';
 
 import CommentList from './../../Components/commentList';
-import InputComment from './../../Components/InputComment';
 import CommentInput from './../../Components/InputComment';
 import './style.scss';
 
@@ -17,7 +16,8 @@ export default class ClubInfo extends Component {
     this.state = {
       club: null,
       fixtures: null,
-      comments: null
+      comments: null,
+      shown: false
     };
     this.handleCommentAddition = this.handleCommentAddition.bind(this);
     this.handleCommentRemoval = this.handleCommentRemoval.bind(this);
@@ -56,24 +56,6 @@ export default class ClubInfo extends Component {
   }
 
   async handleCommentAddition(comment) {
-    const newComment = {
-      _id: Math.floor(Math.random() * 10000000),
-      author: this.props.user._id,
-      club: this.state.club[0].idTeam,
-      content: comment.content
-    };
-    console.log('new comment', newComment);
-
-    if (!this.state.comments) {
-      this.setState({
-        comments: [newComment]
-      });
-    } else {
-      this.setState({
-        comments: [newComment, ...this.state.comments]
-      });
-    }
-
     try {
       const commentDone = await createComment(
         this.props.user._id,
@@ -81,6 +63,15 @@ export default class ClubInfo extends Component {
         comment.content
       );
       console.log('comment created', commentDone);
+      if (!this.state.comments) {
+        this.setState({
+          comments: [commentDone.comment]
+        });
+      } else {
+        this.setState({
+          comments: [commentDone.comment, ...this.state.comments]
+        });
+      }
     } catch (error) {
       console.log(error);
       console.log('Error in service.');
@@ -109,7 +100,9 @@ export default class ClubInfo extends Component {
           this.state.club.map(val => {
             return (
               <div className="Club">
-                <img className="teamBanner" src={val.strTeamBanner} alt={val.strTeam} />
+                {val.strTeamBanner && (
+                  <img className="teamBanner" src={val.strTeamBanner} alt={val.strTeam} />
+                )}
                 <h1>{val.strTeam}</h1>
                 <p>
                   <i>{val.strAlternate} </i>
@@ -141,12 +134,24 @@ export default class ClubInfo extends Component {
                   })}
                 <div>
                   {this.props.user && <CommentInput addComment={this.handleCommentAddition} />}
-                  <CommentList
-                    comments={this.state.comments}
-                    removeComment={this.handleCommentRemoval}
-                  />
+                  {this.props.user && (
+                    <CommentList
+                      comments={this.state.comments}
+                      removeComment={this.handleCommentRemoval}
+                      user={this.props.user}
+                    />
+                  )}
                 </div>
-                <p>{val.strDescriptionEN}</p>
+                <article>
+                  <p>
+                    {this.state.shown
+                      ? val.strDescriptionEN
+                      : val.strDescriptionEN.substring(0, 250) + '...'}
+                  </p>
+                  <button onClick={() => this.setState({ shown: !this.state.shown })}>
+                    show more..
+                  </button>
+                </article>
                 <p>
                   {val.strStadium} - {val.strStadiumLocation}
                 </p>

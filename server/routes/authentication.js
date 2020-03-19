@@ -3,7 +3,7 @@
 const { Router } = require('express');
 
 const passport = require('passport');
-
+const User = require('./../models/user');
 const router = new Router();
 
 router.get('/user-information', (req, res, next) => {
@@ -60,6 +60,24 @@ router.post('/sign-out', (req, res, next) => {
   req.session.destroy();
   req.logout();
   res.json({});
+});
+
+const uploader = require('./../multer-configure');
+
+router.patch('/user-information', uploader.single('picture'), async (req, res, next) => {
+  const { email, name } = req.body;
+  let picture;
+  if (req.file) picture = req.file.url;
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      { name, email, ...(picture ? { picture } : {}) },
+      { new: true }
+    );
+    res.json({ user });
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = router;

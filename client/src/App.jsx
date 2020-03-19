@@ -12,6 +12,7 @@ import ClubInfo from './views/Club';
 import ProfileEditView from './views/EditProfile';
 import LeagueTable from './views/LeagueTable';
 import Blog from './views/Blog';
+import EditProfileView from './views/EditProfile';
 
 import NavBar from './Components/Navbar';
 
@@ -71,18 +72,20 @@ class App extends Component {
                 <Signup {...props} updateUserInformation={this.updateUserInformation} />
               )}
             />
-            <Route path="/profile" component={Profile} exact />
             <Route path="/league/id/:id" component={LeagueTable} />
+            <Route path="/club/id/:id" component={ClubInfo} />
             <Route
-              path="/club/id/:id"
-              render={props => <ClubInfo {...props} user={this.state.user} />}
+              path="/profile/edit"
+              exact
+              redirect={'/'}
+              render={props => <EditProfileView {...props} user={this.state.user} />}
             />
-            <Route path="/profile/edit" component={ProfileEditView} exact />
             <Route
               path="/blog"
               exact
               render={props => <Blog {...props} user={this.state.user} />}
             />
+            <Route path="/profile" component={Profile} exact />
           </Switch>
         </BrowserRouter>
         <footer>

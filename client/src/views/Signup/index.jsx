@@ -9,8 +9,10 @@ class Signup extends Component {
       name: '',
       email: '',
       password: '',
-      favoriteTeam: 'San Lorenzo',
-      favoritePlayer: 'Santi Balaguer'
+      favoriteTeam: '',
+      favoritePlayer: '',
+      bio: '',
+      picture: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
@@ -19,14 +21,15 @@ class Signup extends Component {
   handleFormSubmission(event) {
     console.log('these are the props', this.props);
     event.preventDefault();
-    const { name, email, password, favoriteTeam, favoritePlayer } = this.state;
+    const { name, email, password, favoriteTeam, favoritePlayer, bio } = this.state;
     console.log(name, email, password, favoritePlayer, favoriteTeam);
     signUp({
       name,
       email,
       password,
       favoriteTeam,
-      favoritePlayer
+      favoritePlayer,
+      bio
     })
       .then(user => {
         this.props.updateUserInformation(user);
@@ -75,6 +78,15 @@ class Signup extends Component {
             placeholder="Password"
             onChange={this.handleInputChange}
             value={this.state.password}
+          />
+          <label htmlFor="favoritePlayer">Favorite Player</label>
+          <input
+            id="favoritePlayer"
+            name="favoritePlayer"
+            type="text"
+            placeholder="Your favorite player"
+            onChange={this.handleInputChange}
+            value={this.state.favoritePlayer}
           />
           <button>Sign up</button>
         </form>
