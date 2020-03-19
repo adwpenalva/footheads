@@ -18,6 +18,10 @@ class ProfileView extends Component {
               <strong>Favorite Player: </strong>
               {user.favoritePlayer}
             </p>
+            <p>
+              <strong>User bio:</strong>
+              {user.bio}
+            </p>
             <p>Favorite team with banner</p>
             <p>Next fixture</p>
             <p>Favorite team latest fixtures with recent form</p>

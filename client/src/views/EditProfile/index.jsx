@@ -19,17 +19,35 @@ class EditProfileView extends Component {
     console.log('^props here', this.props);
   }
 
+<<<<<<< HEAD
+=======
+  componentDidMount() {
+    this.setState({
+      // ...this.props.user
+      name: this.props.user.name,
+      email: this.props.user.email,
+      picture: this.props.user.picture,
+      favoritePlayer: this.props.user.favoritePlayer,
+      bio: this.props.user.bio
+    });
+    console.log('ôn mount', this.props);
+  }
+
+>>>>>>> 818292e44dfec63c5d1b94ec24146d6f42197a7f
   async handleFormSubmission(event) {
     event.preventDefault();
-    const { name, email, picture } = this.state;
+    const { name, email, picture, favoritePlayer, bio } = this.state;
     try {
       const user = await editUserInformation({
         name,
         email,
-        picture
+        picture,
+        favoritePlayer,
+        bio
       });
       console.log('^the new user', user);
-      this.props.history.push('/');
+      this.props.updateUserInformation(user);
+      this.props.history.push('/profile');
     } catch (error) {
       console.log(error);
     }

@@ -12,6 +12,7 @@ import ClubInfo from './views/Club';
 import LeagueTable from './views/LeagueTable';
 import Blog from './views/Blog';
 import EditProfileView from './views/EditProfile';
+import EditPost from './views/EditPost';
 
 import ProtectedRoute from './Components/ProtectedRoute.jsx';
 
@@ -81,9 +82,21 @@ class App extends Component {
             />
             <ProtectedRoute
               path="/profile/edit"
+<<<<<<< HEAD
               authorized={this.state.user}
               redirect={'/login'}
               render={props => <EditProfileView {...props} user={this.state.user} />}
+=======
+              exact
+              redirect={'/'}
+              render={props => (
+                <EditProfileView
+                  {...props}
+                  user={this.state.user}
+                  updateUserInformation={this.updateUserInformation}
+                />
+              )}
+>>>>>>> 818292e44dfec63c5d1b94ec24146d6f42197a7f
             />
             {/* <Route
               path="/profile/edit"
@@ -95,6 +108,7 @@ class App extends Component {
               exact
               render={props => <Blog {...props} user={this.state.user} />}
             />
+            <Route path="/edit-post/:postId" exact render={props => <EditPost {...props} />} />
             <Route
               path="/profile"
               render={props => <Profile user={this.state.user} {...props} />}
