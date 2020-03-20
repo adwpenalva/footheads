@@ -4,10 +4,9 @@ const apiCommentService = axios.create({
   baseURL: '/api/comment'
 });
 
-export const createComment = async (id, club, content) => {
-  console.log('at the comment service', id, club, content);
+export const createComment = async (club, content) => {
+  console.log('at the comment service', club, content);
   const comment = {
-    author: id,
     club: club,
     content: content
   };

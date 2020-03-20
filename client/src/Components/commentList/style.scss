@@ -11,10 +11,13 @@
     color: #308dff;
   }
   img {
-    height: 5vh;
+    width: 5vh;
+    border-radius: 50%;
+    margin-bottom: 10px;
   }
   p {
     text-align: justify;
+    margin-bottom: 1%;
   }
 }
 .commentSingle {

@@ -43,7 +43,7 @@ class NavBar extends Component {
                   <Nav.Link href="/profile">{this.props.user.name}'s Profile</Nav.Link>
                   <Nav.Link href="/leagues">Leagues</Nav.Link>
                   <Nav.Link href="/blog">Blog</Nav.Link>
-                  <Button variant="dark" onClick={this.handleSignOut}>
+                  <Button variant="dark" onClick={this.handleSignOut} href="/">
                     Sign Out
                   </Button>
                 </Nav>
