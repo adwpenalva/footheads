@@ -58,11 +58,7 @@ export default class ClubInfo extends Component {
 
   async handleCommentAddition(comment) {
     try {
-      const commentDone = await createComment(
-        this.props.user._id,
-        this.state.club[0].idTeam,
-        comment.content
-      );
+      const commentDone = await createComment(this.state.club[0].idTeam, comment.content);
       console.log('comment created', commentDone);
       if (!this.state.comments) {
         this.setState({
@@ -152,9 +148,9 @@ export default class ClubInfo extends Component {
                       ? val.strDescriptionEN
                       : val.strDescriptionEN.substring(0, 250) + '...'}
                   </p>
-                  <button onClick={() => this.setState({ shown: !this.state.shown })}>
-                    show more..
-                  </button>
+                  {(!this.state.shown && (
+                    <button onClick={() => this.setState({ shown: true })}>Show more</button>
+                  )) || <button onClick={() => this.setState({ shown: false })}>Show less</button>}
                 </article>
                 <p>
                   {val.strStadium} - {val.strStadiumLocation}

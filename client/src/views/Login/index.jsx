@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 import { signIn } from './../../services/authentication';
 
@@ -39,7 +40,10 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="page-container">
+      <div className="form-style page-container">
+        <h1>Login</h1>
+        <h5>Welcome back!</h5>
+        <p>Login to receive access to latest blogs & comments.</p>
         <form onSubmit={this.handleFormSubmission} className="form-style">
           <label htmlFor="email">Email</label>
           <input
@@ -59,6 +63,10 @@ class Login extends Component {
             onChange={this.handleInputChange}
             value={this.state.password}
           />
+          <small>
+            Not a member? Sign up
+            <Link to="/sign-up"> here</Link>
+          </small>
           <button>Sign in</button>
         </form>
       </div>

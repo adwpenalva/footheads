@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 import { signUp } from '../../services/authentication';
 
@@ -51,6 +52,14 @@ class Signup extends Component {
   render() {
     return (
       <div className="form-style page-container">
+        <h1>Sign Up</h1>
+        <h5>
+          For exclusive access to{' '}
+          <i>
+            blogging, comments, predictions and all the latest updates across European football,
+          </i>
+          <b> fill out the form below:</b>
+        </h5>
         <form onSubmit={this.handleFormSubmission}>
           <label htmlFor="name">Name</label>
           <input
@@ -84,10 +93,14 @@ class Signup extends Component {
             id="favoritePlayer"
             name="favoritePlayer"
             type="text"
-            placeholder="Your favorite player"
+            placeholder="Your Favorite Player"
             onChange={this.handleInputChange}
             value={this.state.favoritePlayer}
           />
+          <small>
+            Already a member? Login
+            <Link to="/login"> here</Link>
+          </small>
           <button>Sign up</button>
         </form>
       </div>
