@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 
 .App {
   text-align: center;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Source Sans Pro', sans-serif;
   background-color: #e7ffda;
 }
 
@@ -16,7 +17,6 @@ footer {
   width: 100%;
   color: #f4f4f4;
   font-size: 0.8em;
-  margin-top: 10%;
   p {
     padding: 2% 1%;
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style.scss';
 
 import BlogPostsList from './../../Components/BlogPostsList';
 import BlogPosting from './../../Components/BlogPosting';
@@ -72,7 +73,7 @@ export class Blog extends Component {
 
   render() {
     return (
-      <div>
+      <div className="blog-container">
         {(this.props.user && (
           <div>
             {this.props.user && <BlogPosting addPost={this.handlePostAddition} />}

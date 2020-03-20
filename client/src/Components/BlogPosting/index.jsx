@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Form, Input, Select, TextArea } from 'semantic-ui-react';
+import { Button, Form, Select, TextArea } from 'semantic-ui-react';
 import './style.scss';
+
 const options = [
   { text: 'In-game', value: 'In-game' },
   { text: 'In the stands', value: 'In the stands' },
@@ -61,13 +62,16 @@ class BlogPosting extends Component {
   render() {
     //const { value } = this.state;
     return (
-      <div>
-        <h1>Blog</h1>
-        <h6>
-          Share an experience that you had during a football game, with various options of places
-          and situations.
-        </h6>
-        <button onClick={this.togglePost}> Enter your experience</button>
+      <div className="blog-container">
+        <div className="blog-description">
+          <h1>Blog</h1>
+          <h6>
+            Share an experience that you had during a football game, with various options of places
+            and situations.
+          </h6>
+          <button onClick={this.togglePost}> Enter your experience</button>
+        </div>
+
         {this.state.active && (
           <Form onSubmit={this.handleFormSubmission}>
             <Form.Group widths="equal">

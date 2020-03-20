@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import './style.scss';
 import { signOut } from '../../services/authentication';
-import { Link } from 'react-router-dom';
 
 class NavBar extends Component {
   constructor() {

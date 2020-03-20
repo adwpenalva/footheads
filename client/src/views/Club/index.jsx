@@ -143,7 +143,8 @@ export default class ClubInfo extends Component {
                     )}
                   </div>
                 </div>
-                <article>
+                <article className="clubDescription">
+                  <h5>Find out a bit about {val.strTeam}:</h5>
                   <p>
                     {this.state.shown
                       ? val.strDescriptionEN
