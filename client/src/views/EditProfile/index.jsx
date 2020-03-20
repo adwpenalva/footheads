@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './style.scss';
 import { editUserInformation } from './../../services/authentication';
-import { Route, Redirect } from 'react-router-dom';
+import { allSoccerLeagues, getAllLeagueInfo } from './../../services/api-services';
 
 class EditProfileView extends Component {
   constructor(props) {
@@ -11,36 +11,53 @@ class EditProfileView extends Component {
       email: '',
       picture: '',
       favoritePlayer: '',
-      bio: ''
+      bio: '',
+      soccerLeagues: [],
+      selectedSoccerLeauge: '',
+      teamsInLeague: null,
+      favoriteTeam: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
     this.handleFileInputChange = this.handleFileInputChange.bind(this);
+    this.userSelecteadLeague = this.userSelecteadLeague.bind(this);
+    this.lookForTeams = this.lookForTeams.bind(this);
+    this.userSelectedTeam = this.userSelectedTeam.bind(this);
     console.log('^props here', this.props);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    try {
+      const soccerLeagues = await allSoccerLeagues();
+      this.setState({ soccerLeagues });
+      //console.log(soccerLeagues);
+    } catch (error) {
+      console.log(error);
+    }
+
     this.setState({
       // ...this.props.user
       name: this.props.user.name,
       email: this.props.user.email,
       picture: this.props.user.picture,
       favoritePlayer: this.props.user.favoritePlayer,
-      bio: this.props.user.bio
+      bio: this.props.user.bio,
+      favoriteTeam: this.props.user.favoriteTeam
     });
     console.log('ôn mount', this.props);
   }
 
   async handleFormSubmission(event) {
     event.preventDefault();
-    const { name, email, picture, favoritePlayer, bio } = this.state;
+    const { name, email, picture, favoritePlayer, bio, favoriteTeam } = this.state;
     try {
       const user = await editUserInformation({
         name,
         email,
         picture,
         favoritePlayer,
-        bio
+        bio,
+        favoriteTeam
       });
       console.log('^the new user', user);
       this.props.updateUserInformation(user);
@@ -48,6 +65,35 @@ class EditProfileView extends Component {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async lookForTeams(leagueID) {
+    try {
+      const response = await getAllLeagueInfo(leagueID);
+      const teamsInLeague = response.teams;
+      this.setState({ teamsInLeague });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  userSelecteadLeague(event) {
+    const selectedSoccerLeauge = event.target.value;
+    this.setState({ selectedSoccerLeauge });
+    this.lookForTeams(selectedSoccerLeauge);
+    //console.log(selectedSoccerLeauge);
+  }
+
+  async userSelectedTeam(event) {
+    const favoriteTeam = event.target.value;
+    console.log('userSelectedTeam console log, here should be ID:', favoriteTeam);
+    try {
+      this.setState({ favoriteTeam });
+      console.log('here is the state console log, should be team ID:', this.state.favoriteTeam);
+    } catch (error) {
+      throw error;
+    }
+    // this.handleInputChange;
   }
 
   handleFileInputChange(event) {
@@ -67,7 +113,7 @@ class EditProfileView extends Component {
 
   render() {
     // const user = this.props.user;
-    // console.log("ûser here", user)
+    //console.log(this.state.teamsInLeague);
     return (
       <div>
         {this.props.user && (
@@ -98,6 +144,31 @@ class EditProfileView extends Component {
                 onChange={this.handleInputChange}
                 value={this.state.favoritePlayer}
               />
+              {this.state.soccerLeagues && (
+                <Fragment>
+                  <label htmlFor="selectedLeuage">Select your League</label>
+                  <select
+                    value={this.state.selectedSoccerLeauge}
+                    onChange={this.userSelecteadLeague}
+                  >
+                    <option value="0">Select The League of Your Team</option>
+                    {this.state.soccerLeagues.map(league => (
+                      <option value={league.idLeague}>{league.strLeague}</option>
+                    ))}
+                  </select>
+                </Fragment>
+              )}
+              {this.state.teamsInLeague && (
+                <Fragment>
+                  <label htmlFor="favoriteTeam">Select your Team</label>
+                  <select value={this.state.selectedTeam} onChange={this.userSelectedTeam}>
+                    <option value="0">Select your Team</option>
+                    {this.state.teamsInLeague.map(team => (
+                      <option value={team.idTeam}>{team.strTeam}</option>
+                    ))}
+                  </select>
+                </Fragment>
+              )}
               <label htmlFor="bio">Bio</label>
               <textarea
                 id="bio"

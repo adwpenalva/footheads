@@ -60,6 +60,7 @@ const editUserInformation = async data => {
   form.append('picture', data.picture);
   form.append('favoritePlayer', data.favoritePlayer);
   form.append('bio', data.bio);
+  form.append('favoriteTeam', data.favoriteTeam);
   const result = await instance.patch('/user-information', form);
   const user = result.data.user;
   return user;
