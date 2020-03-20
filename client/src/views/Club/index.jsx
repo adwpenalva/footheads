@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { getTeamInfo, getNext5FixturesByTeamId } from '../../services/api-services';
-
 import CommentList from './../../Components/commentList';
 import CommentInput from './../../Components/InputComment';
+import PredictScoreBar from './../../Components/PredictScore';
 import './style.scss';
 
 import { createComment } from './../../services/comment';
@@ -130,6 +130,7 @@ export default class ClubInfo extends Component {
                             </tr>
                           </thead>
                         </table>
+                        <PredictScoreBar {...event} />
                       </div>
                     );
                   })}
