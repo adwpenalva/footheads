@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style.scss';
 
 import BlogPostsList from './../../Components/BlogPostsList';
 import BlogPosting from './../../Components/BlogPosting';
@@ -6,6 +7,7 @@ import BlogPosting from './../../Components/BlogPosting';
 import { createPost } from './../../services/post';
 import { listPosts } from './../../services/post';
 import { deletePost } from './../../services/post';
+import { Link } from 'react-router-dom';
 
 export class Blog extends Component {
   constructor(props) {
@@ -71,14 +73,26 @@ export class Blog extends Component {
 
   render() {
     return (
-      <div>
-        {this.props.user && <BlogPosting addPost={this.handlePostAddition} />}
-        {this.props.user && (
-          <BlogPostsList
-            posts={this.state.posts}
-            removePost={this.handlePostRemoval}
-            user={this.props.user}
-          />
+      <div className="blog-container">
+        {(this.props.user && (
+          <div>
+            {this.props.user && <BlogPosting addPost={this.handlePostAddition} />}
+            {this.props.user && (
+              <BlogPostsList
+                posts={this.state.posts}
+                removePost={this.handlePostRemoval}
+                user={this.props.user}
+              />
+            )}
+          </div>
+        )) || (
+          <div>
+            <h3>Want to receive access to blogs, comments, predictions and much more?</h3>
+            <h5>Sign up for free and get exclusive access to all these features...</h5>
+            <p>
+              Its very simple, click <Link to="/sign-up">here</Link> to go to the Sign-Up page.
+            </p>
+          </div>
         )}
       </div>
     );

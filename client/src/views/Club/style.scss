@@ -27,8 +27,15 @@
 }
 
 article {
-  margin: 0 5%;
+  margin: 4% 5%;
   text-align: justify;
+  h5 {
+    text-decoration: underline;
+  }
+  button {
+    color: #308dff;
+    justify-content: right;
+  }
 }
 
 // .commentList {
@@ -54,6 +61,13 @@ article {
 
 h4 {
   font-weight: bold;
+}
+
+.commentInputBox {
+  margin: 0px 2%;
+  h6 {
+    text-align: left;
+  }
 }
 
 .links {

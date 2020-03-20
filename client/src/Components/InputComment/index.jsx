@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form, TextArea } from 'semantic-ui-react';
 
 class commentInput extends Component {
   constructor(props) {
@@ -33,17 +34,20 @@ class commentInput extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleFormSubmission}>
-        <input
-          type="text"
-          name="contentOfComment"
-          value={this.state.contentOfComment}
-          onChange={this.handleInputChange}
-          placeholder="Insert comment here..."
-          autoComplete="off"
-        />
+      <Form onSubmit={this.handleFormSubmission}>
+        <Form.Group widths="equal">
+          <Form.Field
+            type="text"
+            name="contentOfComment"
+            control={TextArea}
+            value={this.state.contentOfComment}
+            onChange={this.handleInputChange}
+            placeholder="Insert comment here..."
+            autoComplete="off"
+          />
+        </Form.Group>
         <button>Add Comment</button>
-      </form>
+      </Form>
     );
   }
 }

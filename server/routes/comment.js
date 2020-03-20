@@ -10,10 +10,13 @@ router.post('/create', async (req, res, next) => {
   console.log('req body', req.body);
   try {
     await Comment.create({
-      author: req.body.author,
+      author: req.user._id,
       content: req.body.content,
       club: req.body.club
     })
+      .then(comment => {
+        return Comment.populate(comment, 'author');
+      })
       .then(comment => {
         res.json({ comment });
       })

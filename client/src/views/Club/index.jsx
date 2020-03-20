@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { getTeamInfo, getNext5FixturesByTeamId } from '../../services/api-services';
-
 import CommentList from './../../Components/commentList';
 import CommentInput from './../../Components/InputComment';
+import PredictScoreBar from './../../Components/PredictScore';
 import './style.scss';
 
 import { createComment } from './../../services/comment';
@@ -58,11 +58,7 @@ export default class ClubInfo extends Component {
 
   async handleCommentAddition(comment) {
     try {
-      const commentDone = await createComment(
-        this.props.user._id,
-        this.state.club[0].idTeam,
-        comment.content
-      );
+      const commentDone = await createComment(this.state.club[0].idTeam, comment.content);
       console.log('comment created', commentDone);
       if (!this.state.comments) {
         this.setState({
@@ -130,10 +126,12 @@ export default class ClubInfo extends Component {
                             </tr>
                           </thead>
                         </table>
+                        <PredictScoreBar {...event} />
                       </div>
                     );
                   })}
-                <div>
+                <div className="commentInputBox">
+                  <h6>Comments:</h6>
                   {this.props.user && <CommentInput addComment={this.handleCommentAddition} />}
                   <div className="center">
                     {this.props.user && (
@@ -145,15 +143,16 @@ export default class ClubInfo extends Component {
                     )}
                   </div>
                 </div>
-                <article>
+                <article className="clubDescription">
+                  <h5>Find out a bit about {val.strTeam}:</h5>
                   <p>
                     {this.state.shown
                       ? val.strDescriptionEN
                       : val.strDescriptionEN.substring(0, 250) + '...'}
                   </p>
-                  <button onClick={() => this.setState({ shown: !this.state.shown })}>
-                    show more..
-                  </button>
+                  {(!this.state.shown && (
+                    <button onClick={() => this.setState({ shown: true })}>Show more</button>
+                  )) || <button onClick={() => this.setState({ shown: false })}>Show less</button>}
                 </article>
                 <p>
                   {val.strStadium} - {val.strStadiumLocation}
