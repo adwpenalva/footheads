@@ -129,7 +129,8 @@ export default class ClubInfo extends Component {
                       </div>
                     );
                   })}
-                <div>
+                <div className="commentInputBox">
+                  <h6>Comments:</h6>
                   {this.props.user && <CommentInput addComment={this.handleCommentAddition} />}
                   <div className="center">
                     {this.props.user && (
