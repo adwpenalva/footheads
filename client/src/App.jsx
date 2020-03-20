@@ -84,7 +84,7 @@ class App extends Component {
               path="/profile/edit"
               authorized={this.state.user}
               exact
-              redirect={'/'}
+              redirect={'/profile'}
               render={props => (
                 <EditProfileView
                   {...props}
