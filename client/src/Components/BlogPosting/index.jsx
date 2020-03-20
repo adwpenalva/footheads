@@ -65,10 +65,7 @@ class BlogPosting extends Component {
       <div className="blog-container">
         <div className="blog-description">
           <h1>Blog</h1>
-          <h6>
-            Share an experience that you had during a football game, with various options of places
-            and situations.
-          </h6>
+          <h5>Share your most memorable experiences with other football fans worldwide.</h5>
           <button onClick={this.togglePost}> Enter your experience</button>
         </div>
 

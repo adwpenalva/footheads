@@ -67,7 +67,7 @@ export default class LeagueTable extends Component {
           <table>
             <thead>
               <tr>
-                <th>Pos</th>
+                <th>-</th>
                 <th>Team</th>
                 <th>GP</th>
                 <th>W</th>
@@ -95,12 +95,17 @@ export default class LeagueTable extends Component {
                       <td>{val.goalsfor}</td>
                       <td>{val.goalsagainst}</td>
                       <td>{val.goalsdifference}</td>
-                      <td>{val.total}</td>
+                      <td>
+                        <b>{val.total}</b>
+                      </td>
                     </tr>
                   );
                 })}
             </tbody>
           </table>
+          <hr />
+          <p>Continuous updates are made after each game to keep on top of all the action.</p>
+          <hr />
         </section>
       </div>
     );

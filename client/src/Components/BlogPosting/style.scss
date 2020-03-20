@@ -1,6 +1,12 @@
 .blog-container {
-  margin: 5% 10px;
+  margin: 10px;
   .blog-description {
     margin-bottom: 5%;
+    h1 {
+      text-align: left;
+    }
+    h5 {
+      text-align: justify;
+    }
   }
 }

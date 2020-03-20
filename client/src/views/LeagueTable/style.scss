@@ -8,12 +8,13 @@ table {
   color: black;
   width: 98%;
   line-height: 1.6em;
-  th {
-    text-decoration: underline;
-  }
   a {
     color: inherit;
   }
+}
+
+thead {
+  background-color: rgb(223, 223, 223);
 }
 
 .LeagueTable {

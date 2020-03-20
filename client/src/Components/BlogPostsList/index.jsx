@@ -32,29 +32,41 @@ const BlogPostsList = props => {
             );
           } else if (props.user._id === post.author) {
             return (
-              <div>
-                <p key={post._id}>
-                  <h5>Type of experience: {post.typeOfExperience}</h5>
+              <div className="blogBox">
+                <div className="blogSingle" key={post._id}>
+                  <h5>
+                    <i>Type of experience:</i> {post.typeOfExperience}
+                  </h5>
+                  <div className="blog-personnel">
+                    <img src={props.user.picture} alt="Users " />
+                    <small>Posted by: {post.author.name}</small>
+                  </div>
+                  <p>{post.content}</p>
+                  <div className="blog-buttons">
+                    <button>
+                      <Link to={`/edit-post/${post._id}`}>Edit Blog</Link>
+                    </button>
+                    <button onClick={() => props.removePost(post._id)}>Delete Blog</button>
+                  </div>
                   <br />
-                  {post.content}
-                  <button>
-                    <Link to={`/edit-post/${post._id}`}>Edit post</Link>
-                  </button>
-                  <button onClick={() => props.removePost(post._id)}>X</button>
-                  <br />
-                  <small>Posted by: {post.author.name}</small>
-                </p>
+                </div>
               </div>
             );
           } else {
             return (
-              <p key={post._id}>
-                <h5>Type of experience: {post.typeOfExperience}</h5>
-                <br />
-                {post.content}
-                <br />
-                <small>Posted by: {post.author.name}</small>
-              </p>
+              <div className="blogBox">
+                <div className="blogSingle" key={post._id}>
+                  <h5>
+                    <i>Type of experience:</i> {post.typeOfExperience}
+                  </h5>
+                  <div className="blog-personnel">
+                    <img src={props.user.picture} alt="Users " />
+                    <small>Posted by: {post.author.name}</small>
+                  </div>
+                  <p>{post.content}</p>
+                  <br />
+                </div>
+              </div>
             );
           }
         })}
