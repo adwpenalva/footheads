@@ -2,14 +2,32 @@ import React, { Component } from 'react';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import { getTeamInfo } from './../../services/api-services';
+import { loadUserInformation } from './../../services/authentication';
 
 class ProfileView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      teamInfo: ''
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      const user = await loadUserInformation();
+      const team = await getTeamInfo(Number(user.favoriteTeam));
+      console.log('TEAM ON TRY', team.data.teams[0]);
+      this.setState({
+        teamInfo: team.data.teams[0]
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   render() {
     const user = this.props.user;
-    const team = '';
-    // console.log(getTeamInfo(user.favoriteTeam.data));
-    // team = getTeamInfo(user.favoriteTeam);
-    // const teamId = user.favoriteTeam;
+
     return (
       <div>
         {this.props.user &&
@@ -33,10 +51,17 @@ class ProfileView extends Component {
                 <strong>My favorite team's ID:</strong>
                 {user.favoriteTeam}
               </p>
-              {/* <p>
-                <strong>My team's name:</strong>
-                {user.favoriteTeam.data.teams[0].strTeam}
-              </p> */}
+              {
+                <p>
+                  <strong>My team's name:</strong>
+                  {this.state.teamInfo.strTeam}
+                </p>
+              }
+              {
+                <figure>
+                  <img src={this.state.teamInfo.strTeamBadge} alt={this.state.teamInfo.strTeam} />
+                </figure>
+              }
               <p>Next fixture</p>
               <p>Favorite team latest fixtures with recent form</p>
             </div>
