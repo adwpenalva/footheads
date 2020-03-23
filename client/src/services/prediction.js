@@ -30,16 +30,15 @@ export const getPrediction = async (userId, matchId) => {
   }
 };
 
-export const getAllPredictions = async (matchId) => {
+export const getAllPredictions = async matchId => {
   //console.log('at the editing post service');
   try {
     //console.log('entrou no try');
     //console.log(postPredictionModel);
     const response = await apiPostService.get(`/get-predictions/${matchId}`);
-    console.log(response.data, 'here are all the predictiosn for the match');
+    console.log(response.data, 'here are all the predictions for the match');
     return response.data.prediction;
   } catch (error) {
     console.log(error);
   }
 };
-

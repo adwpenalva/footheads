@@ -3,7 +3,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Form } from 'semantic-ui-react';
 import './style.scss';
 import { getTeamInfo } from './../../services/api-services';
-import { getPrediction, getAllPredictions } from './../../services/prediction';
+import { getPrediction, getAllPredictions, postPrediction } from './../../services/prediction';
 
 export class PredictScore extends Component {
   constructor(props) {
@@ -12,11 +12,13 @@ export class PredictScore extends Component {
       homeTeamBadge: null,
       awayTeamBadge: null,
       predictionPick: '',
-      porcentageHome: 40,
-      porcentageAway: 40,
-      porcentageDraw: 20
+      percentageHome: 40,
+      percentageAway: 40,
+      percentageDraw: 20
     };
     this.handleChange = this.handleChange.bind(this);
+    this.postPredictionTeste = this.postPredictionTeste.bind(this);
+    this.updatePredictionsBar = this.updatePredictionsBar.bind(this);
   }
   async componentDidMount() {
     const userId = this.props._id;
@@ -29,27 +31,8 @@ export class PredictScore extends Component {
       const predictionPick = prediction.prediction;
       console.log(predictionPick);
       //console.log(prediction);
-
-      const allPredictions = await getAllPredictions(matchId);
-      console.log(allPredictions);
-      if (allPredictions) {
-        const numberOfPredictions = allPredictions.length;
-        const porcentageHome =
-          allPredictions.filter(prediction => prediction.prediction === 'Home').length /
-          numberOfPredictions*100
-
-        const porcentageAway =
-          allPredictions.filter(prediction => prediction.prediction === 'Away').length /
-          numberOfPredictions*100
-
-        const porcentageDraw =
-          allPredictions.filter(prediction => prediction.prediction === 'Draw').length /
-          numberOfPredictions*100
-
-        console.log(porcentageHome, porcentageAway, porcentageDraw);
-
-        this.setState({ porcentageHome, porcentageAway, porcentageDraw });
-      }
+      console.log('component did mount is running');
+      this.updatePredictionsBar();
 
       const homeTeamID = this.props.idHomeTeam;
       const awayTeamID = this.props.idAwayTeam;
@@ -64,7 +47,34 @@ export class PredictScore extends Component {
         predictionPick
       });
     } catch (error) {
-      console.log(error);
+      console.log('here is the error', error);
+    }
+  }
+
+  async updatePredictionsBar() {
+    const matchId = this.props.idEvent;
+    const allPredictions = await getAllPredictions(matchId);
+    console.log(allPredictions);
+    if (allPredictions) {
+      const numberOfPredictions = allPredictions.length;
+      const percentageHome =
+        (allPredictions.filter(prediction => prediction.prediction === 'Home').length /
+          numberOfPredictions) *
+        100;
+
+      const percentageAway =
+        (allPredictions.filter(prediction => prediction.prediction === 'Away').length /
+          numberOfPredictions) *
+        100;
+
+      const percentageDraw =
+        (allPredictions.filter(prediction => prediction.prediction === 'Draw').length /
+          numberOfPredictions) *
+        100;
+
+      console.log(percentageHome, percentageAway, percentageDraw);
+
+      this.setState({ percentageHome, percentageAway, percentageDraw });
     }
   }
 
@@ -73,6 +83,37 @@ export class PredictScore extends Component {
     const predictionPick = value;
     this.setState({ predictionPick });
   };
+
+  async postPredictionTeste(event) {
+    event.preventDefault();
+    console.log('im running');
+    const userId = this.props._id;
+    const matchId = this.props.idEvent;
+    const mockPrediction = {
+      userId,
+      matchId,
+      prediction: this.state.predictionPick
+    };
+    try {
+      const predictionDone = await postPrediction(mockPrediction);
+      this.updatePredictionsBar();
+      //console.log(predictionDone);
+    } catch (error) {
+      console.log(error);
+    }
+
+    // const commentDone = await createComment(this.state.club[0].idTeam, comment.content);
+    // const sendPostPrediction = await postPrediction();
+    // const prediction = 'VH';
+    // const user_id = this.props.user._id;
+    // this.state.fixtures.map(fixture => {
+    //   console.log(fixture.idEvent);
+    //   sendPostPrediction(user_id, fixture.idEvent, prediction);
+    // });
+
+    // console.log('this.state.fixtures');
+    // console.log(this.state.fixtures);
+  }
 
   render() {
     const { predictionPick } = this.state;
@@ -95,14 +136,14 @@ export class PredictScore extends Component {
               )
             }
             variant="success"
-            now={this.state.porcentageHome}
+            now={this.state.percentageHome}
             key={1}
           />
           <ProgressBar
             className="barNames"
-            label="D"
+            label="Draw"
             variant="warning"
-            now={this.props.porcentageDraw}
+            now={this.state.percentageDraw}
             key={2}
           />
           <ProgressBar
@@ -117,12 +158,12 @@ export class PredictScore extends Component {
               )
             }
             variant="danger"
-            now={this.state.porcentageAway}
+            now={this.state.percentageAway}
             key={3}
           />
         </ProgressBar>
 
-        <Form>
+        <Form className="predictions__radio" onSubmit={this.postPredictionTeste}>
           <label>Predict the Score</label>
           <Form.Group inline>
             <Form.Radio
@@ -147,6 +188,7 @@ export class PredictScore extends Component {
               onChange={this.handleChange}
             />
           </Form.Group>
+          <button>Submit prediction</button>
         </Form>
       </div>
     );
