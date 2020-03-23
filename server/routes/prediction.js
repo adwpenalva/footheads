@@ -27,7 +27,7 @@ router.post('/post-prediction', async (req, res, next) => {
       });
       res.json({ postPrediction });
     } else {
-      res.json({ message: 'user alredy predicted this match.' });
+      res.json({ message: 'user already predicted this match.' });
     }
   } catch (error) {
     console.log(error);
