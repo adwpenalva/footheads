@@ -93,10 +93,9 @@ export default class LeagueTable extends Component {
     return (
       <div className="table">
         <figure>
-          <img src={this.state.helper} alt="lol" />
+          <img className="bannerleaguetbl" src={this.state.helper} alt="lol" />
         </figure>
         <section className="LeagueTable">
-          <h2>Table</h2>
           <div className="table__opening__text">
             <hr />
             <p>Continuous updates are made after each game to keep on top of all the action.</p>

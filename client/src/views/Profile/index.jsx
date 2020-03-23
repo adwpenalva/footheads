@@ -113,10 +113,6 @@ class ProfileView extends Component {
                   <strong>Striker: </strong>
                   {user.best11}
                 </p>
-                {}
-                <hr />
-                <p>Next fixture</p>
-                <p>Favorite team latest fixtures with recent form</p>
               </div>
             </div>
           ))}
