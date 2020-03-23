@@ -1,7 +1,16 @@
-.blog-container {
-  margin: 10px;
-  .blog-description {
-    margin-bottom: 5%;
+.blog__container {
+  .blog__description {
+    margin: 5%;
+    color: white;
+    text-align: center;
+    button {
+      padding: 10px 25px;
+      background-color: #008f0b;
+      border-radius: 0.5em;
+      margin-top: 5%;
+      color: white;
+      border: none;
+    }
     h1 {
       text-align: left;
     }
@@ -9,4 +18,8 @@
       text-align: justify;
     }
   }
+}
+
+.field {
+  color: white;
 }

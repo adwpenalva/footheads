@@ -4,9 +4,10 @@
   background-image: url('https://papers.co/wallpaper/papers.co-nn97-soccer-field-city-night-light-dark-4-wallpaper.jpg');
   -webkit-filter: grayscale(80%);
   filter: grayscale(80%);
-  height: 100vh;
+  // height: 100vh;
   color: white;
   padding-left: 5%;
+  padding-right: 5%;
   padding-top: 5%;
   h1 {
     margin-bottom: 15%;
@@ -22,4 +23,8 @@
     line-height: 1em;
     font-family: 'Source Sans Pro', sans-serif;
   }
+}
+.bannerimg {
+  width: 100%;
+  margin: 0 auto 3vh auto;
 }

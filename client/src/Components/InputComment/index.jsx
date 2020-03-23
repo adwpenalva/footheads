@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, TextArea } from 'semantic-ui-react';
+import './style.scss';
 
 class commentInput extends Component {
   constructor(props) {
@@ -46,7 +47,9 @@ class commentInput extends Component {
             autoComplete="off"
           />
         </Form.Group>
-        <button>Add Comment</button>
+        <div className="add__comment">
+          <button>Add Comment</button>
+        </div>
       </Form>
     );
   }

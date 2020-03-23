@@ -29,7 +29,6 @@ export class PredictScore extends Component {
       const awayTeamID = this.props.idAwayTeam;
       const homeTeamInfo = await getTeamInfo(homeTeamID);
       const awayTeamInfo = await getTeamInfo(awayTeamID);
-      //console.log(homeTeamInfo)
       const homeTeamBadge = homeTeamInfo.data.teams[0].strTeamBadge;
       const awayTeamBadge = awayTeamInfo.data.teams[0].strTeamBadge;
       const prediction = await getPrediction(userId, matchId);
@@ -109,7 +108,6 @@ export class PredictScore extends Component {
     try {
       const predictionDone = await postPrediction(mockPrediction);
       this.updatePredictionsBar();
-      //console.log(predictionDone);
     } catch (error) {
       console.log(error);
     }

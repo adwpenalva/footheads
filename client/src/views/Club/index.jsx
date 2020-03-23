@@ -19,7 +19,8 @@ export default class ClubInfo extends Component {
       fixtures: null,
       comments: null,
       shown: false,
-      predictions: []
+      predictions: [],
+      predction: ''
     };
     this.handleCommentAddition = this.handleCommentAddition.bind(this);
     this.handleCommentRemoval = this.handleCommentRemoval.bind(this);
@@ -119,8 +120,10 @@ export default class ClubInfo extends Component {
                 <h2>Next Fixtures</h2>
                 {this.state.fixtures &&
                   this.state.fixtures.map(event => {
+                    const matchId = this.state.fixtures;
+                    console.log('MATCH ID:', matchId, 'EVENT:', event);
                     return (
-                      <div key={event.idEvent}>
+                      <div className="club__predictor__heading" key={event.idEvent}>
                         <table>
                           <thead>
                             <tr>
