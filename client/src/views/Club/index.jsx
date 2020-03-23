@@ -123,7 +123,7 @@ export default class ClubInfo extends Component {
                     const matchId = this.state.fixtures;
                     console.log('MATCH ID:', matchId, 'EVENT:', event);
                     return (
-                      <div>
+                      <div className="club__predictor__heading">
                         <table>
                           <thead>
                             <tr>

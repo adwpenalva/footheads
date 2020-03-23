@@ -23,14 +23,11 @@ export class PredictScore extends Component {
   async componentDidMount() {
     const userId = this.props._id;
     const matchId = this.props.idEvent;
-    // console.log(userId, matchId);
 
-    // console.log('im running');
     try {
       const prediction = await getPrediction(userId, matchId);
       const predictionPick = prediction.prediction;
       console.log(predictionPick);
-      //console.log(prediction);
       console.log('component did mount is running');
       this.updatePredictionsBar();
 
@@ -38,7 +35,6 @@ export class PredictScore extends Component {
       const awayTeamID = this.props.idAwayTeam;
       const homeTeamInfo = await getTeamInfo(homeTeamID);
       const awayTeamInfo = await getTeamInfo(awayTeamID);
-      //console.log(homeTeamInfo)
       const homeTeamBadge = homeTeamInfo.data.teams[0].strTeamBadge;
       const awayTeamBadge = awayTeamInfo.data.teams[0].strTeamBadge;
       this.setState({
@@ -97,7 +93,6 @@ export class PredictScore extends Component {
     try {
       const predictionDone = await postPrediction(mockPrediction);
       this.updatePredictionsBar();
-      //console.log(predictionDone);
     } catch (error) {
       console.log(error);
     }

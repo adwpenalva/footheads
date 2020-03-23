@@ -19,7 +19,7 @@
   }
   .stadiumImage {
     width: 100%;
-    margin: 4% 1%;
+    margin: 4% 0;
   }
   .club__badge__jersey {
     display: flex;
@@ -33,6 +33,9 @@
       height: 25vh;
       width: 50%;
     }
+  }
+  .club__predictor__heading {
+    width: 100%;
   }
 }
 
@@ -48,16 +51,16 @@
   }
 }
 
-.commentList {
-  margin-top: 4vh;
-  border: 1px solid gray;
-  background-color: white;
-  border-radius: 2em;
-  text-align: left;
-  li {
-    list-style: none;
-  }
-}
+// .commentList {
+//   margin-top: 4vh;
+//   border: 1px solid gray;
+//   background-color: white;
+//   border-radius: 2em;
+//   text-align: left;
+//   li {
+//     list-style: none;
+//   }
+// }
 
 .center {
   display: flex;

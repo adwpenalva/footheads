@@ -115,17 +115,17 @@ class EditProfileView extends Component {
     // const user = this.props.user;
     //console.log(this.state.teamsInLeague);
     return (
-      <div>
+      <div className="profile__edit">
         {this.props.user && (
           <div>
             <figure>
               <img
-                className="profile-img"
+                className="profile__edit__img"
                 src={this.props.user.picture}
                 alt={this.props.user.name}
               />
             </figure>
-            <form onSubmit={this.handleFormSubmission}>
+            <form onSubmit={this.handleFormSubmission} className="form__style">
               <label htmlFor="name">Name</label>
               <input
                 id="name"

@@ -29,58 +29,61 @@ class ProfileView extends Component {
 
     return (
       <div className="profile">
-        {this.props.user && (
-          <div>
-            <div className="profile__opening">
-              <img className="profile__img" src={user.picture} alt="profile image" />
-              <Link to="/profile/edit">
-                <button>
-                  <img
-                    className="profile__edit__favicon"
-                    src="https://img.icons8.com/metro/26/000000/edit.png"
-                  />
-                </button>
-              </Link>
-            </div>
-            <div className="profile__name__badge">
-              <h1>{user.name}'s Profile</h1>
-              <figure>
-                <img src={this.state.teamInfo.strTeamBadge} alt={this.state.teamInfo.strTeam} />
-              </figure>
-            </div>
-            <div className="profile__description">
-              <p>
-                <strong>About me:</strong>
-                <br />
-
-                {user.bio}
-              </p>
-              <hr />
-              <p>
-                <strong>Favorite Player: </strong>
-                <br />
-                {user.favoritePlayer}
-              </p>
-              <hr />
-              <p>
-                <strong>Favorite Team:</strong>
-                <br />
-                {user.favoriteTeam}
-              </p>
-              <hr />
-              {
+        {this.props.user &&
+          (console.log('CONSOLE LOG HERE:', getTeamInfo(Number(user.favoriteTeam))),
+          (
+            <div>
+              <div className="profile__opening">
+                <img className="profile__img" src={user.picture} alt="profile image" />
+                <Link to="/profile/edit">
+                  <button>
+                    <img
+                      className="profile__edit__favicon"
+                      src="https://img.icons8.com/metro/26/000000/edit.png"
+                    />
+                  </button>
+                </Link>
+              </div>
+              <div className="profile__name__badge">
+                <h1>{user.name}'s Profile</h1>
+                <figure>
+                  <img src={this.state.teamInfo.strTeamBadge} alt={this.state.teamInfo.strTeam} />
+                </figure>
+              </div>
+              <div className="profile__description">
                 <p>
-                  <strong>My team's name:</strong>
+                  <strong>About Me:</strong>
+                  <br />
+
+                  {user.bio}
+                </p>
+                <hr />
+                <p>
+                  <strong>Favorite Player: </strong>
+                  <br />
+                  {user.favoritePlayer}
+                </p>
+                <hr />
+                {/* <p>
+                  <strong>Favorite Team:</strong>
                   <br />
                   {this.state.teamInfo.strTeam}
                 </p>
-              }
-              <hr />
-              <p>Next fixture</p>
-              <p>Favorite team latest fixtures with recent form</p>
+                <hr /> */}
+                {
+                  <p>
+                    <strong>My team's name:</strong>
+                    <br />
+                    {this.state.teamInfo.strTeam}
+                  </p>
+                }
+                {}
+                <hr />
+                <p>Next fixture</p>
+                <p>Favorite team latest fixtures with recent form</p>
+              </div>
             </div>
-          </div>
-        )}
+          ))}
       </div>
     );
   }

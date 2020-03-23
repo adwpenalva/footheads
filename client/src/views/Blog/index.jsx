@@ -73,14 +73,9 @@ export class Blog extends Component {
 
   render() {
     return (
-      <div>
-        <div className="stadium">
-          <img
-            src="https://wallpapers.net/download-metalist-football-stadium-wallpaper-for-desktop-mobiles/download/5120x2160.jpg"
-            alt="stadium"
-          />
-        </div>
-        <div className="blog-container">
+      <div className="blog__container">
+        <div className="blog__background"></div>
+        <div className="blog">
           {(this.props.user && (
             <div>
               {this.props.user && <BlogPosting addPost={this.handlePostAddition} />}
@@ -93,7 +88,7 @@ export class Blog extends Component {
               )}
             </div>
           )) || (
-            <div>
+            <div className="blog__unauthorized">
               <h3>Want to receive access to blogs, comments, predictions and much more?</h3>
               <h5>Sign up for free and get exclusive access to all these features...</h5>
               <p>

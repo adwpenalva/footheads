@@ -1,18 +1,26 @@
-.stadium img {
-  height: 30vh;
-  -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(60%);
+// .blog__background {
+//   background-image: url('https://www.3wallpapers.fr/wp-content/uploads/2014/06/galatasaray-football_fans-soccer-torch-3Wallpapers-iphone-Parallax.jpg');
+//   margin: auto 0;
+//   min-height: 100vh;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   z-index: -1;
+//   filter: grayscale(90%);
+// }
+
+.blog {
+  background-color: rgb(44, 44, 44);
+  padding: 2% 2%;
+  min-height: 100vh;
 }
 
-.blog-description {
-  margin-top: 5%;
-  h6 {
-    margin-top: 5%;
-  }
-  button {
-    background-color: #f4f4f4;
-    color: gray;
-    border-radius: 1em;
-    margin-top: 5%;
+.blog__unauthorized {
+  color: white;
+  text-align: center;
+  margin-top: 40%;
+  h3,
+  h5,
+  p {
+    margin-top: 10%;
   }
 }
