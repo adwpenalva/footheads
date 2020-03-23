@@ -96,7 +96,7 @@ export default class ClubInfo extends Component {
     const mockPrediction = {
       userId: this.props.user._id,
       matchId: this.state.fixtures[0]['idEvent'],
-      predictionTeste: 'VH'
+      prediction: 'Home'
     };
     try {
       const predictionDone = await postPrediction(mockPrediction);
@@ -156,11 +156,12 @@ export default class ClubInfo extends Component {
                             </tr>
                           </thead>
                         </table>
-                        <PredictScoreBar {...event} />
+                        <PredictScoreBar {...event} {...this.props.user}/>
+                        <button onClick={this.postPredictionTeste}>Submit predictions</button>
                       </div>
                     );
                   })}
-                <button onClick={this.postPredictionTeste}>Submit predictions</button>
+                
                 <div>
                   <div className="club__comment__input">
                     <h6>Comments:</h6>

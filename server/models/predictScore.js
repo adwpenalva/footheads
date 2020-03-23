@@ -7,8 +7,7 @@ const predictScoreSchema = new mongoose.Schema({
     required: true
   },
   matchId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'matchId',
+    type:"String",
     required: true
   },
   prediction: {
