@@ -77,6 +77,42 @@ class ProfileView extends Component {
                     {this.state.teamInfo.strTeam}
                   </p>
                 }
+                <p>
+                  <strong>My best 11:</strong>
+                  <br />
+                  <strong>Goalkeeper: </strong>
+                  {user.best1}
+                  <br />
+                  <strong>Right Back: </strong>
+                  {user.best2}
+                  <br />
+                  <strong>Center Back: </strong>
+                  {user.best3}
+                  <br />
+                  <strong>Center Back: </strong>
+                  {user.best4}
+                  <br />
+                  <strong>Left Back: </strong>
+                  {user.best6}
+                  <br />
+                  <strong>Defensive Middlefielder: </strong>
+                  {user.best5}
+                  <br />
+                  <strong>Central Middlefielder: </strong>
+                  {user.best8}
+                  <br />
+                  <strong>Offensive Middlefielder: </strong>
+                  {user.best7}
+                  <br />
+                  <strong>Offensive Middlefielder: </strong>
+                  {user.best10}
+                  <br />
+                  <strong>Striker: </strong>
+                  {user.best9}
+                  <br />
+                  <strong>Striker: </strong>
+                  {user.best11}
+                </p>
                 {}
                 <hr />
                 <p>Next fixture</p>

@@ -14,18 +14,7 @@ export default class Leagues extends Component {
     };
   }
   async componentDidMount() {
-    const top10Leagues = [
-      '4328',
-      '4329',
-      '4331',
-      '4332',
-      '4334',
-      '4335',
-      '4337',
-      '4344',
-      '4346',
-      '4351'
-    ];
+    const top10Leagues = ['4328', '4329', '4331', '4332', '4334', '4335', '4337', '4344', '4346'];
     try {
       const allLeagues = await getAllLeagues();
 

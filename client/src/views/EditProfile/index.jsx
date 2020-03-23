@@ -15,7 +15,19 @@ class EditProfileView extends Component {
       soccerLeagues: [],
       selectedSoccerLeauge: '',
       teamsInLeague: null,
-      favoriteTeam: ''
+      favoriteTeam: '',
+      best1: '',
+      best2: '',
+      best3: '',
+      best4: '',
+      best5: '',
+      best6: '',
+      best7: '',
+      best8: '',
+      best9: '',
+      best10: '',
+      best11: '',
+      best11Form: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmission = this.handleFormSubmission.bind(this);
@@ -23,6 +35,7 @@ class EditProfileView extends Component {
     this.userSelecteadLeague = this.userSelecteadLeague.bind(this);
     this.lookForTeams = this.lookForTeams.bind(this);
     this.userSelectedTeam = this.userSelectedTeam.bind(this);
+    this.toggleDreamTeam = this.toggleDreamTeam.bind(this);
     console.log('^props here', this.props);
   }
 
@@ -42,14 +55,43 @@ class EditProfileView extends Component {
       picture: this.props.user.picture,
       favoritePlayer: this.props.user.favoritePlayer,
       bio: this.props.user.bio,
-      favoriteTeam: this.props.user.favoriteTeam
+      favoriteTeam: this.props.user.favoriteTeam,
+      best1: this.props.user.best1,
+      best2: this.props.user.best2,
+      best3: this.props.user.best3,
+      best4: this.props.user.best4,
+      best5: this.props.user.best5,
+      best6: this.props.user.best6,
+      best7: this.props.user.best7,
+      best8: this.props.user.best8,
+      best9: this.props.user.best9,
+      best10: this.props.user.best10,
+      best11: this.props.user.best11
     });
     console.log('ôn mount', this.props);
   }
 
   async handleFormSubmission(event) {
     event.preventDefault();
-    const { name, email, picture, favoritePlayer, bio, favoriteTeam } = this.state;
+    const {
+      name,
+      best1,
+      best2,
+      best3,
+      best4,
+      best5,
+      best6,
+      best7,
+      best8,
+      best9,
+      best10,
+      best11,
+      email,
+      picture,
+      favoritePlayer,
+      bio,
+      favoriteTeam
+    } = this.state;
     try {
       const user = await editUserInformation({
         name,
@@ -57,7 +99,18 @@ class EditProfileView extends Component {
         picture,
         favoritePlayer,
         bio,
-        favoriteTeam
+        favoriteTeam,
+        best1,
+        best2,
+        best3,
+        best4,
+        best5,
+        best6,
+        best7,
+        best8,
+        best9,
+        best10,
+        best11
       });
       console.log('^the new user', user);
       this.props.updateUserInformation(user);
@@ -102,6 +155,13 @@ class EditProfileView extends Component {
     this.setState({
       [name]: files[0]
     });
+  }
+
+  toggleDreamTeam(event) {
+    event.preventDefault();
+    this.setState(previousState => ({
+      best11Form: !previousState.best11Form
+    }));
   }
 
   handleInputChange(event) {
@@ -167,6 +227,110 @@ class EditProfileView extends Component {
                       <option value={team.idTeam}>{team.strTeam}</option>
                     ))}
                   </select>
+                </Fragment>
+              )}
+              <button onClick={this.toggleDreamTeam}>Pick your DreamTeam!</button>
+              {this.state.best11Form && (
+                <Fragment>
+                  <label htmlFor="best1">DreamTeam Goalkeeper</label>
+                  <input
+                    id="best1"
+                    name="best1"
+                    type="text"
+                    placeholder="Your favorite goalkeeper"
+                    onChange={this.handleInputChange}
+                    value={this.state.best1}
+                  />
+                  <label htmlFor="best2">DreamTeam Right Back</label>
+                  <input
+                    id="best2"
+                    name="best2"
+                    type="text"
+                    placeholder="Your favorite right back"
+                    onChange={this.handleInputChange}
+                    value={this.state.best2}
+                  />
+                  <label htmlFor="best3">DreamTeam Center Back 1</label>
+                  <input
+                    id="best3"
+                    name="best3"
+                    type="text"
+                    placeholder="Your favorite center back"
+                    onChange={this.handleInputChange}
+                    value={this.state.best3}
+                  />
+                  <label htmlFor="best4">DreamTeam Center Back 2</label>
+                  <input
+                    id="best4"
+                    name="best4"
+                    type="text"
+                    placeholder="Your favorite center back"
+                    onChange={this.handleInputChange}
+                    value={this.state.best4}
+                  />
+                  <label htmlFor="best6">DreamTeam Left Back</label>
+                  <input
+                    id="best6"
+                    name="best6"
+                    type="text"
+                    placeholder="Your favorite left back"
+                    onChange={this.handleInputChange}
+                    value={this.state.best6}
+                  />
+                  <label htmlFor="best5">DreamTeam Defensive Middlefielder</label>
+                  <input
+                    id="best5"
+                    name="best5"
+                    type="text"
+                    placeholder="Your favorite defensive middlefielder"
+                    onChange={this.handleInputChange}
+                    value={this.state.best5}
+                  />
+                  <label htmlFor="best8">DreamTeam Central Middlefielder</label>
+                  <input
+                    id="best8"
+                    name="best8"
+                    type="text"
+                    placeholder="Your favorite central middlefielder"
+                    onChange={this.handleInputChange}
+                    value={this.state.best8}
+                  />
+                  <label htmlFor="best7">DreamTeam Offensive Middlefielder</label>
+                  <input
+                    id="best7"
+                    name="best7"
+                    type="text"
+                    placeholder="Your favorite offensive middlefielder"
+                    onChange={this.handleInputChange}
+                    value={this.state.best7}
+                  />
+                  <label htmlFor="best10">DreamTeam Offensive Middlefielder 2</label>
+                  <input
+                    id="best10"
+                    name="best10"
+                    type="text"
+                    placeholder="Your favorite offensive middlefielder"
+                    onChange={this.handleInputChange}
+                    value={this.state.best10}
+                  />
+                  <label htmlFor="best9">DreamTeam Striker</label>
+                  <input
+                    id="best9"
+                    name="best9"
+                    type="text"
+                    placeholder="Your favorite striker"
+                    onChange={this.handleInputChange}
+                    value={this.state.best9}
+                  />
+                  <label htmlFor="best11">DreamTeam Striker 2</label>
+                  <input
+                    id="best11"
+                    name="best11"
+                    type="text"
+                    placeholder="Your favorite striker"
+                    onChange={this.handleInputChange}
+                    value={this.state.best11}
+                  />
                 </Fragment>
               )}
               <label htmlFor="bio">Bio</label>
