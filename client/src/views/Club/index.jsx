@@ -98,7 +98,7 @@ export default class ClubInfo extends Component {
         {this.state.club &&
           this.state.club.map(val => {
             return (
-              <div className="club">
+              <div className="club" key={val.idTeam}>
                 {val.strTeamBanner && (
                   <img className="club__banner" src={val.strTeamBanner} alt={val.strTeam} />
                 )}
@@ -120,7 +120,7 @@ export default class ClubInfo extends Component {
                 {this.state.fixtures &&
                   this.state.fixtures.map(event => {
                     return (
-                      <div>
+                      <div key={event.idEvent}>
                         <table>
                           <thead>
                             <tr>

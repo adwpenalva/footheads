@@ -23,17 +23,7 @@ export class PredictScore extends Component {
   async componentDidMount() {
     const userId = this.props._id;
     const matchId = this.props.idEvent;
-    // console.log(userId, matchId);
-
-    // console.log('im running');
     try {
-      const prediction = await getPrediction(userId, matchId);
-      const predictionPick = prediction.prediction;
-      console.log(predictionPick);
-      //console.log(prediction);
-      console.log('component did mount is running');
-      this.updatePredictionsBar();
-
       const homeTeamID = this.props.idHomeTeam;
       const awayTeamID = this.props.idAwayTeam;
       const homeTeamInfo = await getTeamInfo(homeTeamID);
@@ -41,6 +31,13 @@ export class PredictScore extends Component {
       //console.log(homeTeamInfo)
       const homeTeamBadge = homeTeamInfo.data.teams[0].strTeamBadge;
       const awayTeamBadge = awayTeamInfo.data.teams[0].strTeamBadge;
+      const prediction = await getPrediction(userId, matchId);
+      const predictionPick = prediction.prediction;
+      console.log(predictionPick);
+      //console.log(prediction);
+      this.updatePredictionsBar();
+      console.log('component did mount is running');
+
       this.setState({
         homeTeamBadge,
         awayTeamBadge,
@@ -52,6 +49,13 @@ export class PredictScore extends Component {
   }
 
   async updatePredictionsBar() {
+    const homeTeamID = this.props.idHomeTeam;
+    const awayTeamID = this.props.idAwayTeam;
+    const homeTeamInfo = await getTeamInfo(homeTeamID);
+    const awayTeamInfo = await getTeamInfo(awayTeamID);
+    //console.log(homeTeamInfo)
+    const homeTeamBadge = homeTeamInfo.data.teams[0].strTeamBadge;
+    const awayTeamBadge = awayTeamInfo.data.teams[0].strTeamBadge;
     const matchId = this.props.idEvent;
     const allPredictions = await getAllPredictions(matchId);
     console.log(allPredictions);
@@ -74,7 +78,13 @@ export class PredictScore extends Component {
 
       console.log(percentageHome, percentageAway, percentageDraw);
 
-      this.setState({ percentageHome, percentageAway, percentageDraw });
+      this.setState({
+        percentageHome,
+        percentageAway,
+        percentageDraw,
+        homeTeamBadge,
+        awayTeamBadge
+      });
     }
   }
 

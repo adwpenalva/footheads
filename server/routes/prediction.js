@@ -15,10 +15,10 @@ router.post('/post-prediction', async (req, res, next) => {
     matchId
   };
 
-  console.log(searchQuery)
+  console.log(searchQuery);
   try {
     const postedPrediction = await Prediction.find(searchQuery);
-    console.log(postedPrediction)
+    console.log(postedPrediction);
     if (!postedPrediction.length) {
       const postPrediction = await Prediction.create({
         userId: req.body.userId,
