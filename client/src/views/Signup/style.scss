@@ -1,59 +1,51 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 
-.page-container {
+.login {
   position: relative;
   min-height: 100vh;
+  line-height: 2em;
 }
 
-.form-style {
-  width: 90%;
-  background: #f4f7f8;
+.form__style {
   padding: 10% 5%;
-  background: #f4f7f8;
+  background: #daf8b7;
   border-radius: 8px;
   font-family: 'Source Sans Pro', sans-serif;
+  min-height: 100vh;
+  h1 {
+    color: green;
+  }
+  h1,
+  h5,
+  p {
+    margin-top: 10%;
+    text-align: center;
+  }
 }
 
-.form-style input[type='text'],
-.form-style input[type='email'],
-.form-style input[type='password'] {
-  background: white;
+.form__style input {
   border: none;
   border-radius: 4px;
-  font-size: 15px;
-  margin: 0;
-  outline: 0;
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  background-color: #e8eeef;
-  color: black;
-  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  margin-bottom: 30px;
-}
-.form-style input {
-  position: relative;
-  display: block;
-  padding: 19px 39px 18px 39px;
-  color: black;
-  margin: 0 auto;
-  background: white;
-  font-size: 18px;
-  text-align: center;
-  font-style: normal;
-  width: 100%;
-  border: 1px solid #16a085;
-  border-width: 1px 1px 3px;
-  margin-bottom: 10px;
+  background-color: #f4f4f4;
+  color: gray;
+  border: 1px solid gray;
+  margin-bottom: 10%;
 }
 
-form button {
-  padding: 10px 25px;
-  background-color: gray;
-  border-radius: 0.5em;
-  margin-top: 0;
-  color: #f4f4f4;
+.form__buttons {
+  display: flex;
+  flex-direction: column;
+  small {
+    margin-bottom: 5%;
+  }
+  button {
+    padding: 10px 25px;
+    background-color: #77a2fc;
+    border-radius: 0.5em;
+    margin-top: 0;
+    color: white;
+  }
 }

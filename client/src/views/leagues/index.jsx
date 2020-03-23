@@ -49,14 +49,20 @@ export default class Leagues extends Component {
   render() {
     const leagues = this.state.leagues;
     return (
-      <section className="League">
-        <h1>League Selection</h1>
-        {leagues.map(league => (
-          <h5 key={league.idLeague}>
-            <Link to={`/league/id/${league.idLeague}`}>{league.strLeague}</Link>
-          </h5>
-        ))}
-      </section>
+      <div>
+        <section className="league">
+          <h1>League Selection</h1>
+          <p>
+            Select the league you want, for access to club information, current league standings and
+            previous seasons.
+          </p>
+          {leagues.map(league => (
+            <h5 key={league.idLeague}>
+              <Link to={`/league/id/${league.idLeague}`}>{league.strLeague}</Link>
+            </h5>
+          ))}
+        </section>
+      </div>
     );
   }
 }
