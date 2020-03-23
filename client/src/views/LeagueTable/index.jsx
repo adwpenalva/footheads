@@ -10,21 +10,68 @@ export default class LeagueTable extends Component {
 
     this.state = {
       leagueTable: null,
-      season: ''
+      season: '1920',
+      leagueId: '',
+      helper: ''
     };
     this.fetchTableLeagueInfo = this.fetchTableLeagueInfo.bind(this);
     this.manageLeagueSeason = this.manageLeagueSeason.bind(this);
   }
   componentDidMount() {
-    let season;
-    this.props.match.params.id === '4351' ? (season = '2019') : (season = '1920');
-    this.setState({ season });
+    // let season = '1920';
+    // this.props.match.params.id === '4351' ? (season = '2019') : (season = '1920');
+    // this.setState({ season });
     this.fetchTableLeagueInfo();
   }
 
   fetchTableLeagueInfo() {
     const id = this.props.match.params.id;
     const season = this.state.season;
+    let helper;
+    this.setState({
+      leagueId: id
+    });
+    switch (id) {
+      case '4328':
+        helper =
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/EPL_ogiwsm.png';
+        break;
+      case '4329':
+        helper =
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/CHAMPIONSHIP_zjq41y.png';
+        break;
+      case '4331':
+        helper =
+          'https://res.cloudinary.com/footheads/image/upload/v1584996670/banners/BUNDESLIGA_yffk8j.png';
+        break;
+      case '4332':
+        helper =
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/SERIEA_a5gk8r.png';
+        break;
+      case '4334':
+        helper =
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/LIGUE1_mvxhqr.jpg';
+        break;
+      case '4335':
+        helper =
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/LALIGA_pkr28e.png';
+        break;
+      case '4337':
+        helper =
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/EREDIVIS_ldjyow.png';
+        break;
+      case '4344':
+        helper =
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/LIGA_NOS_cwvjnd.jpg';
+        break;
+      case '4346':
+        helper =
+          'https://res.cloudinary.com/footheads/image/upload/v1584982293/banners/MLS_jpqxgy.png';
+        break;
+    }
+    this.setState({
+      helper
+    });
     getTableLeague(id, season)
       .then(information => {
         console.log(information);
@@ -43,9 +90,11 @@ export default class LeagueTable extends Component {
   }
 
   render() {
-    const brazileanLeague = this.props.match.params.id === '4351';
     return (
       <div className="table">
+        <figure>
+          <img src={this.state.helper} alt="lol" />
+        </figure>
         <section className="LeagueTable">
           <h2>Table</h2>
           <div className="table__opening__text">
@@ -54,21 +103,14 @@ export default class LeagueTable extends Component {
             <hr />
           </div>
           <label>Select Season</label>
-          {(brazileanLeague && (
-            <select name="season" onChange={this.manageLeagueSeason}>
-              <option value="2018">2019</option>
-              <option value="2017">2018</option>
-              <option value="2016">2017</option>
-              <option value="2015">2016</option>
-            </select>
-          )) || (
+          {
             <select name="season" onChange={this.manageLeagueSeason}>
               <option value="1920">19/20</option>
               <option value="1819">18/19</option>
               <option value="1718">17/18</option>
               <option value="1617">16/17</option>
             </select>
-          )}
+          }
           <table>
             <thead>
               <tr>
