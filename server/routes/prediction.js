@@ -9,6 +9,7 @@ const Prediction = require('./../models/predictScore');
 router.post('/post-prediction', async (req, res, next) => {
   console.log('chegou ao servidor');
   console.log('req body', req.body);
+  //we will need to make sure that a user does not predict twice.
   try {
     const postPrediction = await Prediction.create({
       userId: req.user._id,
