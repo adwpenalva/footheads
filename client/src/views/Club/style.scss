@@ -1,46 +1,63 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 
-.Club {
+.club {
   font-family: 'Source Sans Pro', sans-serif;
   background-color: #f4f4f4;
   line-height: 1.5em;
+  text-align: center;
+  h2 {
+    text-align: center;
+  }
+  .club__description {
+    text-align: center;
+    padding: 0;
+  }
+  .club__banner {
+    margin-bottom: 3vh;
+    height: 10vh;
+    width: 100%;
+  }
   .stadiumImage {
     width: 100%;
     margin: 4% 1%;
   }
-}
-.teamBanner {
-  margin-bottom: 3vh;
-  height: 10vh;
-}
-
-.badgeandjersey {
-  display: flex;
-  flex-direction: row;
-  margin: 4% 1%;
-  .teamBadge {
-    width: 50%;
-  }
-  .teamJersey {
-    width: 50%;
+  .club__badge__jersey {
+    display: flex;
+    flex-direction: row;
+    margin: 4% 1%;
+    .club__badge {
+      height: 25vh;
+      width: 50%;
+    }
+    .club__jersey {
+      height: 25vh;
+      width: 50%;
+    }
   }
 }
 
-article {
-  margin: 0 5%;
+.club__information {
+  margin: 4% 5%;
   text-align: justify;
+  h5 {
+    text-decoration: underline;
+  }
+  button {
+    color: #308dff;
+    justify-content: right;
+  }
 }
 
-// .commentList {
-//   margin-top: 4vh;
-//   border: 1px solid gray;
-//   background-color: white;
-//   border-radius: 2em;
-//   text-align: left;
-//   li {
-//     list-style: none;
-//   }
-// }
+.commentList {
+  margin-top: 4vh;
+  border: 1px solid gray;
+  background-color: white;
+  border-radius: 2em;
+  text-align: left;
+  li {
+    list-style: none;
+  }
+}
 
 .center {
   display: flex;
@@ -50,19 +67,22 @@ article {
   align-items: stretch;
   align-content: stretch;
 }
-// Links
 
-h4 {
-  font-weight: bold;
+.club__comment__input {
+  margin: 0px 2%;
+  h6 {
+    text-align: left;
+  }
 }
 
-.links {
+.club__external__links {
   display: flex;
   flex-direction: row;
-  margin: 4% 1%;
+  justify-content: space-evenly;
+  margin: 5% 1%;
 }
 
-.website {
+.club__social__links {
   width: 5vh;
   height: 5vh;
 }

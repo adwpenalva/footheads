@@ -1,8 +1,37 @@
-li {
-  list-style: none;
+.blogBox {
+  border: 0.2px gray solid;
+  border-radius: 2em;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: white;
+  .blogSingle {
+    margin: 8px;
+    .blog-personnel {
+      margin-top: 3%;
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+    }
+    p {
+      text-align: justify;
+    }
+    .blog-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      button {
+        color: #308dff;
+        background-color: #f5f5f5;
+        border: 1px white solid;
+        border-radius: 1em;
+      }
+    }
+    img {
+      width: 5vh;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+  }
 }
-
-button {
-  margin: 1vh 1vh;
-}
-

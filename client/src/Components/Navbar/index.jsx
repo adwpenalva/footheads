@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
-import './style.scss';
 import { signOut } from '../../services/authentication';
-import { Link } from 'react-router-dom';
 
 class NavBar extends Component {
   constructor() {
@@ -35,7 +33,7 @@ class NavBar extends Component {
       <div>
         {this.props.user ? (
           <div>
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar bg="success" variant="dark" expand="lg">
               <Navbar.Brand href="/">FootHeads</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
@@ -43,7 +41,7 @@ class NavBar extends Component {
                   <Nav.Link href="/profile">{this.props.user.name}'s Profile</Nav.Link>
                   <Nav.Link href="/leagues">Leagues</Nav.Link>
                   <Nav.Link href="/blog">Blog</Nav.Link>
-                  <Button variant="dark" onClick={this.handleSignOut} href="/">
+                  <Button variant="success" onClick={this.handleSignOut} href="/">
                     Sign Out
                   </Button>
                 </Nav>
@@ -52,7 +50,7 @@ class NavBar extends Component {
           </div>
         ) : (
           <div>
-            <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar bg="success" variant="dark" expand="lg">
               <Navbar.Brand href="/">FootHeads</Navbar.Brand>
 
               <Navbar.Toggle aria-controls="basic-navbar-nav" />

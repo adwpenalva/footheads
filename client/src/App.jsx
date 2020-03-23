@@ -52,7 +52,7 @@ class App extends Component {
   render() {
     console.log('state user in app', this.state.user);
     return (
-      <div className="App">
+      <div className="app">
         <BrowserRouter>
           <NavBar user={this.state.user} updateUserInformation={this.updateUserInformation} />
           <Switch>
@@ -84,7 +84,7 @@ class App extends Component {
               path="/profile/edit"
               authorized={this.state.user}
               exact
-              redirect={'/'}
+              redirect={'/profile'}
               render={props => (
                 <EditProfileView
                   {...props}
@@ -114,7 +114,7 @@ class App extends Component {
         <footer>
           <span>© January 2020 IronHackers </span>
           <div>
-            <p>Developed by António Penalva, Dan Burton & Filipe Nunes</p>
+            <small>Developed by António Penalva, Dan Burton & Filipe Nunes</small>
           </div>
         </footer>
       </div>

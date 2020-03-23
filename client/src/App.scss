@@ -1,23 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
 
-.App {
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  background-color: #e7ffda;
+.app {
+  background-color: #f4f4f4;
 }
 
 footer {
-  display: flex;
-  justify-content: space-between;
-  bottom: 0;
-  padding-top: 3%;
-  background-color: #3a3a47;
-  font-size: smaller;
-  width: 100%;
-  color: #f4f4f4;
-  font-size: 0.8em;
-  margin-top: 10%;
-  p {
-    padding: 2% 1%;
-  }
+  background-color: gray;
+  text-align: center;
+  color: white;
+  padding: 5% 1%;
+  text-transform: capitalize;
 }

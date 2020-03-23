@@ -36,6 +36,20 @@ export const getTeamInfo = async id => {
   }
 };
 
+//CREATE A SERVICE THAT PASSSES TO THE FRONT END ONLY THE SOCCER LEAGUES
+
+export const allSoccerLeagues = async () => {
+  try {
+    const allLeagues = await axios.get('https://www.thesportsdb.com/api/v1/json/1/all_leagues.php');
+    console.log(allLeagues);
+    const soccerLeagues = allLeagues.data.leagues.filter(league => league.strSport === 'Soccer');
+    return soccerLeagues;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
 //always data
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 // NEXT 5 FIXTURE BY TEAM ID

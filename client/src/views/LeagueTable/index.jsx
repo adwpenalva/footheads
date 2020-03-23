@@ -45,9 +45,14 @@ export default class LeagueTable extends Component {
   render() {
     const brazileanLeague = this.props.match.params.id === '4351';
     return (
-      <div>
+      <div className="table">
         <section className="LeagueTable">
           <h2>Table</h2>
+          <div className="table__opening__text">
+            <hr />
+            <p>Continuous updates are made after each game to keep on top of all the action.</p>
+            <hr />
+          </div>
           <label>Select Season</label>
           {(brazileanLeague && (
             <select name="season" onChange={this.manageLeagueSeason}>
@@ -67,7 +72,7 @@ export default class LeagueTable extends Component {
           <table>
             <thead>
               <tr>
-                <th>Pos</th>
+                <th>-</th>
                 <th>Team</th>
                 <th>GP</th>
                 <th>W</th>
@@ -76,7 +81,7 @@ export default class LeagueTable extends Component {
                 <th>GF</th>
                 <th>GA</th>
                 <th>GD</th>
-                <th>Points</th>
+                <th>PTS</th>
               </tr>
             </thead>
             <tbody>
@@ -95,7 +100,9 @@ export default class LeagueTable extends Component {
                       <td>{val.goalsfor}</td>
                       <td>{val.goalsagainst}</td>
                       <td>{val.goalsdifference}</td>
-                      <td>{val.total}</td>
+                      <td>
+                        <b>{val.total}</b>
+                      </td>
                     </tr>
                   );
                 })}

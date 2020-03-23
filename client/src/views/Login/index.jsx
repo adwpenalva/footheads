@@ -40,35 +40,39 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="form-style page-container">
-        <h1>Login</h1>
-        <h5>Welcome back!</h5>
-        <p>Login to receive access to latest blogs & comments.</p>
-        <form onSubmit={this.handleFormSubmission} className="form-style">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Email"
-            onChange={this.handleInputChange}
-            value={this.state.email}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={this.handleInputChange}
-            value={this.state.password}
-          />
-          <small>
-            Not a member? Sign up
-            <Link to="/sign-up"> here</Link>
-          </small>
-          <button>Sign in</button>
-        </form>
+      <div className="login">
+        <div className="form__style">
+          <h1>Login</h1>
+          <h5>Welcome back!</h5>
+          <p>Login to receive access to latest blogs & comments.</p>
+          <form onSubmit={this.handleFormSubmission}>
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Email"
+              onChange={this.handleInputChange}
+              value={this.state.email}
+            />
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={this.handleInputChange}
+              value={this.state.password}
+            />
+            <div className="form__buttons">
+              <small>
+                Not a member? Sign up
+                <Link to="/sign-up"> here</Link>
+              </small>
+              <button>Sign in</button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, Input, Select, TextArea } from 'semantic-ui-react';
+import { Button, Form, Select, TextArea } from 'semantic-ui-react';
 import { findPost } from './../../services/post';
 import { editPost } from './../../services/post';
 
