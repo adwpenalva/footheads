@@ -14,7 +14,8 @@ export class PredictScore extends Component {
       predictionPick: '',
       percentageHome: 40,
       percentageAway: 40,
-      percentageDraw: 20
+      percentageDraw: 20,
+      showButton: true
     };
     this.handleChange = this.handleChange.bind(this);
     this.postPredictionTeste = this.postPredictionTeste.bind(this);
@@ -83,7 +84,8 @@ export class PredictScore extends Component {
         percentageAway,
         percentageDraw,
         homeTeamBadge,
-        awayTeamBadge
+        awayTeamBadge,
+        showButton: false
       });
     }
   }
@@ -198,7 +200,7 @@ export class PredictScore extends Component {
               onChange={this.handleChange}
             />
           </Form.Group>
-          <button>Submit prediction</button>
+          {this.state.showButton && <button>Submit prediction</button>}
         </Form>
       </div>
     );
@@ -206,3 +208,10 @@ export class PredictScore extends Component {
 }
 
 export default PredictScore;
+
+{
+  /* {props.user._id === comment.author._id && (
+  <button onClick={() => props.removeComment(comment._id)}>delete</button>
+)}
+</div> */
+}
