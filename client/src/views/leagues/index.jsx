@@ -56,11 +56,16 @@ export default class Leagues extends Component {
             Select the league you want, for access to club information, current league standings and
             previous seasons.
           </p>
-          {leagues.map(league => (
-            <h5 key={league.idLeague}>
-              <Link to={`/league/id/${league.idLeague}`}>{league.strLeague}</Link>
-            </h5>
-          ))}
+          {leagues.map(
+            league => (
+              console.log('LEAGUE:', league),
+              (
+                <h5 key={league.idLeague}>
+                  <Link to={`/league/id/${league.idLeague}`}>{league.strLeague}</Link>
+                </h5>
+              )
+            )
+          )}
         </section>
       </div>
     );

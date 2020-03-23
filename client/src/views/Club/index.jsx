@@ -19,7 +19,8 @@ export default class ClubInfo extends Component {
       fixtures: null,
       comments: null,
       shown: false,
-      predictions: []
+      predictions: [],
+      predction: ''
     };
     this.handleCommentAddition = this.handleCommentAddition.bind(this);
     this.handleCommentRemoval = this.handleCommentRemoval.bind(this);
@@ -96,7 +97,7 @@ export default class ClubInfo extends Component {
     const mockPrediction = {
       userId: this.props.user._id,
       matchId: this.state.fixtures[0]['idEvent'],
-      prediction: 'Home'
+      prediction: this.state.predction
     };
     try {
       const predictionDone = await postPrediction(mockPrediction);
@@ -145,6 +146,8 @@ export default class ClubInfo extends Component {
                 <h2>Next Fixtures</h2>
                 {this.state.fixtures &&
                   this.state.fixtures.map(event => {
+                    const matchId = this.state.fixtures;
+                    console.log('MATCH ID:', matchId, 'EVENT:', event);
                     return (
                       <div>
                         <table>
@@ -156,12 +159,12 @@ export default class ClubInfo extends Component {
                             </tr>
                           </thead>
                         </table>
-                        <PredictScoreBar {...event} {...this.props.user}/>
+                        <PredictScoreBar {...event} {...this.props.user} />
                         <button onClick={this.postPredictionTeste}>Submit predictions</button>
                       </div>
                     );
                   })}
-                
+
                 <div>
                   <div className="club__comment__input">
                     <h6>Comments:</h6>
