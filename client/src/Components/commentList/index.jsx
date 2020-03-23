@@ -7,10 +7,10 @@ const commentsList = props => {
     <div className="">
       {props.comments &&
         props.comments.map(comment => (
-          <div className="commentBox">
-            <div className="commentSingle">
+          <div className="club__comment__box">
+            <div className="club__comment__single">
               <img src={props.user.picture} alt="Users " />
-              <div className="commentTitle">
+              <div className="club__comment__title">
                 <h6>{comment.author.name}</h6>
                 <small>{comment.creationDate.substring(0, 10)}</small>
               </div>

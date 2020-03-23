@@ -62,8 +62,8 @@ class BlogPosting extends Component {
   render() {
     //const { value } = this.state;
     return (
-      <div className="blog-container">
-        <div className="blog-description">
+      <div className="blog__container">
+        <div className="blog__description">
           <h1>Blog</h1>
           <h5>Share your most memorable experiences with other football fans worldwide.</h5>
           <button onClick={this.togglePost}> Enter your experience</button>
@@ -75,7 +75,6 @@ class BlogPosting extends Component {
               <Form.Field
                 control={Select}
                 name="typeOfExperience"
-                label="Type of experience"
                 onChange={this.handleOptionsChange}
                 value={this.state.typeOfExperience}
                 options={options}
@@ -84,7 +83,6 @@ class BlogPosting extends Component {
             </Form.Group>
             <Form.Field
               control={TextArea}
-              label="The experience itself"
               onChange={this.handleInputChange}
               value={this.state.content}
               name="content"

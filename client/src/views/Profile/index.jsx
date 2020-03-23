@@ -53,7 +53,7 @@ class ProfileView extends Component {
               </div>
               <div className="profile__description">
                 <p>
-                  <strong>About me:</strong>
+                  <strong>About Me:</strong>
                   <br />
 
                   {user.bio}
@@ -65,12 +65,12 @@ class ProfileView extends Component {
                   {user.favoritePlayer}
                 </p>
                 <hr />
-                <p>
+                {/* <p>
                   <strong>Favorite Team:</strong>
                   <br />
                   {user.favoriteTeam}
                 </p>
-                <hr />
+                <hr /> */}
                 {
                   <p>
                     <strong>My team's name:</strong>
