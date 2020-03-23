@@ -8,8 +8,9 @@ const commentsList = props => {
       {props.comments &&
         props.comments.map(comment => (
           <div className="club__comment__box">
+            {/* {JSON.stringify(comment, null, 2)} */}
             <div className="club__comment__single">
-              <img src={props.user.picture} alt="Users " />
+              <img src={comment.author.picture} alt="Users " />
               <div className="club__comment__title">
                 <h6>{comment.author.name}</h6>
                 <small>{comment.creationDate.substring(0, 10)}</small>

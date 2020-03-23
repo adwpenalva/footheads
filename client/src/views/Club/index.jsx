@@ -8,6 +8,7 @@ import './style.scss';
 import { createComment } from './../../services/comment';
 import { listComments } from './../../services/comment';
 import { deleteComment } from './../../services/comment';
+import { postPrediction } from './../../services/prediction';
 
 export default class ClubInfo extends Component {
   constructor(props) {
@@ -17,11 +18,13 @@ export default class ClubInfo extends Component {
       club: null,
       fixtures: null,
       comments: null,
-      shown: false
+      shown: false,
+      predictions: []
     };
     this.handleCommentAddition = this.handleCommentAddition.bind(this);
     this.handleCommentRemoval = this.handleCommentRemoval.bind(this);
     this.commentFinder = this.commentFinder.bind(this);
+    this.postPredictionTeste = this.postPredictionTeste.bind(this);
   }
   componentDidMount() {
     console.log('help - user should be here', this.props.user);
@@ -89,6 +92,31 @@ export default class ClubInfo extends Component {
     }
   }
 
+  async postPredictionTeste(prediction) {
+    const mockPrediction = {
+      userId: this.props.user._id,
+      matchId: this.state.fixtures[0]['idEvent'],
+      prediction: 'Home'
+    };
+    try {
+      const predictionDone = await postPrediction(mockPrediction);
+    } catch (error) {
+      console.log(error);
+    }
+
+    // const commentDone = await createComment(this.state.club[0].idTeam, comment.content);
+    // const sendPostPrediction = await postPrediction();
+    // const prediction = 'VH';
+    // const user_id = this.props.user._id;
+    // this.state.fixtures.map(fixture => {
+    //   console.log(fixture.idEvent);
+    //   sendPostPrediction(user_id, fixture.idEvent, prediction);
+    // });
+
+    // console.log('this.state.fixtures');
+    // console.log(this.state.fixtures);
+  }
+
   render() {
     console.log('state comments', this.state.comments);
     return (
@@ -128,81 +156,87 @@ export default class ClubInfo extends Component {
                             </tr>
                           </thead>
                         </table>
-                        <PredictScoreBar {...event} />
+                        <PredictScoreBar {...event} {...this.props.user}/>
+                        <button onClick={this.postPredictionTeste}>Submit predictions</button>
                       </div>
                     );
                   })}
-                <div className="club__comment__input">
-                  <h6>Comments:</h6>
-                  {this.props.user && <CommentInput addComment={this.handleCommentAddition} />}
-                  <div className="center">
-                    {this.props.user && (
-                      <CommentList
-                        comments={this.state.comments}
-                        removeComment={this.handleCommentRemoval}
-                        user={this.props.user}
-                      />
-                    )}
+                
+                <div>
+                  <div className="club__comment__input">
+                    <h6>Comments:</h6>
+                    {this.props.user && <CommentInput addComment={this.handleCommentAddition} />}
+                    <div className="center">
+                      {this.props.user && (
+                        <CommentList
+                          comments={this.state.comments}
+                          removeComment={this.handleCommentRemoval}
+                          user={this.props.user}
+                        />
+                      )}
+                    </div>
                   </div>
-                </div>
-                <article className="club__information">
-                  <h5>Find out a bit about {val.strTeam}:</h5>
+                  <article className="club__information">
+                    <h5>Find out a bit about {val.strTeam}:</h5>
+                    <p>
+                      {this.state.shown
+                        ? val.strDescriptionEN
+                        : val.strDescriptionEN.substring(0, 250) + '...'}
+                    </p>
+                    {(!this.state.shown && (
+                      <button onClick={() => this.setState({ shown: true })}>Show more</button>
+                    )) || (
+                      <button onClick={() => this.setState({ shown: false })}>Show less</button>
+                    )}
+                  </article>
                   <p>
-                    {this.state.shown
-                      ? val.strDescriptionEN
-                      : val.strDescriptionEN.substring(0, 250) + '...'}
+                    {val.strStadium} - {val.strStadiumLocation}
                   </p>
-                  {(!this.state.shown && (
-                    <button onClick={() => this.setState({ shown: true })}>Show more</button>
-                  )) || <button onClick={() => this.setState({ shown: false })}>Show less</button>}
-                </article>
-                <p>
-                  {val.strStadium} - {val.strStadiumLocation}
-                </p>
-                <p>Capacity: {val.intStadiumCapacity}</p>
-                <img className="stadiumImage" src={val.strStadiumThumb} alt={val.strStadium} />
-                <br />
-                <small>Social Media</small>
-                <div className="club__external__links">
-                  {/*<button onClick={e => this.props.history.push('facebook.com')}>
+                  <p>Capacity: {val.intStadiumCapacity}</p>
+                  <img className="stadiumImage" src={val.strStadiumThumb} alt={val.strStadium} />
+                  <br />
+                  <small>Social Media</small>
+                  <div className="club__external__links">
+                    {/*<button onClick={e => this.props.history.push('facebook.com')}>
                     facebook test
                   </button>*/}
-                  {val.strWebsite && (
-                    <a href={`https://${val.strWebsite}`}>
-                      <img
-                        className="club__social__links"
-                        src="/images/www.png"
-                        alt="official website"
-                      />
-                    </a>
-                  )}
-                  {val.strFacebook && (
-                    <a href={`https://${val.strFacebook}`}>
-                      <img
-                        className="club__social__links"
-                        src="/images/facebook.png"
-                        alt="facebook"
-                      />
-                    </a>
-                  )}
-                  {val.strTwitter && (
-                    <a href={`https://${val.strTwitter}`}>
-                      <img
-                        className="club__social__links"
-                        src="/images/twitter.png"
-                        alt="twitter"
-                      />
-                    </a>
-                  )}
-                  {val.strInstagram && (
-                    <a href={`https://${val.strInstagram}`}>
-                      <img
-                        className="club__social__links"
-                        src="/images/instagram-sketched.png"
-                        alt="instagram"
-                      />
-                    </a>
-                  )}
+                    {val.strWebsite && (
+                      <a href={`https://${val.strWebsite}`}>
+                        <img
+                          className="club__social__links"
+                          src="/images/www.png"
+                          alt="official website"
+                        />
+                      </a>
+                    )}
+                    {val.strFacebook && (
+                      <a href={`https://${val.strFacebook}`}>
+                        <img
+                          className="club__social__links"
+                          src="/images/facebook.png"
+                          alt="facebook"
+                        />
+                      </a>
+                    )}
+                    {val.strTwitter && (
+                      <a href={`https://${val.strTwitter}`}>
+                        <img
+                          className="club__social__links"
+                          src="/images/twitter.png"
+                          alt="twitter"
+                        />
+                      </a>
+                    )}
+                    {val.strInstagram && (
+                      <a href={`https://${val.strInstagram}`}>
+                        <img
+                          className="club__social__links"
+                          src="/images/instagram-sketched.png"
+                          alt="instagram"
+                        />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             );

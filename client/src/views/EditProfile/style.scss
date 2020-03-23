@@ -16,7 +16,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 1em;
+    background-color: gray;
+    margin: 0;
+    padding: 2% 0;
   }
   .profile__edit__img {
     width: 50%;
@@ -35,7 +37,7 @@
     h1,
     h5,
     p {
-      margin-top: 10%;
+      // margin-top: 10%;
       text-align: center;
     }
   }
@@ -58,5 +60,7 @@
     border-radius: 0.5em;
     margin-top: 0;
     color: white;
+    outline: none;
+    border: none;
   }
 }

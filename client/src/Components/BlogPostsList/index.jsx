@@ -16,7 +16,7 @@ const BlogPostsList = props => {
                     <i>Type of experience:</i> {post.typeOfExperience}
                   </h5>
                   <div className="blog-personnel">
-                    <img src={props.user.picture} alt="Users " />
+                    <img src={post.author.picture} alt="Users " />
                     <small>Posted by: {post.author.name}</small>
                   </div>
                   <p>{post.content}</p>
@@ -38,7 +38,7 @@ const BlogPostsList = props => {
                     <i>Type of experience:</i> {post.typeOfExperience}
                   </h5>
                   <div className="blog-personnel">
-                    <img src={props.user.picture} alt="Users " />
+                    <img src={post.author.picture} alt="Users " />
                     <small>Posted by: {post.author.name}</small>
                   </div>
                   <p>{post.content}</p>
@@ -60,7 +60,7 @@ const BlogPostsList = props => {
                     <i>Type of experience:</i> {post.typeOfExperience}
                   </h5>
                   <div className="blog-personnel">
-                    <img src={props.user.picture} alt="Users " />
+                    <img src={post.author.picture} alt="Users " />
                     <small>Posted by: {post.author.name}</small>
                   </div>
                   <p>{post.content}</p>

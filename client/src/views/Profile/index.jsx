@@ -16,7 +16,6 @@ class ProfileView extends Component {
     try {
       const user = await loadUserInformation();
       const team = await getTeamInfo(Number(user.favoriteTeam));
-      console.log('TEAM ON TRY', team.data.teams[0]);
       this.setState({
         teamInfo: team.data.teams[0]
       });
@@ -68,7 +67,7 @@ class ProfileView extends Component {
                 {/* <p>
                   <strong>Favorite Team:</strong>
                   <br />
-                  {user.favoriteTeam}
+                  {this.state.teamInfo.strTeam}
                 </p>
                 <hr /> */}
                 {
