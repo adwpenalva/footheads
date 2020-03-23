@@ -19,6 +19,7 @@ const blogRouter = require('./routes/post');
 const predictionRouter = require('./routes/prediction');
 const app = express();
 
+app.use(express.static(join(__dirname, './../client/build')));
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(express.json());
@@ -31,8 +32,7 @@ app.use(
     cookie: {
       maxAge: 60 * 60 * 24 * 15,
       sameSite: 'lax',
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production'
+      httpOnly: true
     },
     store: new (connectMongo(expressSession))({
       mongooseConnection: mongoose.connection,
@@ -49,6 +49,10 @@ app.use('/api/authentication', authenticationRouter);
 app.use('/api/comment', commentRouter);
 app.use('/api/blog', blogRouter);
 app.use('/api/prediction', predictionRouter);
+
+app.get('*', (req, res, next) => {
+  res.sendFile(join(__dirname, './../client/build/index.html'));
+});
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
