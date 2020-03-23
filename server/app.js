@@ -16,7 +16,7 @@ const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const commentRouter = require('./routes/comment');
 const blogRouter = require('./routes/post');
-
+const predictionRouter = require('./routes/prediction');
 const app = express();
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
@@ -48,6 +48,7 @@ app.use('/', indexRouter);
 app.use('/api/authentication', authenticationRouter);
 app.use('/api/comment', commentRouter);
 app.use('/api/blog', blogRouter);
+app.use('/api/prediction', predictionRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

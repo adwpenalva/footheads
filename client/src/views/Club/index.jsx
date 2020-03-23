@@ -8,6 +8,7 @@ import './style.scss';
 import { createComment } from './../../services/comment';
 import { listComments } from './../../services/comment';
 import { deleteComment } from './../../services/comment';
+import { postPrediction } from './../../services/prediction';
 
 export default class ClubInfo extends Component {
   constructor(props) {
@@ -17,11 +18,13 @@ export default class ClubInfo extends Component {
       club: null,
       fixtures: null,
       comments: null,
-      shown: false
+      shown: false,
+      predictions: []
     };
     this.handleCommentAddition = this.handleCommentAddition.bind(this);
     this.handleCommentRemoval = this.handleCommentRemoval.bind(this);
     this.commentFinder = this.commentFinder.bind(this);
+    this.postPredictionTeste = this.postPredictionTeste.bind(this);
   }
   componentDidMount() {
     console.log('help - user should be here', this.props.user);
@@ -89,6 +92,31 @@ export default class ClubInfo extends Component {
     }
   }
 
+  async postPredictionTeste(prediction) {
+    const mockPrediction = {
+      userId: this.props.user._id,
+      matchId: this.state.fixtures[0]['idEvent'],
+      predictionTeste: 'VH'
+    };
+    try {
+      const predictionDone = await postPrediction(mockPrediction);
+    } catch (error) {
+      console.log(error);
+    }
+
+    // const commentDone = await createComment(this.state.club[0].idTeam, comment.content);
+    // const sendPostPrediction = await postPrediction();
+    // const prediction = 'VH';
+    // const user_id = this.props.user._id;
+    // this.state.fixtures.map(fixture => {
+    //   console.log(fixture.idEvent);
+    //   sendPostPrediction(user_id, fixture.idEvent, prediction);
+    // });
+
+    // console.log('this.state.fixtures');
+    // console.log(this.state.fixtures);
+  }
+
   render() {
     console.log('state comments', this.state.comments);
     return (
@@ -130,6 +158,7 @@ export default class ClubInfo extends Component {
                       </div>
                     );
                   })}
+                <button onClick={this.postPredictionTeste}>Submit predictions</button>
                 <div>
                   {this.props.user && <CommentInput addComment={this.handleCommentAddition} />}
                   <div className="center">

@@ -9,8 +9,10 @@ export class PredictScore extends Component {
     super(props);
     this.state = {
       homeTeamBadge: null,
-      awayTeamBadge: null
+      awayTeamBadge: null,
+      predictionPick: ''
     };
+    this.handleChange = this.handleChange.bind(this);
   }
   async componentDidMount() {
     console.log('im running');
@@ -31,7 +33,26 @@ export class PredictScore extends Component {
     }
   }
 
-  handleChange = (e, { value }) => this.setState({ value });
+  handleChange = (e, { value }) => {
+    console.log(value);
+
+    if (value === 'WH') {
+      console.log('Home team selected');
+      this.setState({ predictionPick: 'WH' });
+    } else if (value === 'WA') {
+      console.log('Away team selected');
+      this.setState({ predictionPick: 'WA' });
+    } else if (value === 'D') {
+      console.log('Draw');
+      this.setState({
+        predictionPick: 'D'
+      });
+    }
+    console.log('this.state.predictionPick');
+    console.log(this.state.predictionPick);
+
+    this.setState({ value });
+  };
 
   render() {
     const { value } = this.state;
@@ -47,7 +68,7 @@ export class PredictScore extends Component {
             label={
               homeTeamBadge && (
                 <img
-                  style={{ width: '13%', margin: '0 auto' }}
+                  style={{ width: '10vh', margin: '0 auto' }}
                   src={homeTeamBadge}
                   alt="homeTeamBadge"
                 />
@@ -63,7 +84,7 @@ export class PredictScore extends Component {
             label={
               awayTeamBadge && (
                 <img
-                  style={{ width: '13%', margin: '0 auto' }}
+                  style={{ width: '10vh', margin: '0 auto' }}
                   src={awayTeamBadge}
                   alt="awayTeamBadge"
                 />
