@@ -14,21 +14,83 @@ export default class Leagues extends Component {
     };
   }
   async componentDidMount() {
-    const top10Leagues = ['4328', '4329', '4331', '4332', '4334', '4335', '4337', '4344', '4346'];
+    const top10Leagues = [
+      {
+        id: '4328',
+        image:
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/EPL_ogiwsm.png'
+      },
+      {
+        id: '4329',
+        image:
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/CHAMPIONSHIP_zjq41y.png'
+      },
+      {
+        id: '4331',
+        image:
+          'https://res.cloudinary.com/footheads/image/upload/v1584996670/banners/BUNDESLIGA_yffk8j.png'
+      },
+      {
+        id: '4332',
+        image:
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/SERIEA_a5gk8r.png'
+      },
+      {
+        id: '4334',
+        image:
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/LIGUE1_mvxhqr.jpg'
+      },
+      {
+        id: '4335',
+        image:
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/LALIGA_pkr28e.png'
+      },
+      {
+        id: '4337',
+        image:
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/EREDIVIS_ldjyow.png'
+      },
+      {
+        id: '4344',
+        image:
+          'https://res.cloudinary.com/footheads/image/upload/v1584982292/banners/LIGA_NOS_cwvjnd.jpg'
+      },
+      {
+        id: '4346',
+        image:
+          'https://res.cloudinary.com/footheads/image/upload/v1584982293/banners/MLS_jpqxgy.png'
+      }
+    ];
+
     try {
       const allLeagues = await getAllLeagues();
 
-      const leagues = allLeagues.filter(singleLeague => {
-        if (top10Leagues.indexOf(singleLeague.idLeague) >= 0) {
-          return true;
-        } else {
-          return false;
-        }
-      });
+      // console.log('MAPPED TOP 10', leagueIds);
+      // const leagues = allLeagues.filter(singleLeague => {
+      //   if (leagueIds.indexOf(singleLeague.idLeague) >= 0) {
+      //     return true;
+      //   } else {
+      //     return false;
+      //   }
+      // });
 
-      console.log(leagues);
+      // console.log('LEAGUES HERE!!!!!:', leagues);
+      const filteredTeams = [];
+      const teamObject = {};
+      for (let team of allLeagues) {
+        for (let topTeam of top10Leagues) {
+          if (team.idLeague === topTeam.id) {
+            filteredTeams.push({
+              ...team,
+              topTeam
+            });
+          }
+        }
+      }
+      console.log('FILTERED TEAMS ', filteredTeams);
+
       this.setState({
-        leagues
+        leagues: filteredTeams
       });
     } catch (error) {
       console.log(error);
@@ -50,7 +112,9 @@ export default class Leagues extends Component {
               console.log('LEAGUE:', league),
               (
                 <h5 key={league.idLeague}>
-                  <Link to={`/league/id/${league.idLeague}`}>{league.strLeague}</Link>
+                  <Link to={`/league/id/${league.idLeague}`}>
+                    <img src={league.topTeam.image} alt="lol" />
+                  </Link>
                 </h5>
               )
             )

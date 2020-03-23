@@ -229,6 +229,7 @@ class EditProfileView extends Component {
                   </select>
                 </Fragment>
               )}
+              <hr />
               <button onClick={this.toggleDreamTeam}>Pick your DreamTeam!</button>
               {this.state.best11Form && (
                 <Fragment>
@@ -333,6 +334,7 @@ class EditProfileView extends Component {
                   />
                 </Fragment>
               )}
+              <hr />
               <label htmlFor="bio">Bio</label>
               <textarea
                 id="bio"
