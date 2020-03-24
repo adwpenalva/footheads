@@ -13,6 +13,7 @@ import LeagueTable from './views/LeagueTable';
 import Blog from './views/Blog';
 import EditProfileView from './views/EditProfile';
 import EditPost from './views/EditPost';
+import UserProfile from './views/UserProfile';
 
 import ProtectedRoute from './Components/ProtectedRoute.jsx';
 
@@ -107,6 +108,11 @@ class App extends Component {
             <Route
               path="/profile"
               render={props => <Profile user={this.state.user} {...props} />}
+              exact
+            />
+            <Route
+              path="/user/:Id"
+              render={props => <UserProfile user={this.state.user} {...props} />}
               exact
             />
           </Switch>

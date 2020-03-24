@@ -18,9 +18,6 @@ export default class LeagueTable extends Component {
     this.manageLeagueSeason = this.manageLeagueSeason.bind(this);
   }
   componentDidMount() {
-    // let season = '1920';
-    // this.props.match.params.id === '4351' ? (season = '2019') : (season = '1920');
-    // this.setState({ season });
     this.fetchTableLeagueInfo();
   }
 

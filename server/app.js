@@ -17,6 +17,7 @@ const authenticationRouter = require('./routes/authentication');
 const commentRouter = require('./routes/comment');
 const blogRouter = require('./routes/post');
 const predictionRouter = require('./routes/prediction');
+const userRouter = require('./routes/user');
 const app = express();
 
 app.use(express.static(join(__dirname, './../client/build')));
@@ -49,6 +50,7 @@ app.use('/api/authentication', authenticationRouter);
 app.use('/api/comment', commentRouter);
 app.use('/api/blog', blogRouter);
 app.use('/api/prediction', predictionRouter);
+app.use('/user', userRouter);
 
 app.get('*', (req, res, next) => {
   res.sendFile(join(__dirname, './../client/build/index.html'));
