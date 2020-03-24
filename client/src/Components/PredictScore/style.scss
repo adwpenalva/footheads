@@ -1,3 +1,8 @@
+.score__prediction {
+  display: flex;
+  flex-direction: column;
+}
+
 .comparison-bar {
   height: 2.5rem !important;
   display: flex;
@@ -10,14 +15,9 @@
   font-weight: 900;
 }
 
-.radio {
-  display: flex;
-  flex-direction: row;
-  margin-top: 1vh;
-}
-
 .predictions__radio {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
