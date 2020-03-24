@@ -28,10 +28,10 @@ class UserProfile extends Component {
 
   render() {
     return (
-      <div>
+      <div className="center__user">
         {this.state.user && (
-          <div className="profile">
-            <div className="profile__opening">
+          <div className="user__profile">
+            <div className="user__profile__opening">
               <img className="profile__img" src={this.state.user.picture} alt="profile picture" />
             </div>
             <div className="profile__name__badge">
@@ -55,62 +55,52 @@ class UserProfile extends Component {
                 <strong>Favorite Team:</strong> {this.state.teamInfo.strTeam}
               </p>
               <hr />
-              <p>
-                <strong>Best 11:</strong>
-                <br />
-                <div className="formation">
-                  <div>
-                    <strong>Goalkeeper: </strong>
-                    {this.state.user.best1}
+              <strong>Best XI:</strong>
+              <div className="center">
+                <div className="pitch">
+                  <div className="gk">
+                    <div>GK</div>
                   </div>
-                  <br />
-                  <div>
-                    <strong>Right Back: </strong>
-                    {this.state.user.best2}
-                    <br />
-                    <strong>Center Back: </strong>
-                    {this.state.user.best3}
-                    <br />
-                    <strong>Center Back: </strong>
-                    {this.state.user.best4}
-                    <br />
-                    <strong>Left Back: </strong>
-                    {this.state.user.best6}
+                  <div className="names">
+                    <div>{this.state.user.best1}</div>
                   </div>
-                  <br />
-                  <div>
-                    <strong>Defensive Middlefielder: </strong>
-                    {this.state.user.best5}
-                    <br />
-                    <strong>Central Middlefielder: </strong>
-                    {this.state.user.best8}
-                    <br />
-                    <strong>Offensive Middlefielder: </strong>
-                    {this.state.user.best7}
-                    <br />
-                    <strong>Offensive Middlefielder: </strong>
-                    {this.state.user.best10}
+
+                  <div className="df">
+                    <div>RB</div>
+                    <div>CB</div>
+                    <div>CB</div>
+                    <div>LB</div>
                   </div>
-                  <br />
-                  <div>
-                    <strong>Striker: </strong>
-                    {this.state.user.best9}
-                    <br />
-                    <strong>Striker: </strong>
-                    {this.state.user.best11}
+                  <div className="names">
+                    <div>{this.state.user.best2}</div>
+                    <div>{this.state.user.best3}</div>
+                    <div>{this.state.user.best4}</div>
+                    <div>{this.state.user.best6}</div>
                   </div>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
+
+                  <div className="mf">
+                    <div>RM</div>
+                    <div>CM</div>
+                    <div>CM</div>
+                    <div>LM</div>
+                  </div>
+                  <div className="names">
+                    <div>{this.state.user.best10}</div>
+                    <div>{this.state.user.best5}</div>
+                    <div>{this.state.user.best8}</div>
+                    <div>{this.state.user.best7}</div>
+                  </div>
+
+                  <div className="str">
+                    <div>ST</div>
+                    <div>ST</div>
+                  </div>
+                  <div className="names">
+                    <div>{this.state.user.best9}</div>
+                    <div>{this.state.user.best11}</div>
+                  </div>
                 </div>
-              </p>
+              </div>
             </div>
           </div>
         )}

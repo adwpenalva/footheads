@@ -173,9 +173,6 @@ export default class ClubInfo extends Component {
                   <br />
                   <small>Social Media</small>
                   <div className="club__external__links">
-                    {/*<button onClick={e => this.props.history.push('facebook.com')}>
-                    facebook test
-                  </button>*/}
                     {val.strWebsite && (
                       <a href={`https://${val.strWebsite}`}>
                         <img

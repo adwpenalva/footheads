@@ -45,7 +45,28 @@
     margin-top: 5%;
   }
 }
+.center {
+  align-items: center;
+  margin-bottom: 5vh;
+}
 
+.gk,
+.df,
+.mf,
+.str {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5vh;
+}
+.names p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.pitch {
+  color: white;
+}
 @media only screen and (min-width: 700px) {
   .profile {
     justify-content: center;
@@ -55,9 +76,10 @@
     width: 60%;
     justify-content: center;
     margin-bottom: 10%;
+    .pitch {
+      background-image: url('https://www.karenfosterdesign.com/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/6/4/64859_my_soccer_field.jpg');
+      // color: white;
+      width: 100%;
+    }
   }
-  // .profile__description {
-  //   display: flex;
-  //   justify-content: space-evenly;
-  // }
 }

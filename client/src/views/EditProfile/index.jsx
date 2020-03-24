@@ -257,6 +257,7 @@ class EditProfileView extends Component {
               <button onClick={this.toggleDreamTeam}>Pick your DreamTeam!</button>
               {this.state.best11Form && (
                 <Fragment>
+                  <br />
                   <label htmlFor="best1">Goalkeeper</label>
                   <input
                     id="best1"

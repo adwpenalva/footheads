@@ -1,4 +1,4 @@
-.profile {
+.user__profile {
   min-height: 100vh;
   text-align: center;
 
@@ -6,7 +6,7 @@
     margin-top: 5%;
   }
 
-  .profile__opening {
+  .user__profile__opening {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -15,8 +15,9 @@
     margin-bottom: 5%;
     padding: 0 5%;
     .profile__img {
-      width: 50%;
+      width: 20%;
       border-radius: 50%;
+      justify-content: center;
     }
     .profile__edit__favicon {
       background-color: white;
@@ -47,12 +48,43 @@
   }
 }
 
-.formation {
-  display: block;
-  width: 100%;
-  height: 100%;
-  //margin: 1vh auto 3vh auto;
-  background-image: url('/images/lineup.png');
-  background-size: 100%;
-  margin-bottom: 1vh;
+.center {
+  align-items: center;
+  margin-bottom: 5vh;
+}
+
+.gk,
+.df,
+.mf,
+.str {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 5vh;
+}
+.names {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.pitch {
+  width: 90vw;
+  background-image: url('https://www.karenfosterdesign.com/media/catalog/product/cache/5/image/9df78eab33525d08d6e5fb8d27136e95/6/4/64859_my_soccer_field.jpg');
+  background-size: cover;
+}
+
+@media only screen and (min-width: 700px) {
+  .center__user {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .user__profile {
+    width: 60%;
+    .pitch {
+      width: 100%;
+    }
+  }
 }

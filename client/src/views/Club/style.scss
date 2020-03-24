@@ -47,16 +47,15 @@
   button {
     color: #308dff;
     justify-content: right;
+    border: none;
+    background-color: inherit;
   }
 }
 
 .center {
-  display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: stretch;
-  align-content: stretch;
+  align-items: center;
+  width: 100%;
 }
 
 .club__comment__input {

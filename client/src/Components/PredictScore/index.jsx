@@ -132,7 +132,7 @@ export class PredictScore extends Component {
     // const strAwayTeam = event.strAwayTeam;
     // const strHomeTeam = event.strHomeTeam;
     return (
-      <div>
+      <div classname="predict__score__button">
         <ProgressBar className="comparison-bar">
           <ProgressBar
             className="barNames"
