@@ -78,42 +78,53 @@ class ProfileView extends Component {
                   </p>
                 }
                 <hr />
-                <p>
-                  <strong>My best 11:</strong>
-                  <br />
-                  <strong>Goalkeeper: </strong>
-                  {user.best1}
-                  <br />
-                  <strong>Right Back: </strong>
-                  {user.best2}
-                  <br />
-                  <strong>Center Back: </strong>
-                  {user.best3}
-                  <br />
-                  <strong>Center Back: </strong>
-                  {user.best4}
-                  <br />
-                  <strong>Left Back: </strong>
-                  {user.best6}
-                  <br />
-                  <strong>Defensive Middlefielder: </strong>
-                  {user.best5}
-                  <br />
-                  <strong>Central Middlefielder: </strong>
-                  {user.best8}
-                  <br />
-                  <strong>Offensive Middlefielder: </strong>
-                  {user.best7}
-                  <br />
-                  <strong>Offensive Middlefielder: </strong>
-                  {user.best10}
-                  <br />
-                  <strong>Striker: </strong>
-                  {user.best9}
-                  <br />
-                  <strong>Striker: </strong>
-                  {user.best11}
-                </p>
+                <div>
+                  <strong>Best XI:</strong>
+                  <div className="center">
+                    <div className="pitch">
+                      <div className="gk">
+                        <div>GK</div>
+                      </div>
+                      <div className="names">
+                        <p>{user.best1}</p>
+                      </div>
+                      <div className="df">
+                        <div>RB</div>
+                        <div>CB</div>
+                        <div>CB</div>
+                        <div>LB</div>
+                      </div>
+                      <div className="names">
+                        <div>{user.best2}</div>
+                        <div>{user.best3}</div>
+                        <div>{user.best4}</div>
+                        <div>{user.best6}</div>
+                      </div>
+
+                      <div className="mf">
+                        <div>RM</div>
+                        <div>CM</div>
+                        <div>CM</div>
+                        <div>LM</div>
+                      </div>
+                      <div className="names">
+                        <div>{user.best10}</div>
+                        <div>{user.best5}</div>
+                        <div>{user.best8}</div>
+                        <div>{user.best7}</div>
+                      </div>
+
+                      <div className="str">
+                        <div>ST</div>
+                        <div>ST</div>
+                      </div>
+                      <div className="names">
+                        <div>{user.best9}</div>
+                        <div>{user.best11}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
