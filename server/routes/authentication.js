@@ -22,35 +22,11 @@ router.post(
 );
 
 router.post(
-  '/sign-up',
-  passport.authenticate('github', {
-    successRedirect: '/api/authentication/user-information',
-    failureRedirect: '/sign-up'
-  })
-);
-
-router.post(
   '/sign-in',
   // routeGuard(false),
   passport.authenticate('local-sign-in', {
     successRedirect: '/api/authentication/user-information',
     failureRedirect: '/sign-in'
-  })
-);
-
-router.get(
-  '/github',
-  passport.authenticate('github', {
-    successRedirect: '/api/authentication/user-information',
-    failureRedirect: '/authentication/sign-in'
-  })
-);
-
-router.get(
-  '/github-callback',
-  passport.authenticate('github', {
-    successRedirect: '/api/authentication/user-information',
-    failureRedirect: '/authentication/sign-in'
   })
 );
 
