@@ -64,3 +64,32 @@
     border: none;
   }
 }
+
+@media only screen and (min-width: 700px) {
+  .profile__edit {
+    background: #daf8b7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0;
+    figure {
+      background-color: #f4f4f4;
+      border-radius: 5em;
+      border: 1px solid gray;
+    }
+  }
+
+  .profile__input {
+    border: 1px solid gray;
+    border-radius: 5em;
+  }
+
+  .form__style {
+    padding: 0 10%;
+    margin: auto;
+    textarea,
+    select {
+      width: 100%;
+    }
+  }
+}

@@ -2,11 +2,13 @@
 
 .league {
   background-image: url('https://papers.co/wallpaper/papers.co-nn97-soccer-field-city-night-light-dark-4-wallpaper.jpg');
+  // background-size: cover;
   -webkit-filter: grayscale(80%);
   filter: grayscale(80%);
-  height: 100vh;
+  // height: 100vh;
   color: white;
   padding-left: 5%;
+  padding-right: 5%;
   padding-top: 5%;
   h1 {
     margin-bottom: 15%;
@@ -21,5 +23,37 @@
     color: #00c1ff;
     line-height: 1em;
     font-family: 'Source Sans Pro', sans-serif;
+  }
+}
+.bannerimg {
+  width: 100%;
+  margin: 0 auto 3vh auto;
+}
+
+@media only screen and (min-width: 700px) {
+  .league {
+    width: 100%;
+    min-height: 100vh;
+    h1 {
+      margin-bottom: 10%;
+      text-align: center;
+    }
+    p {
+      margin-bottom: 5%;
+    }
+  }
+
+  .league__banners {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0 25px;
+    align-items: center;
+    align-content: flex-start;
+  }
+
+  .league__banner {
+    width: 30%;
   }
 }

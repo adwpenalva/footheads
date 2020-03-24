@@ -24,14 +24,13 @@
   .club__badge__jersey {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
     margin: 4% 1%;
     .club__badge {
       height: 25vh;
-      width: 50%;
     }
     .club__jersey {
       height: 25vh;
-      width: 50%;
     }
   }
   .club__predictor__heading {
@@ -77,4 +76,18 @@
 .club__social__links {
   width: 5vh;
   height: 5vh;
+}
+
+@media only screen and (min-width: 700px) {
+  .center__page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .club {
+    width: 60%;
+  }
+  .club__banner {
+    height: 15vh;
+  }
 }

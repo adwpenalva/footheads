@@ -61,6 +61,17 @@ const editUserInformation = async data => {
   form.append('favoritePlayer', data.favoritePlayer);
   form.append('bio', data.bio);
   form.append('favoriteTeam', data.favoriteTeam);
+  form.append('best1', data.best1);
+  form.append('best2', data.best2);
+  form.append('best3', data.best3);
+  form.append('best4', data.best4);
+  form.append('best5', data.best5);
+  form.append('best6', data.best6);
+  form.append('best7', data.best7);
+  form.append('best8', data.best8);
+  form.append('best9', data.best9);
+  form.append('best10', data.best10);
+  form.append('best11', data.best11);
   const result = await instance.patch('/user-information', form);
   const user = result.data.user;
   return user;

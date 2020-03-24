@@ -43,3 +43,26 @@ thead {
     padding: 10px 5px 10px 15px;
   }
 }
+
+.bannerleaguetbl {
+  max-height: 20vh;
+  width: 100%;
+  margin: 0 auto 3vh auto;
+}
+
+@media only screen and (min-width: 700px) {
+  .center__page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .table {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    padding-bottom: 5%;
+  }
+}

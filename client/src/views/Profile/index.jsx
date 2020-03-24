@@ -32,7 +32,7 @@ class ProfileView extends Component {
         {this.props.user &&
           (console.log('CONSOLE LOG HERE:', getTeamInfo(Number(user.favoriteTeam))),
           (
-            <div>
+            <div className="profile__page">
               <div className="profile__opening">
                 <img className="profile__img" src={user.picture} alt="profile image" />
                 <Link to="/profile/edit">
@@ -51,36 +51,66 @@ class ProfileView extends Component {
                 </figure>
               </div>
               <div className="profile__description">
-                <p>
-                  <strong>About Me:</strong>
-                  <br />
-
-                  {user.bio}
-                </p>
-                <hr />
-                <p>
-                  <strong>Favorite Player: </strong>
-                  <br />
-                  {user.favoritePlayer}
-                </p>
-                <hr />
-                {/* <p>
-                  <strong>Favorite Team:</strong>
-                  <br />
-                  {this.state.teamInfo.strTeam}
-                </p>
-                <hr /> */}
-                {
+                <div className="profile__box">
+                  <p>
+                    <strong>About Me:</strong>
+                    <br />
+                    {user.bio}
+                  </p>
+                  <hr />
+                </div>
+                <div className="profile__box">
+                  <p>
+                    <strong>Favorite Player: </strong>
+                    <br />
+                    {user.favoritePlayer}
+                  </p>
+                  <hr />
+                </div>
+                <div className="profile__box">
                   <p>
                     <strong>My team's name:</strong>
                     <br />
                     {this.state.teamInfo.strTeam}
                   </p>
-                }
-                {}
-                <hr />
-                <p>Next fixture</p>
-                <p>Favorite team latest fixtures with recent form</p>
+                  <hr />
+                </div>
+                <p>
+                  <strong>My best 11:</strong>
+                  <br />
+                  <strong>Goalkeeper: </strong>
+                  {user.best1}
+                  <br />
+                  <strong>Right Back: </strong>
+                  {user.best2}
+                  <br />
+                  <strong>Center Back: </strong>
+                  {user.best3}
+                  <br />
+                  <strong>Center Back: </strong>
+                  {user.best4}
+                  <br />
+                  <strong>Left Back: </strong>
+                  {user.best6}
+                  <br />
+                  <strong>Defensive Middlefielder: </strong>
+                  {user.best5}
+                  <br />
+                  <strong>Central Middlefielder: </strong>
+                  {user.best8}
+                  <br />
+                  <strong>Offensive Middlefielder: </strong>
+                  {user.best7}
+                  <br />
+                  <strong>Offensive Middlefielder: </strong>
+                  {user.best10}
+                  <br />
+                  <strong>Striker: </strong>
+                  {user.best9}
+                  <br />
+                  <strong>Striker: </strong>
+                  {user.best11}
+                </p>
               </div>
             </div>
           ))}

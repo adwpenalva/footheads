@@ -49,3 +49,15 @@
     color: white;
   }
 }
+
+@media only screen and (min-width: 700px) {
+  .signup {
+    background: #daf8b7;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form__style {
+    padding: 0 10%;
+  }
+}

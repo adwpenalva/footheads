@@ -19,7 +19,8 @@ export default class ClubInfo extends Component {
       fixtures: null,
       comments: null,
       shown: false,
-      predictions: []
+      predictions: [],
+      predction: ''
     };
     this.handleCommentAddition = this.handleCommentAddition.bind(this);
     this.handleCommentRemoval = this.handleCommentRemoval.bind(this);
@@ -94,11 +95,11 @@ export default class ClubInfo extends Component {
   render() {
     console.log('state comments', this.state.comments);
     return (
-      <div>
+      <div className="center__page">
         {this.state.club &&
           this.state.club.map(val => {
             return (
-              <div className="club">
+              <div className="club" key={val.idTeam}>
                 {val.strTeamBanner && (
                   <img className="club__banner" src={val.strTeamBanner} alt={val.strTeam} />
                 )}
@@ -119,8 +120,10 @@ export default class ClubInfo extends Component {
                 <h2>Next Fixtures</h2>
                 {this.state.fixtures &&
                   this.state.fixtures.map(event => {
+                    const matchId = this.state.fixtures;
+                    console.log('MATCH ID:', matchId, 'EVENT:', event);
                     return (
-                      <div className="club__predictor__heading">
+                      <div className="club__predictor__heading" key={event.idEvent}>
                         <table>
                           <thead>
                             <tr>
