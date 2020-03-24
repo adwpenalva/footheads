@@ -35,48 +35,37 @@ const schema = new mongoose.Schema({
     type: String
   },
   best1: {
-    type: String,
-    unique: true
+    type: String
   },
   best2: {
-    type: String,
-    unique: true
+    type: String
   },
   best3: {
-    type: String,
-    unique: true
+    type: String
   },
   best4: {
-    type: String,
-    unique: true
+    type: String
   },
   best5: {
-    type: String,
-    unique: true
+    type: String
   },
   best6: {
-    type: String,
-    unique: true
+    type: String
   },
   best7: {
-    type: String,
-    unique: true
+    type: String
   },
   best8: {
-    type: String,
-    unique: true
+    type: String
   },
   best9: {
-    type: String,
-    unique: true
+    type: String
   },
   best10: {
-    type: String,
-    unique: true
+    type: String
   },
   best11: {
-    type: String,
-    unique: true
+    type: String
   }
 });
 
