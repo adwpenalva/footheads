@@ -30,9 +30,8 @@ passport.use(
     },
     (req, email, password, callback) => {
       const name = req.body.name;
-      const favoriteTeam = req.body.favoriteTeam;
       const favoritePlayer = req.body.favoritePlayer;
-      console.log(email, password, name, favoritePlayer, favoriteTeam);
+      console.log(email, password, name, favoritePlayer);
       bcryptjs
         .hash(password, 10)
         .then(hash => {
@@ -40,8 +39,7 @@ passport.use(
             name,
             email,
             passwordHash: hash,
-            favoritePlayer,
-            favoriteTeam
+            favoritePlayer
           });
         })
         .then(user => {
