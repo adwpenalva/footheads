@@ -58,7 +58,7 @@ class UserProfile extends Component {
               <p>
                 <strong>Best 11:</strong>
                 <br />
-                <div className="formation">
+                <div>
                   <div>
                     <strong>Goalkeeper: </strong>
                     {this.state.user.best1}
@@ -99,16 +99,6 @@ class UserProfile extends Component {
                     <strong>Striker: </strong>
                     {this.state.user.best11}
                   </div>
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
                 </div>
               </p>
             </div>
