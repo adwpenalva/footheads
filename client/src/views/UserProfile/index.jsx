@@ -30,15 +30,15 @@ class UserProfile extends Component {
     return (
       <div>
         {this.state.user && (
-            <div className="profile">
-              <div className="profile__opening">
-                <img className="profile__img" src={this.state.user.picture} alt="profile picture" />
-              </div>
-          <div className="profile__name__badge">
-            <h2>{this.state.user.name}'s Profile</h2>
-            <figure>
-              <img src={this.state.teamInfo.strTeamBadge} alt={this.state.teamInfo.strTeam} />
-            </figure>
+          <div className="profile">
+            <div className="profile__opening">
+              <img className="profile__img" src={this.state.user.picture} alt="profile picture" />
+            </div>
+            <div className="profile__name__badge">
+              <h2>{this.state.user.name}'s Profile</h2>
+              <figure>
+                <img src={this.state.teamInfo.strTeamBadge} alt={this.state.teamInfo.strTeam} />
+              </figure>
             </div>
             <div className="profile__description">
               <p>
@@ -58,38 +58,58 @@ class UserProfile extends Component {
               <p>
                 <strong>Best 11:</strong>
                 <br />
-                <strong>Goalkeeper: </strong>
-                {this.state.user.best1}
-                <br />
-                <strong>Right Back: </strong>
-                {this.state.user.best2}
-                <br />
-                <strong>Center Back: </strong>
-                {this.state.user.best3}
-                <br />
-                <strong>Center Back: </strong>
-                {this.state.user.best4}
-                <br />
-                <strong>Left Back: </strong>
-                {this.state.user.best6}
-                <br />
-                <strong>Defensive Middlefielder: </strong>
-                {this.state.user.best5}
-                <br />
-                <strong>Central Middlefielder: </strong>
-                {this.state.user.best8}
-                <br />
-                <strong>Offensive Middlefielder: </strong>
-                {this.state.user.best7}
-                <br />
-                <strong>Offensive Middlefielder: </strong>
-                {this.state.user.best10}
-                <br />
-                <strong>Striker: </strong>
-                {this.state.user.best9}
-                <br />
-                <strong>Striker: </strong>
-                {this.state.user.best11}
+                <div className="formation">
+                  <div>
+                    <strong>Goalkeeper: </strong>
+                    {this.state.user.best1}
+                  </div>
+                  <br />
+                  <div>
+                    <strong>Right Back: </strong>
+                    {this.state.user.best2}
+                    <br />
+                    <strong>Center Back: </strong>
+                    {this.state.user.best3}
+                    <br />
+                    <strong>Center Back: </strong>
+                    {this.state.user.best4}
+                    <br />
+                    <strong>Left Back: </strong>
+                    {this.state.user.best6}
+                  </div>
+                  <br />
+                  <div>
+                    <strong>Defensive Middlefielder: </strong>
+                    {this.state.user.best5}
+                    <br />
+                    <strong>Central Middlefielder: </strong>
+                    {this.state.user.best8}
+                    <br />
+                    <strong>Offensive Middlefielder: </strong>
+                    {this.state.user.best7}
+                    <br />
+                    <strong>Offensive Middlefielder: </strong>
+                    {this.state.user.best10}
+                  </div>
+                  <br />
+                  <div>
+                    <strong>Striker: </strong>
+                    {this.state.user.best9}
+                    <br />
+                    <strong>Striker: </strong>
+                    {this.state.user.best11}
+                  </div>
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                </div>
               </p>
             </div>
           </div>
