@@ -1,0 +1,48 @@
+.profile {
+  min-height: 100vh;
+  text-align: center;
+
+  h1 {
+    margin-top: 5%;
+  }
+
+  .profile__opening {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 0 5%;
+    .profile__img {
+      width: 50%;
+      border-radius: 50%;
+    }
+    .profile__edit__favicon {
+      background-color: white;
+      border-radius: 2em;
+      padding: 5%;
+    }
+  }
+
+  .profile__name__badge {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    figure {
+      width: 10%;
+      img {
+        width: 80%;
+      }
+    }
+  }
+
+  .profile__description {
+    text-align: justify;
+    padding-left: 5%;
+    padding-right: 5%;
+    line-height: 1.5em;
+    margin-top: 5%;
+  }
+}

@@ -61,7 +61,9 @@ const BlogPostsList = props => {
                   </h5>
                   <div className="blog-personnel">
                     <img src={post.author.picture} alt="Users " />
-                    <small>Posted by: {post.author.name}</small>
+                    <small>
+                      Posted by: <Link to={`/user/${post.author._id}`}>{post.author.name}</Link>
+                    </small>
                   </div>
                   <p>{post.content}</p>
                   <br />

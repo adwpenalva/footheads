@@ -77,6 +77,7 @@ class ProfileView extends Component {
                     {this.state.teamInfo.strTeam}
                   </p>
                 }
+                <hr />
                 <p>
                   <strong>My best 11:</strong>
                   <br />
